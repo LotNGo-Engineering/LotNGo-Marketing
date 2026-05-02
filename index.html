@@ -218,7 +218,52 @@
   .cta-banner p { color: rgba(247,247,255,0.78); margin-bottom: 2rem; font-size: 1rem; }
   .waitlist-input { flex: 1; min-width: 200px; padding: 0.85rem 1.25rem; border-radius: 8px; border: none; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; color: #1a1e2e; }
   .waitlist-btn { background: #f7f7ff; color: #005bc0; padding: 0.85rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; white-space: nowrap; font-family: 'Inter', sans-serif; }
-  #waitlist-form { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; max-width: 480px; margin: 0 auto; }
+  #waitlist-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    justify-content: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(247, 247, 255, 0.9);
+  }
+  .form-input {
+    padding: 0.85rem 1.25rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    color: #1a1e2e;
+    background: #f7f7ff;
+  }
+  .form-input::placeholder { color: #a0a0a0; }
+  .form-input:focus { box-shadow: 0 0 0 2px rgba(247, 247, 255, 0.3); }
+  .waitlist-submit {
+    grid-column: 1 / -1;
+    background: #f7f7ff;
+    color: #005bc0;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.2s;
+  }
+  .waitlist-submit:hover { opacity: 0.9; }
 
   /* FOOTER */
   footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: center; }
@@ -457,8 +502,35 @@
     <h2 class="display-font" data-en="Be the first to bring Lot'N'Go to your building." data-he="היו הראשונים להביא את Lot'N'Go לבניין שלכם.">Be the first to bring Lot'N'Go to your building.</h2>
     <p data-en="We're launching soon. Leave your email and we'll reach out when it's ready — no spam, just one message." data-he="אנחנו משיקים בקרוב. השאירו אימייל ונחזור אליכם כשמוכן — ללא ספאם, רק הודעה אחת.">We're launching soon. Leave your email and we'll reach out when it's ready — no spam, just one message.</p>
     <div id="waitlist-form">
-      <input type="email" id="waitlist-email" class="waitlist-input" placeholder="your@email.com"/>
-      <button onclick="submitWaitlist()" class="waitlist-btn" data-en="Join the waitlist" data-he="הצטרפו לרשימת ההמתנה">Join the waitlist</button>
+      <div class="form-group">
+        <label class="form-label" data-en="First Name" data-he="שם פרטי">First Name</label>
+        <input type="text" id="waitlist-firstName" class="form-input" placeholder="John" data-placeholder-en="John" data-placeholder-he="יוחנן"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-en="Last Name" data-he="שם משפחה">Last Name</label>
+        <input type="text" id="waitlist-lastName" class="form-input" placeholder="Doe" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-en="Street Name" data-he="שם הרחוב">Street Name</label>
+        <input type="text" id="waitlist-street" class="form-input" placeholder="Main St" data-placeholder-en="Main St" data-placeholder-he="רחוב הרצל"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-en="Street Number" data-he="מספר הבית">Street Number</label>
+        <input type="text" id="waitlist-streetNum" class="form-input" placeholder="123" data-placeholder-en="123" data-placeholder-he="42"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-en="City" data-he="עיר">City</label>
+        <input type="text" id="waitlist-city" class="form-input" placeholder="Tel Aviv" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-en="Country" data-he="מדינה">Country</label>
+        <input type="text" id="waitlist-country" class="form-input" placeholder="Israel" data-placeholder-en="Israel" data-placeholder-he="ישראל" value="Israel"/>
+      </div>
+      <div class="form-group full">
+        <label class="form-label" data-en="Email" data-he="דוא״ל">Email</label>
+        <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com" data-placeholder-en="your@email.com" data-placeholder-he="your@email.com"/>
+      </div>
+      <button onclick="submitWaitlist()" class="waitlist-submit" data-en="Join the waitlist" data-he="הצטרפו לרשימת ההמתנה">Join the waitlist</button>
     </div>
     <div id="waitlist-thanks" style="display:none; color:#f7f7ff; font-size:1rem; font-weight:600; margin-top:1rem;" data-en="✓ You're on the list! We'll be in touch." data-he="✓ אתם ברשימה! נחזור אליכם בקרוב.">✓ You're on the list! We'll be in touch.</div>
   </div>
@@ -490,17 +562,51 @@ function setLang(lang) {
     if (el.tagName === 'INPUT') { el.placeholder = val; }
     else { el.innerHTML = val; }
   });
+  document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
+    el.placeholder = el.getAttribute('data-placeholder-' + lang);
+  });
 }
 
 function submitWaitlist() {
+  const firstName = document.getElementById('waitlist-firstName').value.trim();
+  const lastName = document.getElementById('waitlist-lastName').value.trim();
+  const street = document.getElementById('waitlist-street').value.trim();
+  const streetNum = document.getElementById('waitlist-streetNum').value.trim();
+  const city = document.getElementById('waitlist-city').value.trim();
+  const country = document.getElementById('waitlist-country').value.trim();
   const email = document.getElementById('waitlist-email').value.trim();
-  if (!email || !email.includes('@')) {
-    document.getElementById('waitlist-email').style.outline = '2px solid #f0a';
-    return;
+
+  let hasError = false;
+  [firstName, lastName, street, streetNum, city, country, email].forEach((val, idx) => {
+    const inputs = [
+      document.getElementById('waitlist-firstName'),
+      document.getElementById('waitlist-lastName'),
+      document.getElementById('waitlist-street'),
+      document.getElementById('waitlist-streetNum'),
+      document.getElementById('waitlist-city'),
+      document.getElementById('waitlist-country'),
+      document.getElementById('waitlist-email')
+    ];
+    if (!val) {
+      inputs[idx].style.outline = '2px solid #ff9999';
+      hasError = true;
+    } else {
+      inputs[idx].style.outline = 'none';
+    }
+  });
+
+  if (!email.includes('@')) {
+    document.getElementById('waitlist-email').style.outline = '2px solid #ff9999';
+    hasError = true;
   }
+
+  if (hasError) return;
+
+  const body = `First Name: ${firstName}\nLast Name: ${lastName}\nAddress: ${street} ${streetNum}, ${city}, ${country}\nEmail: ${email}`;
+
   document.getElementById('waitlist-form').style.display = 'none';
   document.getElementById('waitlist-thanks').style.display = 'block';
-  window.location.href = 'mailto:contact@lotngo.com?subject=Waitlist%20signup&body=Please%20add%20me%20to%20the%20waitlist%3A%20' + encodeURIComponent(email);
+  window.location.href = 'mailto:contact@lotngo.com?subject=Waitlist%20signup&body=' + encodeURIComponent(body);
 }
 </script>
 </body>
