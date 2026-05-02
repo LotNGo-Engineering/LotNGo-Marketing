@@ -530,6 +530,10 @@
         <label class="form-label" data-en="Email" data-he="דוא״ל">Email</label>
         <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com" data-placeholder-en="your@email.com" data-placeholder-he="your@email.com"/>
       </div>
+      <div class="form-group full">
+        <label class="form-label" data-en="Phone" data-he="טלפון">Email</label>
+        <input type="email" id="waitlist-phone" class="form-input" placeholder="+972547788990" data-placeholder-en="+972547788990" data-placeholder-he="+972547788990"/>
+      </div>
       <button onclick="submitWaitlist()" class="waitlist-submit" data-en="Join the waitlist" data-he="הצטרפו לרשימת ההמתנה">Join the waitlist</button>
     </div>
     <div id="waitlist-thanks" style="display:none; color:#f7f7ff; font-size:1rem; font-weight:600; margin-top:1rem;" data-en="✓ You're on the list! We'll be in touch." data-he="✓ אתם ברשימה! נחזור אליכם בקרוב.">✓ You're on the list! We'll be in touch.</div>
@@ -575,7 +579,7 @@ function submitWaitlist() {
   const city = document.getElementById('waitlist-city').value.trim();
   const country = document.getElementById('waitlist-country').value.trim();
   const email = document.getElementById('waitlist-email').value.trim();
-
+  const phone = document.getElementById('waitlist-phone').value.trim();
   let hasError = false;
   [firstName, lastName, street, streetNum, city, country, email].forEach((val, idx) => {
     const inputs = [
@@ -585,7 +589,8 @@ function submitWaitlist() {
       document.getElementById('waitlist-streetNum'),
       document.getElementById('waitlist-city'),
       document.getElementById('waitlist-country'),
-      document.getElementById('waitlist-email')
+      document.getElementById('waitlist-email'),
+      document.getElementById('waitlist-phone')
     ];
     if (!val) {
       inputs[idx].style.outline = '2px solid #ff9999';
@@ -602,7 +607,7 @@ function submitWaitlist() {
 
   if (hasError) return;
 
-  const body = `First Name: ${firstName}\nLast Name: ${lastName}\nAddress: ${street} ${streetNum}, ${city}, ${country}\nEmail: ${email}`;
+  const body = `First Name: ${firstName}\nLast Name: ${lastName}\nAddress: ${street} ${streetNum}, ${city}, ${country}\nEmail: ${email}\nPhone: ${phone}`;
 
   document.getElementById('waitlist-form').style.display = 'none';
   document.getElementById('waitlist-thanks').style.display = 'block';
