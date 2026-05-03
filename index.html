@@ -618,7 +618,11 @@ function submitWaitlist() {
     phone_number: phone || undefined
   };
 
-  fetch('/api/v1/leads', {
+ const apiUrl = window.location.hostname === 'localhost'
+    ? 'http://localhost:3001/api/v1/leads'
+    : 'https://api.lotngo.com/api/v1/leads';
+
+  fetch(apiUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
