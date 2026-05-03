@@ -208,8 +208,8 @@
   html[lang="he"] .faq-q { font-family: 'Heebo', sans-serif; }
   .faq-chevron { color: var(--primary); font-size: 1rem; transition: transform 0.2s; }
   .faq-a { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.7; margin-top: 0.75rem; display: none; }
-  .faq-item.open .faq-a { display: block; }
-  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .[faq-item.open](http://faq-item.open) .faq-a { display: block; }
+  .[faq-item.open](http://faq-item.open) .faq-chevron { transform: rotate(180deg); }
 
   /* CTA BANNER */
   .cta-banner { background: linear-gradient(135deg, var(--primary), var(--primary-dim)); border-radius: 24px; padding: 4rem 3rem; text-align: center; max-width: 960px; margin-left: auto; margin-right: auto; }
@@ -470,7 +470,7 @@
   <div class="section-inner">
     <div class="section-label" data-en="Questions" data-he="שאלות">Questions</div>
     <h2 class="section-title display-font" data-en="Everything you might wonder." data-he="כל מה שאולי תרצה לדעת.">Everything you might wonder.</h2>
-    <p class="section-sub" data-en="If your question isn't here, reach out at contact@lotngo.com — we respond fast." data-he="אם השאלה שלך לא כאן, צור קשר בכתובת contact@lotngo.com — אנחנו מגיבים מהר.">If your question isn't here, reach out at contact@lotngo.com — we respond fast.</p>
+    <p class="section-sub" data-en="If your question isn't here, reach out at [contact@lotngo.com](mailto:contact@lotngo.com) — we respond fast." data-he="אם השאלה שלך לא כאן, צור קשר בכתובת [contact@lotngo.com](mailto:contact@lotngo.com) — אנחנו מגיבים מהר.">If your question isn't here, reach out at [contact@lotngo.com](mailto:contact@lotngo.com) — we respond fast.</p>
     <div class="faq-list">
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q"><span data-en="How does pricing work?" data-he="איך התמחור עובד?">How does pricing work?</span><span class="faq-chevron">▾</span></div>
@@ -478,7 +478,7 @@
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q"><span data-en="How does my building join?" data-he="איך הבניין שלי מצטרף?">How does my building join?</span><span class="faq-chevron">▾</span></div>
-        <div class="faq-a" data-en="The building manager or HOA representative signs up via lotngo.com and registers the building's marked spots. Residents are then invited by unit number. The whole setup takes under 30 minutes." data-he="מנהל הבניין או נציג ועד הבית נרשם דרך lotngo.com ומאגד את חניות הבניין המסומנות. לאחר מכן הדיירים מוזמנים לפי מספר דירה. כל ההגדרה לוקחת פחות מ-30 דקות.">The building manager or HOA representative signs up via lotngo.com and registers the building's marked spots. Residents are then invited by unit number. The whole setup takes under 30 minutes.</div>
+        <div class="faq-a" data-en="The building manager or HOA representative signs up via [lotngo.com](http://lotngo.com) and registers the building's marked spots. Residents are then invited by unit number. The whole setup takes under 30 minutes." data-he="מנהל הבניין או נציג ועד הבית נרשם דרך [lotngo.com](http://lotngo.com) ומאגד את חניות הבניין המסומנות. לאחר מכן הדיירים מוזמנים לפי מספר דירה. כל ההגדרה לוקחת פחות מ-30 דקות.">The building manager or HOA representative signs up via [lotngo.com](http://lotngo.com) and registers the building's marked spots. Residents are then invited by unit number. The whole setup takes under 30 minutes.</div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q"><span data-en="What if someone doesn't vacate the spot on time?" data-he="מה אם מישהו לא מפנה את החניה בזמן?">What if someone doesn't vacate the spot on time?</span><span class="faq-chevron">▾</span></div>
@@ -531,8 +531,8 @@
         <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com" data-placeholder-en="your@email.com" data-placeholder-he="your@email.com"/>
       </div>
       <div class="form-group full">
-        <label class="form-label" data-en="Phone" data-he="טלפון">Email</label>
-        <input type="email" id="waitlist-phone" class="form-input" placeholder="+972547788990" data-placeholder-en="+972547788990" data-placeholder-he="+972547788990"/>
+        <label class="form-label" data-en="Phone" data-he="טלפון">Phone</label>
+        <input type="tel" id="waitlist-phone" class="form-input" placeholder="+972547788990" data-placeholder-en="+972547788990" data-placeholder-he="+972547788990"/>
       </div>
       <button onclick="submitWaitlist()" class="waitlist-submit" data-en="Join the waitlist" data-he="הצטרפו לרשימת ההמתנה">Join the waitlist</button>
     </div>
@@ -607,11 +607,38 @@ function submitWaitlist() {
 
   if (hasError) return;
 
-  const body = `First Name: ${firstName}\nLast Name: ${lastName}\nAddress: ${street} ${streetNum}, ${city}, ${country}\nEmail: ${email}\nPhone: ${phone}`;
+  const payload = {
+    first_name: firstName,
+    last_name: lastName,
+    street_name: street,
+    street_number: streetNum,
+    city: city,
+    country: country,
+    email: email,
+    phone_number: phone || undefined
+  };
 
-  document.getElementById('waitlist-form').style.display = 'none';
-  document.getElementById('waitlist-thanks').style.display = 'block';
-  window.location.href = 'mailto:contact@lotngo.com?subject=Waitlist%20signup&body=' + encodeURIComponent(body);
+  fetch('/api/v1/leads', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload)
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(() => {
+      document.getElementById('waitlist-form').style.display = 'none';
+      document.getElementById('waitlist-thanks').style.display = 'block';
+    })
+    .catch(error => {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting the form. Please try again.');
+    });
 }
 </script>
 </body>
