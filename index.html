@@ -555,6 +555,16 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <input type="text" id="waitlist-lastName" class="form-input" placeholder="Doe" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
 </div>
 
+<div class="form-group">
+<label class="form-label" data-en="Street Name" data-he="שם הרחוב">Street Name</label>
+<input type="text" id="waitlist-street" class="form-input" placeholder="Main St" data-placeholder-en="Main St" data-placeholder-he="רחוב הרצל"/>
+</div>
+
+<div class="form-group">
+<label class="form-label" data-en="Street Number" data-he="מספר הבית">Street Number</label>
+<input type="text" id="waitlist-streetNum" class="form-input" placeholder="123" data-placeholder-en="123" data-placeholder-he="42"/>
+</div>
+
 <div class="form-group full">
 <label class="form-label" data-en="Email" data-he="דוא״ל">Email</label>
 <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com" data-placeholder-en="your@email.com" data-placeholder-he="your@email.com"/>
@@ -622,6 +632,8 @@ faqItem.classList.toggle('open');
 function submitWaitlist() {
 const firstName = document.getElementById('waitlist-firstName').value.trim();
 const lastName = document.getElementById('waitlist-lastName').value.trim();
+const street = document.getElementById('waitlist-street').value.trim();
+const streetNum = document.getElementById('waitlist-streetNum').value.trim();
 const email = document.getElementById('waitlist-email').value.trim();
 const city = document.getElementById('waitlist-city').value.trim();
 const phone = document.getElementById('waitlist-phone').value.trim();
@@ -633,30 +645,71 @@ input.classList.remove('error');
 
 let hasError = false;
 
-// Validate required fields
-const requiredFields = [
-{ id: 'waitlist-firstName', value: firstName, name: 'First Name' },
-{ id: 'waitlist-lastName', value: lastName, name: 'Last Name' },
-{ id: 'waitlist-email', value: email, name: 'Email' },
-{ id: 'waitlist-city', value: city, name: 'City' },
-{ id: 'waitlist-phone', value: phone, name: 'Phone' }
-];
+// Validation patterns
+const namePattern = /^[a-zA-Z\s'-]+$/; // Letters, spaces, hyphens, apostrophes
+const streetPattern = /^[a-zA-Z\s'-]+$/; // Letters, spaces, hyphens, apostrophes
+const streetNumberPattern = /^\d+$/; // Numbers only
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Standard email format
 
-requiredFields.forEach(field => {
-if (!field.value) {
-document.getElementById(field.id).classList.add('error');
+// Validate First Name
+if (!firstName) {
+document.getElementById('waitlist-firstName').classList.add('error');
+hasError = true;
+} else if (!namePattern.test(firstName)) {
+document.getElementById('waitlist-firstName').classList.add('error');
 hasError = true;
 }
-});
 
-// Validate email format
-if (email && !email.includes('@')) {
+// Validate Last Name
+if (!lastName) {
+document.getElementById('waitlist-lastName').classList.add('error');
+hasError = true;
+} else if (!namePattern.test(lastName)) {
+document.getElementById('waitlist-lastName').classList.add('error');
+hasError = true;
+}
+
+// Validate Street Name
+if (!street) {
+document.getElementById('waitlist-street').classList.add('error');
+hasError = true;
+} else if (!streetPattern.test(street)) {
+document.getElementById('waitlist-street').classList.add('error');
+hasError = true;
+}
+
+// Validate Street Number
+if (!streetNum) {
+document.getElementById('waitlist-streetNum').classList.add('error');
+hasError = true;
+} else if (!streetNumberPattern.test(streetNum)) {
+document.getElementById('waitlist-streetNum').classList.add('error');
+hasError = true;
+}
+
+// Validate Email
+if (!email) {
+document.getElementById('waitlist-email').classList.add('error');
+hasError = true;
+} else if (!emailPattern.test(email)) {
 document.getElementById('waitlist-email').classList.add('error');
 hasError = true;
 }
 
-// Validate phone format (basic check)
-if (phone && phone.length < 10) {
+// Validate City
+if (!city) {
+document.getElementById('waitlist-city').classList.add('error');
+hasError = true;
+} else if (!namePattern.test(city)) {
+document.getElementById('waitlist-city').classList.add('error');
+hasError = true;
+}
+
+// Validate Phone
+if (!phone) {
+document.getElementById('waitlist-phone').classList.add('error');
+hasError = true;
+} else if (phone.length < 10) {
 document.getElementById('waitlist-phone').classList.add('error');
 hasError = true;
 }
@@ -666,6 +719,8 @@ if (hasError) return;
 const payload = {
 first_name: firstName,
 last_name: lastName,
+street_name: street,
+street_number: streetNum,
 email: email,
 city: city,
 phone_number: phone || undefined
