@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="he" dir="ltr">
+
+<html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -299,7 +300,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <a href="#benefits" data-en="Benefits" data-he="יתרונות">Benefits</a>
 <a href="#faq" data-en="FAQ" data-he="שאלות נפוצות">FAQ</a>
 <a href="#join" class="btn-nav" data-en="Get the app" data-he="הצטרפו עכשיו">Get the app</a>
-</div>
+
 <div class="lang-toggle">
 <button class="lang-btn" onclick="setLang('en')">EN</button>
 <button class="lang-btn active" onclick="setLang('he')">עב</button>
@@ -622,6 +623,9 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </footer>
 
 <script>
+
+
+// Set Language Function
 function setLang(lang) {
 document.documentElement.lang = lang;
 document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
@@ -636,6 +640,8 @@ else { el.innerHTML = val; }
 document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
 el.placeholder = el.getAttribute('data-placeholder-' + lang);
 });
+// Store the language preference
+localStorage.setItem('lotngo-lang', lang);
 }
 
 // FAQ Accordion functionality
@@ -770,9 +776,14 @@ alert('There was an error submitting the form. Please try again.');
 });
 }
 </script>
-// Set Hebrew as default language on page load
-document.addEventListener('DOMContentLoaded', function() {
-  setLang('he');
+
+<script>
+// Load saved language or default to Hebrew
+window.addEventListener('load', function() {
+  const savedLang = localStorage.getItem('lotngo-lang') || 'he';
+  setLang(savedLang);
 });
+</script>
+
 </body>
 </html>
