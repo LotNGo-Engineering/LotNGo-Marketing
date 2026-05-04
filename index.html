@@ -6,644 +6,698 @@
 <title>Lot'N'Go – Park with Purpose</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --primary: #005bc0;
-    --primary-dim: #004fa9;
-    --primary-container: #d6e4ff;
-    --on-primary: #f7f7ff;
-    --surface: #f8f9fa;
-    --surface-low: #f1f4f6;
-    --surface-lowest: #ffffff;
-    --on-surface: #1a1e2e;
-    --on-surface-muted: #5a6177;
-    --secondary-container: #e8edf5;
-    --shadow-ambient: 0 12px 32px -4px rgba(43,52,55,0.07);
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--surface);
-    color: var(--on-surface);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  html[lang="he"] body { font-family: 'Heebo', sans-serif; }
-  html[lang="he"] .display-font { font-family: 'Heebo', sans-serif; }
-  .display-font { font-family: 'Manrope', sans-serif; }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(248,249,250,0.82);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 0 2rem;
-    height: 70px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-links { display: flex; gap: 2rem; align-items: center; }
-  .nav-links a {
-    font-size: 0.875rem; font-weight: 500;
-    color: var(--on-surface-muted); text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--primary); }
-  .btn-nav {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dim));
-    color: #f7f7ff !important;
-    padding: 0.5rem 1.25rem; border-radius: 8px;
-    font-size: 0.875rem; font-weight: 600;
-    text-decoration: none; border: none; cursor: pointer;
-    transition: opacity 0.2s;
-  }
-  .btn-nav:hover { opacity: 0.9; }
-
-  /* LANG TOGGLE */
-  .lang-toggle {
-    display: flex; align-items: center; gap: 0;
-    background: var(--surface-low);
-    border-radius: 8px; overflow: hidden;
-  }
-  .lang-btn {
-    padding: 0.35rem 0.85rem;
-    font-size: 0.8rem; font-weight: 600;
-    border: none; background: transparent;
-    color: var(--on-surface-muted); cursor: pointer;
-    transition: all 0.2s;
-  }
-  .lang-btn.active {
-    background: var(--primary);
-    color: #f7f7ff;
-    border-radius: 8px;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 7rem 2rem 4rem;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(0,91,192,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-eyebrow {
-    display: inline-block;
-    background: var(--primary-container);
-    color: var(--primary);
-    font-size: 0.78rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 0.35rem 1rem; border-radius: 100px;
-    margin-bottom: 0.6rem;
-  }
-  .coming-soon-badge {
-    display: inline-block;
-    background: #fff3cd; color: #856404;
-    font-size: 0.78rem; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 0.35rem 1rem; border-radius: 100px;
-    margin-bottom: 1.5rem;
-  }
-  .badges-row { display: flex; gap: 0.6rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .badges-row .hero-eyebrow, .badges-row .coming-soon-badge { margin-bottom: 0; }
-
-  .hero h1 {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4.2rem);
-    font-weight: 800; line-height: 1.08;
-    letter-spacing: -1.5px;
-    color: var(--on-surface);
-    max-width: 720px; margin: 0 auto 1.5rem;
-  }
-  html[lang="he"] .hero h1 { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
-  .hero h1 .accent { color: var(--primary); }
-  .hero-sub {
-    font-size: 1.1rem; color: var(--on-surface-muted);
-    max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7;
-  }
-  .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dim));
-    color: var(--on-primary);
-    padding: 0.85rem 2rem; border-radius: 8px;
-    font-size: 1rem; font-weight: 600;
-    text-decoration: none; border: none; cursor: pointer;
-    box-shadow: var(--shadow-ambient);
-    transition: opacity 0.2s, transform 0.15s; display: inline-block;
-  }
-  .btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
-  .btn-secondary {
-    background: var(--surface-lowest); color: var(--primary);
-    padding: 0.85rem 2rem; border-radius: 8px;
-    font-size: 1rem; font-weight: 600;
-    text-decoration: none; border: none; cursor: pointer;
-    box-shadow: var(--shadow-ambient); transition: background 0.2s; display: inline-block;
-  }
-  .btn-secondary:hover { background: var(--secondary-container); }
-
-  /* SPOT CARDS */
-  .hero-visual { margin: 4rem auto 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 500px; }
-  .spot-card { background: var(--surface-lowest); border-radius: 16px; padding: 1.25rem 1.5rem; box-shadow: var(--shadow-ambient); min-width: 160px; text-align: left; }
-  html[lang="he"] .spot-card { text-align: right; }
-  .spot-chip { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 100px; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
-  .chip-available { background: var(--primary-container); color: var(--primary); }
-  .chip-offered { background: #d6eddf; color: #1a6b35; }
-  .spot-label { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--on-surface); }
-  .spot-meta { font-size: 0.8rem; color: var(--on-surface-muted); margin-top: 0.25rem; }
-
-  /* SECTIONS */
-  section { padding: 6rem 2rem; }
-  .section-inner { max-width: 1040px; margin: 0 auto; }
-  .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
-  .section-title {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.12;
-    letter-spacing: -0.8px; color: var(--on-surface); max-width: 600px; margin-bottom: 1rem;
-  }
-  html[lang="he"] .section-title { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
-  .section-sub { font-size: 1rem; color: var(--on-surface-muted); max-width: 520px; line-height: 1.7; margin-bottom: 3rem; }
-
-  /* PROBLEM */
-  .problem { background: var(--surface-lowest); }
-  .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-  .problem-card { background: var(--surface-low); border-radius: 16px; padding: 1.75rem; }
-  .problem-icon { font-size: 1.5rem; margin-bottom: 1rem; width: 48px; height: 48px; background: var(--primary-container); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-  .problem-card h3 { font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-  html[lang="he"] .problem-card h3 { font-family: 'Heebo', sans-serif; }
-  .problem-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
-
-  /* HOW IT WORKS */
-  .hiw-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-  .step { background: var(--surface-lowest); border-radius: 16px; padding: 2rem; box-shadow: var(--shadow-ambient); }
-  .step-num { font-family: 'Manrope', sans-serif; font-size: 3rem; font-weight: 800; color: var(--primary-container); line-height: 1; margin-bottom: 0.75rem; }
-  .step h3 { font-family: 'Manrope', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-  html[lang="he"] .step h3 { font-family: 'Heebo', sans-serif; }
-  .step p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
-
-  /* BENEFITS */
-  .benefits { background: var(--surface-lowest); }
-  .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
-  .benefit-card { background: var(--surface-low); border-radius: 16px; padding: 1.75rem; }
-  .benefit-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-dim)); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.1rem; }
-  .benefit-card h3 { font-family: 'Manrope', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
-  html[lang="he"] .benefit-card h3 { font-family: 'Heebo', sans-serif; }
-  .benefit-card p { font-size: 0.83rem; color: var(--on-surface-muted); line-height: 1.6; }
-
-  /* AUDIENCE */
-  .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .audience-card { background: var(--surface-lowest); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-ambient); }
-  .audience-badge { display: inline-block; background: var(--primary-container); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
-  .audience-card h3 { font-family: 'Manrope', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
-  html[lang="he"] .audience-card h3 { font-family: 'Heebo', sans-serif; }
-  .audience-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.65; }
-
-  /* FAQ */
-  .faq-list { max-width: 680px; }
-  .faq-item { background: var(--surface-lowest); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: var(--shadow-ambient); cursor: pointer; }
-  .faq-q { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-  html[lang="he"] .faq-q { font-family: 'Heebo', sans-serif; }
-  .faq-chevron { color: var(--primary); font-size: 1rem; transition: transform 0.2s; }
-  .faq-a { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.7; margin-top: 0.75rem; display: none; }
-  .[faq-item.open](http://faq-item.open) .faq-a { display: block; }
-  .[faq-item.open](http://faq-item.open) .faq-chevron { transform: rotate(180deg); }
-
-  /* CTA BANNER */
-  .cta-banner { background: linear-gradient(135deg, var(--primary), var(--primary-dim)); border-radius: 24px; padding: 4rem 3rem; text-align: center; max-width: 960px; margin-left: auto; margin-right: auto; }
-  .cta-banner h2 { font-family: 'Manrope', sans-serif; font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800; color: var(--on-primary); margin-bottom: 1rem; }
-  html[lang="he"] .cta-banner h2 { font-family: 'Heebo', sans-serif; }
-  .cta-banner p { color: rgba(247,247,255,0.78); margin-bottom: 2rem; font-size: 1rem; }
-  .waitlist-input { flex: 1; min-width: 200px; padding: 0.85rem 1.25rem; border-radius: 8px; border: none; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; color: #1a1e2e; }
-  .waitlist-btn { background: #f7f7ff; color: #005bc0; padding: 0.85rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; white-space: nowrap; font-family: 'Inter', sans-serif; }
-  #waitlist-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    justify-content: center;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .form-group.full { grid-column: 1 / -1; }
-  .form-label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: rgba(247, 247, 255, 0.9);
-  }
-  .form-input {
-    padding: 0.85rem 1.25rem;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-    outline: none;
-    color: #1a1e2e;
-    background: #f7f7ff;
-  }
-  .form-input::placeholder { color: #a0a0a0; }
-  .form-input:focus { box-shadow: 0 0 0 2px rgba(247, 247, 255, 0.3); }
-  .waitlist-submit {
-    grid-column: 1 / -1;
-    background: #f7f7ff;
-    color: #005bc0;
-    padding: 0.85rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
-    font-family: 'Inter', sans-serif;
-    transition: opacity 0.2s;
-  }
-  .waitlist-submit:hover { opacity: 0.9; }
-
-  /* FOOTER */
-  footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: center; }
-  .footer-tagline { font-size: 0.85rem; color: var(--on-surface-muted); margin-bottom: 1.5rem; margin-top: 0.4rem; }
-  .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .footer-links a { font-size: 0.85rem; color: var(--on-surface-muted); text-decoration: none; }
-  .footer-links a:hover { color: var(--primary); }
-  .footer-copy { font-size: 0.78rem; color: var(--on-surface-muted); }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+--primary: #005bc0;
+--primary-dim: #004fa9;
+--primary-container: #d6e4ff;
+--on-primary: #f7f7ff;
+--surface: #f8f9fa;
+--surface-low: #f1f4f6;
+--surface-lowest: #ffffff;
+--on-surface: #1a1e2e;
+--on-surface-muted: #5a6177;
+--secondary-container: #e8edf5;
+--shadow-ambient: 0 12px 32px -4px rgba(43,52,55,0.07);
+}
+html { scroll-behavior: smooth; }
+body {
+font-family: 'Inter', sans-serif;
+background: var(--surface);
+color: var(--on-surface);
+line-height: 1.6;
+overflow-x: hidden;
+}
+html[lang="he"] body { font-family: 'Heebo', sans-serif; }
+html[lang="he"] .display-font { font-family: 'Heebo', sans-serif; }
+.display-font { font-family: 'Manrope', sans-serif; }
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+background: rgba(248,249,250,0.82);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+padding: 0 2rem;
+height: 70px;
+display: flex; align-items: center; justify-content: space-between;
+}
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+font-size: 0.875rem; font-weight: 500;
+color: var(--on-surface-muted); text-decoration: none;
+transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--primary); }
+.btn-nav {
+background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+color: #f7f7ff !important;
+padding: 0.5rem 1.25rem; border-radius: 8px;
+font-size: 0.875rem; font-weight: 600;
+text-decoration: none; border: none; cursor: pointer;
+transition: opacity 0.2s;
+}
+.btn-nav:hover { opacity: 0.9; }
+/* LANG TOGGLE */
+.lang-toggle {
+display: flex; align-items: center; gap: 0;
+background: var(--surface-low);
+border-radius: 8px; overflow: hidden;
+}
+.lang-btn {
+padding: 0.35rem 0.85rem;
+font-size: 0.8rem; font-weight: 600;
+border: none; background: transparent;
+color: var(--on-surface-muted); cursor: pointer;
+transition: all 0.2s;
+}
+.lang-btn.active {
+background: var(--primary);
+color: #f7f7ff;
+border-radius: 8px;
+}
+/* HERO */
+.hero {
+min-height: 100vh;
+display: flex; align-items: center; justify-content: center;
+padding: 7rem 2rem 4rem;
+text-align: center;
+position: relative; overflow: hidden;
+}
+.hero-bg {
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(0,91,192,0.07) 0%, transparent 70%);
+pointer-events: none;
+}
+.hero-eyebrow {
+display: inline-block;
+background: var(--primary-container);
+color: var(--primary);
+font-size: 0.78rem; font-weight: 600;
+letter-spacing: 0.08em; text-transform: uppercase;
+padding: 0.35rem 1rem; border-radius: 100px;
+margin-bottom: 0.6rem;
+}
+.coming-soon-badge {
+display: inline-block;
+background: #fff3cd; color: #856404;
+font-size: 0.78rem; font-weight: 700;
+letter-spacing: 0.08em; text-transform: uppercase;
+padding: 0.35rem 1rem; border-radius: 100px;
+margin-bottom: 1.5rem;
+}
+.badges-row { display: flex; gap: 0.6rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.badges-row .hero-eyebrow, .badges-row .coming-soon-badge { margin-bottom: 0; }
+.hero h1 {
+font-family: 'Manrope', sans-serif;
+font-size: clamp(2.5rem, 6vw, 4.2rem);
+font-weight: 800; line-height: 1.08;
+letter-spacing: -1.5px;
+color: var(--on-surface);
+max-width: 720px; margin: 0 auto 1.5rem;
+}
+html[lang="he"] .hero h1 { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
+.hero h1 .accent { color: var(--primary); }
+.hero-sub {
+font-size: 1.1rem; color: var(--on-surface-muted);
+max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7;
+}
+.hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+color: var(--on-primary);
+padding: 0.85rem 2rem; border-radius: 8px;
+font-size: 1rem; font-weight: 600;
+text-decoration: none; border: none; cursor: pointer;
+box-shadow: var(--shadow-ambient);
+transition: opacity 0.2s, transform 0.15s; display: inline-block;
+}
+.btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+.btn-secondary {
+background: var(--surface-lowest); color: var(--primary);
+padding: 0.85rem 2rem; border-radius: 8px;
+font-size: 1rem; font-weight: 600;
+text-decoration: none; border: none; cursor: pointer;
+box-shadow: var(--shadow-ambient); transition: background 0.2s; display: inline-block;
+}
+.btn-secondary:hover { background: var(--secondary-container); }
+/* SPOT CARDS */
+.hero-visual { margin: 4rem auto 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 500px; }
+.spot-card { background: var(--surface-lowest); border-radius: 16px; padding: 1.25rem 1.5rem; box-shadow: var(--shadow-ambient); min-width: 160px; text-align: left; }
+html[lang="he"] .spot-card { text-align: right; }
+.spot-chip { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 100px; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.chip-available { background: var(--primary-container); color: var(--primary); }
+.chip-offered { background: #d6eddf; color: #1a6b35; }
+.spot-label { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--on-surface); }
+.spot-meta { font-size: 0.8rem; color: var(--on-surface-muted); margin-top: 0.25rem; }
+/* SECTIONS */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1040px; margin: 0 auto; }
+.section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
+.section-title {
+font-family: 'Manrope', sans-serif;
+font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.12;
+letter-spacing: -0.8px; color: var(--on-surface); max-width: 600px; margin-bottom: 1rem;
+}
+html[lang="he"] .section-title { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
+.section-sub { font-size: 1rem; color: var(--on-surface-muted); max-width: 520px; line-height: 1.7; margin-bottom: 3rem; }
+/* PROBLEM */
+.problem { background: var(--surface-lowest); }
+.problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.problem-card { background: var(--surface-low); border-radius: 16px; padding: 1.75rem; }
+.problem-icon { font-size: 1.5rem; margin-bottom: 1rem; width: 48px; height: 48px; background: var(--primary-container); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.problem-card h3 { font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+html[lang="he"] .problem-card h3 { font-family: 'Heebo', sans-serif; }
+.problem-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
+/* HOW IT WORKS */
+.hiw-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.step { background: var(--surface-lowest); border-radius: 16px; padding: 2rem; box-shadow: var(--shadow-ambient); }
+.step-num { font-family: 'Manrope', sans-serif; font-size: 3rem; font-weight: 800; color: var(--primary-container); line-height: 1; margin-bottom: 0.75rem; }
+.step h3 { font-family: 'Manrope', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+html[lang="he"] .step h3 { font-family: 'Heebo', sans-serif; }
+.step p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
+/* BENEFITS */
+.benefits { background: var(--surface-lowest); }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+.benefit-card { background: var(--surface-low); border-radius: 16px; padding: 1.75rem; }
+.benefit-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-dim)); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.1rem; }
+.benefit-card h3 { font-family: 'Manrope', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+html[lang="he"] .benefit-card h3 { font-family: 'Heebo', sans-serif; }
+.benefit-card p { font-size: 0.83rem; color: var(--on-surface-muted); line-height: 1.6; }
+/* AUDIENCE */
+.audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.audience-card { background: var(--surface-lowest); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-ambient); }
+.audience-badge { display: inline-block; background: var(--primary-container); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
+.audience-card h3 { font-family: 'Manrope', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+html[lang="he"] .audience-card h3 { font-family: 'Heebo', sans-serif; }
+.audience-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.65; }
+/* FAQ */
+.faq-list { max-width: 680px; }
+.faq-item { background: var(--surface-lowest); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: var(--shadow-ambient); cursor: pointer; }
+.faq-q { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; }
+html[lang="he"] .faq-q { font-family: 'Heebo', sans-serif; }
+.faq-chevron { color: var(--primary); font-size: 1rem; transition: transform 0.2s; display: inline-block; }
+.faq-a { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.7; margin-top: 0.75rem; display: none; }
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+/* CTA BANNER */
+.cta-banner { background: linear-gradient(135deg, var(--primary), var(--primary-dim)); border-radius: 24px; padding: 3rem 2rem; text-align: center; max-width: 960px; margin-left: auto; margin-right: auto; }
+.cta-banner h2 { font-family: 'Manrope', sans-serif; font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800; color: var(--on-primary); margin-bottom: 1rem; }
+html[lang="he"] .cta-banner h2 { font-family: 'Heebo', sans-serif; }
+.cta-banner p { color: rgba(247,247,255,0.78); margin-bottom: 2rem; font-size: 1rem; }
+#waitlist-form {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1rem;
+justify-content: center;
+max-width: 520px;
+margin: 0 auto;
+}
+@media (min-width: 640px) {
+#waitlist-form {
+grid-template-columns: 1fr 1fr;
+}
+}
+.form-group {
+display: flex;
+flex-direction: column;
+gap: 0.4rem;
+}
+.form-group.full { 
+grid-column: 1 / -1; 
+}
+.form-label {
+font-size: 0.85rem;
+font-weight: 600;
+color: rgba(247, 247, 255, 0.9);
+}
+.form-input {
+padding: 0.85rem 1.25rem;
+border-radius: 8px;
+border: none;
+font-size: 1rem;
+font-family: 'Inter', sans-serif;
+outline: none;
+color: #1a1e2e;
+background: #f7f7ff;
+}
+.form-input::placeholder { color: #a0a0a0; }
+.form-input:focus { box-shadow: 0 0 0 2px rgba(247, 247, 255, 0.3); }
+.form-input.error {
+outline: 2px solid #ff6b6b;
+}
+.waitlist-submit {
+grid-column: 1 / -1;
+background: #f7f7ff;
+color: #005bc0;
+padding: 0.85rem 1.5rem;
+border-radius: 8px;
+font-weight: 700;
+font-size: 1rem;
+border: none;
+cursor: pointer;
+white-space: nowrap;
+font-family: 'Inter', sans-serif;
+transition: opacity 0.2s;
+}
+.waitlist-submit:hover { opacity: 0.9; }
+/* FOOTER */
+footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: center; }
+.footer-tagline { font-size: 0.85rem; color: var(--on-surface-muted); margin-bottom: 1.5rem; margin-top: 0.4rem; }
+.footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.footer-links a { font-size: 0.85rem; color: var(--on-surface-muted); text-decoration: none; }
+.footer-links a:hover { color: var(--primary); }
+.footer-copy { font-size: 0.78rem; color: var(--on-surface-muted); }
 </style>
 </head>
+
 <body>
 
 <!-- NAV -->
 <nav>
-  <svg height="58" viewBox="0 0 320 75" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="navGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#005bc0"/>
-        <stop offset="100%" style="stop-color:#004fa9"/>
-      </linearGradient>
-    </defs>
-    <rect x="0" y="2" width="58" height="58" rx="14" fill="url(#navGrad)"/>
-    <text x="29" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="36" font-weight="700" fill="#f7f7ff">P</text>
-    <circle cx="50" cy="58" r="11" fill="#ffffff"/>
-    <path d="M44 58 L50 52 L50 55.5 L57 55.5 L57 60.5 L50 60.5 L50 64 Z" fill="#005bc0"/>
-    <text x="70" y="42" font-family="Georgia,serif" font-size="30" font-weight="700" fill="#005bc0">Lot</text>
-    <text x="122" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">'</text>
-    <text x="130" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">N</text>
-    <text x="155" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">'</text>
-    <text x="163" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">Go</text>
-    <text x="71" y="58" font-family="Arial,sans-serif" font-size="7.5" fill="#5a6177" letter-spacing="2">PARK WITH PURPOSE</text>
-  </svg>
-  <div style="display:flex; align-items:center; gap:1.5rem;">
-    <div class="nav-links">
-      <a href="#how" data-en="How it works" data-he="איך זה עובד">How it works</a>
-      <a href="#benefits" data-en="Benefits" data-he="יתרונות">Benefits</a>
-      <a href="#faq" data-en="FAQ" data-he="שאלות נפוצות">FAQ</a>
-      <a href="#join" class="btn-nav" data-en="Get the app" data-he="הצטרפו עכשיו">Get the app</a>
-    </div>
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('he')">עב</button>
-    </div>
-  </div>
+<svg height="58" viewBox="0 0 320 75" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="navGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#005bc0"/>
+<stop offset="100%" style="stop-color:#004fa9"/>
+</linearGradient>
+</defs>
+<rect x="0" y="2" width="58" height="58" rx="14" fill="url(#navGrad)"/>
+<text x="29" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="36" font-weight="700" fill="#f7f7ff">P</text>
+<circle cx="50" cy="58" r="11" fill="#ffffff"/>
+<path d="M44 58 L50 52 L50 55.5 L57 55.5 L57 60.5 L50 60.5 L50 64 Z" fill="#005bc0"/>
+<text x="70" y="42" font-family="Georgia,serif" font-size="30" font-weight="700" fill="#005bc0">Lot</text>
+<text x="122" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">'</text>
+<text x="130" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">N</text>
+<text x="155" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">'</text>
+<text x="163" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">Go</text>
+<text x="71" y="58" font-family="Arial,sans-serif" font-size="7.5" fill="#5a6177" letter-spacing="2">PARK WITH PURPOSE</text>
+</svg>
+
+<div style="display:flex; align-items:center; gap:1.5rem;">
+<div class="nav-links">
+<a href="#how" data-en="How it works" data-he="איך זה עובד">How it works</a>
+<a href="#benefits" data-en="Benefits" data-he="יתרונות">Benefits</a>
+<a href="#faq" data-en="FAQ" data-he="שאלות נפוצות">FAQ</a>
+<a href="#join" class="btn-nav" data-en="Get the app" data-he="הצטרפו עכשיו">Get the app</a>
+</div>
+<div class="lang-toggle">
+<button class="lang-btn active" onclick="setLang('en')">EN</button>
+<button class="lang-btn" onclick="setLang('he')">עב</button>
+</div>
+</div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div>
-    <div class="badges-row">
-      <div class="hero-eyebrow" data-en="Good Neighboring, Reimagined" data-he="שכנות טובה, מעוצבת מחדש">Good Neighboring, Reimagined</div>
-      <div class="coming-soon-badge" data-en="🚀 Coming Soon" data-he="🚀 בקרוב">🚀 Coming Soon</div>
-    </div>
-    <h1 class="display-font" data-en="Your empty spot<br>is your neighbor's <span class='accent'>lifesaver.</span>" data-he="החניה הריקה שלך<br>היא <span class='accent'>הצלת המצב</span> עבור שכנך.">Your empty spot<br>is your neighbor's <span class="accent">lifesaver.</span></h1>
-    <p class="hero-sub" data-en="Lot'N'Go lets residents in apartment buildings share their marked parking spots with neighbors — freely, effortlessly, and at exactly the right time." data-he="Lot'N'Go מאפשרת לדיירים בבניינים לשתף את חניות הרכב המסומנות שלהם עם שכנים — בקלות, ללא מאמץ, ובדיוק בזמן הנכון.">Lot'N'Go lets residents in apartment buildings share their marked parking spots with neighbors — freely, effortlessly, and at exactly the right time.</p>
-    <div class="hero-cta">
-      <a href="#join" class="btn-primary" data-en="Join your building" data-he="הצטרפו עם הבניין שלכם">Join your building</a>
-      <a href="#how" class="btn-secondary" data-en="See how it works" data-he="איך זה עובד">See how it works</a>
-    </div>
-    <div class="hero-visual">
-      <div class="spot-card">
-        <div class="spot-chip chip-offered" data-en="Offered" data-he="מוצע">Offered</div>
-        <div class="spot-label">B2 – 14</div>
-        <div class="spot-meta" data-en="Today, 18:00 – 22:00" data-he="היום, 18:00 – 22:00">Today, 18:00 – 22:00</div>
-        <div class="spot-meta" style="margin-top:0.4rem;color:#1a6b35;font-weight:600;" data-en="By: David, 4th floor ✓" data-he="מאת: דוד, קומה 4 ✓">By: David, 4th floor ✓</div>
-      </div>
-      <div class="spot-card">
-        <div class="spot-chip chip-available" data-en="Available" data-he="פנויה">Available</div>
-        <div class="spot-label">A1 – 07</div>
-        <div class="spot-meta" data-en="Now · Until 21:30" data-he="עכשיו · עד 21:30">Now · Until 21:30</div>
-        <div class="spot-meta" style="margin-top:0.4rem;color:#005bc0;font-weight:600;" data-en="Tap to reserve →" data-he="לחצו להזמנה ←">Tap to reserve →</div>
-      </div>
-    </div>
-  </div>
+<div class="hero-bg"></div>
+<div>
+<div class="badges-row">
+<div class="hero-eyebrow" data-en="Good Neighboring, Reimagined" data-he="שכנות טובה, מעוצבת מחדש">Good Neighboring, Reimagined</div>
+<div class="coming-soon-badge" data-en="🚀 Coming Soon" data-he="🚀 בקרוב">🚀 Coming Soon</div>
+</div>
+
+<h1 class="display-font" data-en="Your empty spot<br>is your neighbor's <span class='accent'>lifesaver.</span>" data-he="החניה הריקה שלך<br>היא <span class='accent'>הצלת המצב</span> עבור שכנך.">Your empty spot<br>is your neighbor's <span class="accent">lifesaver.</span></h1>
+
+<p class="hero-sub" data-en="Lot'N'Go lets residents in apartment buildings share their marked parking spots with neighbors — freely, effortlessly, and at exactly the right time." data-he="Lot'N'Go מאפשרת לדיירים בבניינים לשתף את חניות הרכב המסומנות שלהם עם שכנים — בקלות, ללא מאמץ, ובדיוק בזמן הנכון.">Lot'N'Go lets residents in apartment buildings share their marked parking spots with neighbors — freely, effortlessly, and at exactly the right time.</p>
+
+<div class="hero-cta">
+<a href="#join" class="btn-primary" data-en="Join your building" data-he="הצטרפו עם הבניין שלכם">Join your building</a>
+<a href="#how" class="btn-secondary" data-en="See how it works" data-he="איך זה עובד">See how it works</a>
+</div>
+
+<div class="hero-visual">
+<div class="spot-card">
+<div class="spot-chip chip-offered" data-en="Offered" data-he="מוצע">Offered</div>
+<div class="spot-label">B2 – 14</div>
+<div class="spot-meta" data-en="Today, 18:00 – 22:00" data-he="היום, 18:00 – 22:00">Today, 18:00 – 22:00</div>
+<div class="spot-meta" style="margin-top:0.4rem;color:#1a6b35;font-weight:600;" data-en="By: David, 4th floor ✓" data-he="מאת: דוד, קומה 4 ✓">By: David, 4th floor ✓</div>
+</div>
+
+<div class="spot-card">
+<div class="spot-chip chip-available" data-en="Available" data-he="פנויה">Available</div>
+<div class="spot-label">A1 – 07</div>
+<div class="spot-meta" data-en="Now · Until 21:30" data-he="עכשיו · עד 21:30">Now · Until 21:30</div>
+<div class="spot-meta" style="margin-top:0.4rem;color:#005bc0;font-weight:600;" data-en="Tap to reserve →" data-he="לחצו להזמנה ←">Tap to reserve →</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- PROBLEM -->
 <section class="problem" id="problem">
-  <div class="section-inner">
-    <div class="section-label" data-en="The Situation" data-he="החיים עצמם">The Situation</div>
-    <h2 class="section-title display-font" data-en="Parking stress is real. It doesn't have to be." data-he="לחץ בנושא חניות הוא אמיתי. אבל הוא לא חייב להיות.">Parking stress is real. It doesn't have to be.</h2>
-    <p class="section-sub" data-en="Every week, residents across hundreds of buildings face the same frustrating situations — while their neighbors' spots sit completely empty." data-he="כל שבוע, דיירים בבניינים רבים מתמודדים עם אותם מצבים מתסכלים — בעוד חניות השכנים עומדות ריקות לחלוטין.">Every week, residents across hundreds of buildings face the same frustrating situations — while their neighbors' spots sit completely empty.</p>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-icon">🧑‍🔧</div>
-        <h3 data-en="The technician dilemma" data-he="דילמת הטכנאי">The technician dilemma</h3>
-        <p data-en="The plumber arrives. There's nowhere for them to park. You scramble. It's awkward, stressful, and avoidable." data-he="האינסטלטור הגיע. אין לו איפה לחנות באופן נוח. אתם נאנחים. זה מביך, מלחיץ, ואפשר היה למנוע את זה">The plumber arrives. There's nowhere for them to park. You scramble. It's awkward, stressful, and avoidable.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">👪</div>
-        <h3 data-en="Guests in the cold" data-he="אורחים באים לביקור">Guests in the cold</h3>
-        <p data-en="Family comes for dinner in winter. They circle the block three times. The welcome is already soured." data-he="משפחה מגיעה לארוחת ערב בחורף. הם מחפשים חניה ברחוב זמן לא מבוטל. המצב רוח כבר לא כפי שהיה בהתחלה.">Family comes for dinner in winter. They circle the block three times. The welcome is already soured.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">🏗️</div>
-        <h3 data-en="Move-in chaos" data-he="כאוס ביום המעבר">Move-in chaos</h3>
-        <p data-en="New resident arrives with a moving truck. Every minute double-parked is another fine waiting to happen." data-he="דייר חדש מגיע עם משאית הובלה. כל דקת חניה כפולה היא קנס בפוטנציה.">New resident arrives with a moving truck. Every minute double-parked is another fine waiting to happen.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">🅿️</div>
-        <h3 data-en="Empty spots, full streets" data-he="חניות ריקות, רחובות גדושים">Empty spots, full streets</h3>
-        <p data-en="Meanwhile, your neighbor's spot sits unused for 10 hours. Nobody wins. Lot'N'Go changes that." data-he="בינתיים, החניה של שכנך עומדת ריקה 10 שעות. אף אחד לא מרוויח. Lot'N'Go משנה את זה.">Meanwhile, your neighbor's spot sits unused for 10 hours. Nobody wins. Lot'N'Go changes that.</p>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label" data-en="The Situation" data-he="החיים עצמם">The Situation</div>
+<h2 class="section-title display-font" data-en="Parking stress is real. It doesn't have to be." data-he="לחץ בנושא חניות הוא אמיתי. אבל הוא לא חייב להיות.">Parking stress is real. It doesn't have to be.</h2>
+<p class="section-sub" data-en="Every week, residents across hundreds of buildings face the same frustrating situations — while their neighbors' spots sit completely empty." data-he="כל שבוע, דיירים בבניינים רבים מתמודדים עם אותם מצבים מתסכלים — בעוד חניות השכנים עומדות ריקות לחלוטין.">Every week, residents across hundreds of buildings face the same frustrating situations — while their neighbors' spots sit completely empty.</p>
+
+<div class="problem-grid">
+<div class="problem-card">
+<div class="problem-icon">🧑‍🔧</div>
+<h3 data-en="The technician dilemma" data-he="דילמת הטכנאי">The technician dilemma</h3>
+<p data-en="The plumber arrives. There's nowhere for them to park. You scramble. It's awkward, stressful, and avoidable." data-he="האינסטלטור הגיע. אין לו איפה לחנות באופן נוח. אתם נאנחים. זה מביך, מלחיץ, ואפשר היה למנוע את זה">The plumber arrives. There's nowhere for them to park. You scramble. It's awkward, stressful, and avoidable.</p>
+</div>
+
+<div class="problem-card">
+<div class="problem-icon">👪</div>
+<h3 data-en="Guests in the cold" data-he="אורחים באים לביקור">Guests in the cold</h3>
+<p data-en="Family comes for dinner in winter. They circle the block three times. The welcome is already soured." data-he="משפחה מגיעה לארוחת ערב בחורף. הם מחפשים חניה ברחוב זמן לא מבוטל. המצב רוח כבר לא כפי שהיה בהתחלה.">Family comes for dinner in winter. They circle the block three times. The welcome is already soured.</p>
+</div>
+
+<div class="problem-card">
+<div class="problem-icon">🏗️</div>
+<h3 data-en="Move-in chaos" data-he="כאוס ביום המעבר">Move-in chaos</h3>
+<p data-en="New resident arrives with a moving truck. Every minute double-parked is another fine waiting to happen." data-he="דייר חדש מגיע עם משאית הובלה. כל דקת חניה כפולה היא קנס בפוטנציה.">New resident arrives with a moving truck. Every minute double-parked is another fine waiting to happen.</p>
+</div>
+
+<div class="problem-card">
+<div class="problem-icon">🅿️</div>
+<h3 data-en="Empty spots, full streets" data-he="חניות ריקות, רחובות גדושים">Empty spots, full streets</h3>
+<p data-en="Meanwhile, your neighbor's spot sits unused for 10 hours. Nobody wins. Lot'N'Go changes that." data-he="בינתיים, החניה של שכנך עומדת ריקה 10 שעות. אף אחד לא מרוויח. Lot'N'Go משנה את זה.">Meanwhile, your neighbor's spot sits unused for 10 hours. Nobody wins. Lot'N'Go changes that.</p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section id="how">
-  <div class="section-inner">
-    <div class="section-label" data-en="How it works" data-he="איך זה עובד">How it works</div>
-    <h2 class="section-title display-font" data-en="Three steps to a calmer building." data-he="שלושה צעדים לבניין רגוע יותר.">Three steps to a calmer building.</h2>
-    <p class="section-sub" data-en="No registration fees. No complex setup. Just neighbors helping neighbors — with a little help from your phone." data-he="ללא דמי רישום. ללא הגדרות מורכבות. רק שכנים שעוזרים לשכנים — עם קצת עזרה מהטלפון.">No registration fees. No complex setup. Just neighbors helping neighbors — with a little help from your phone.</p>
-    <div class="hiw-steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3 data-en="Share your window" data-he="שתף את חלון הזמן עבור החניה שלך">Share your window</h3>
-        <p data-en="You're out all day. You'll be back at 7. Open the app, tap your spot, set the time window. Done in 20 seconds." data-he="אתה בחוץ כל היום. תחזור ב-7. פתח את האפליקציה, לחץ על החניה שלך, הגדר את חלון הזמן. נגמר תוך 20 שניות.">You're out all day. You'll be back at 7. Open the app, tap your spot, set the time window. Done in 20 seconds.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3 data-en="Neighbor gets notified" data-he="השכן מקבל התראה">Neighbor gets notified</h3>
-        <p data-en="Residents in your building see available spots in real time. Need a spot for your guest? Reserve it instantly." data-he="הדיירים בבניין שלך רואים חניות פנויות בזמן אמת. צריך חניה לאורח? הזמן מיידית.">Residents in your building see available spots in real time. Need a spot for your guest? Reserve it instantly.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3 data-en="Everyone wins" data-he="כולם מרוויחים">Everyone wins</h3>
-        <p data-en="Your spot gets used. Your neighbor is stress-free. The building feels a little more like a community." data-he="החניה שלך מנוצלת. השכן שלך רגוע. הבניין מרגיש קצת יותר כמו קהילה.">Your spot gets used. Your neighbor is stress-free. The building feels a little more like a community.</p>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label" data-en="How it works" data-he="איך זה עובד">How it works</div>
+<h2 class="section-title display-font" data-en="Three steps to a calmer building." data-he="שלושה צעדים לבניין רגוע יותר.">Three steps to a calmer building.</h2>
+<p class="section-sub" data-en="No registration fees. No complex setup. Just neighbors helping neighbors — with a little help from your phone." data-he="ללא דמי רישום. ללא הגדרות מורכבות. רק שכנים שעוזרים לשכנים — עם קצת עזרה מהטלפון.">No registration fees. No complex setup. Just neighbors helping neighbors — with a little help from your phone.</p>
+
+<div class="hiw-steps">
+<div class="step">
+<div class="step-num">01</div>
+<h3 data-en="Share your window" data-he="שתף את חלון הזמן עבור החניה שלך">Share your window</h3>
+<p data-en="You're out all day. You'll be back at 7. Open the app, tap your spot, set the time window. Done in 20 seconds." data-he="אתה בחוץ כל היום. תחזור ב-7. פתח את האפליקציה, לחץ על החניה שלך, הגדר את חלון הזמן. נגמר תוך 20 שניות.">You're out all day. You'll be back at 7. Open the app, tap your spot, set the time window. Done in 20 seconds.</p>
+</div>
+
+<div class="step">
+<div class="step-num">02</div>
+<h3 data-en="Neighbor gets notified" data-he="השכן מקבל התראה">Neighbor gets notified</h3>
+<p data-en="Residents in your building see available spots in real time. Need a spot for your guest? Reserve it instantly." data-he="הדיירים בבניין שלך רואים חניות פנויות בזמן אמת. צריך חניה לאורח? הזמן מיידית.">Residents in your building see available spots in real time. Need a spot for your guest? Reserve it instantly.</p>
+</div>
+
+<div class="step">
+<div class="step-num">03</div>
+<h3 data-en="Everyone wins" data-he="כולם מרוויחים">Everyone wins</h3>
+<p data-en="Your spot gets used. Your neighbor is stress-free. The building feels a little more like a community." data-he="החניה שלך מנוצלת. השכן שלך רגוע. הבניין מרגיש קצת יותר כמו קהילה.">Your spot gets used. Your neighbor is stress-free. The building feels a little more like a community.</p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- BENEFITS -->
 <section class="benefits" id="benefits">
-  <div class="section-inner">
-    <div class="section-label" data-en="Why Lot'N'Go" data-he="למה Lot'N'Go">Why Lot'N'Go</div>
-    <h2 class="section-title display-font" data-en="Built on the principles of good neighboring." data-he="בנוי על עקרונות השכנות הטובה.">Built on the principles of good neighboring.</h2>
-    <p class="section-sub" data-en="No money changes hands between neighbors. No awkward conversations. Just a simple act of community — digitized and managed by your building." data-he="לא עובר כסף בין שכנים. לא שיחות מביכות. רק מחווה קהילתית פשוטה — דיגיטלית ומנוהלת על ידי הבניין.">No money changes hands between neighbors. No awkward conversations. Just a simple act of community — digitized and managed by your building.</p>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">🤝</div>
-        <h3 data-en="Community trust" data-he="אמון קהילתי">Community trust</h3>
-        <p data-en="Only your building's verified residents can see and use spots. No strangers, no strangers' cars." data-he="רק דיירים מאומתים של הבניין שלך יכולים לראות ולהשתמש בחניות. ללא זרים, ללא מכוניות זרות.">Only your building's verified residents can see and use spots. No strangers, no strangers' cars.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">⏱️</div>
-        <h3 data-en="Flex availability" data-he="זמינות גמישה">Flex availability</h3>
-        <p data-en="Set fixed time slots for predictable routines, or mark your spot available in real time whenever plans change. Your spot, your schedule." data-he="הגדר חלונות זמן קבועים לשגרה צפויה, או סמן את החניה כפנויה בזמן אמת כשהתוכניות משתנות. החניה שלך, הלוח זמנים שלך.">Set fixed time slots for predictable routines, or mark your spot available in real time whenever plans change. Your spot, your schedule.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">📱</div>
-        <h3 data-en="Works on every smartphone" data-he="עובד על כל סמארטפון">Works on every smartphone</h3>
-        <p data-en="The app is built so it can run directly from your smartphone web browser with no need for an app store. It's simpler, secure and always up to date." data-he="האפליקציה בנויה כך שתוכל לפעול ישירות מדפדפן האינטרנט של הסמארטפון שלך ללא צורך בחנות אפליקציות. פשוטה יותר, מאובטחת ותמיד מעודכנת.">The app is built so it can run directly from your smartphone web browser with no need for an app store. It's simpler, secure and always up to date.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">💳</div>
-        <h3 data-en="Simple pricing model" data-he="מודל תמחור פשוט">Simple pricing model</h3>
-        <p data-en="A low monthly (or discounted yearly) fee per apartment or spot — paid by the building management or HOA. Free for individual residents." data-he="דמי מנוי חודשיים נמוכים (או שנתיים מוזלים) לדירה או לחניה — משולמים על ידי חברת הניהול או ועד הבית. חינם לדיירים עצמם.">A low monthly (or discounted yearly) fee per apartment or spot — paid by the building management or HOA. Free for individual residents.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🔔</div>
-        <h3 data-en="Instant notifications" data-he="התראות מיידיות">Instant notifications</h3>
-        <p data-en="Get alerted the moment a spot opens up, or when someone books yours. Always in the loop." data-he="קבל התראה ברגע שחניה מתפנה, או כשמישהו מזמין את שלך. תמיד מעודכן.">Get alerted the moment a spot opens up, or when someone books yours. Always in the loop.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">👁️</div>
-        <h3 data-en="Transparency to all" data-he="שקיפות לכולם">Transparency to all</h3>
-        <p data-en="Residents see what's available right now. Managers see the full picture. Everyone has exactly the visibility they need — no more, no less." data-he="הדיירים רואים מה פנוי עכשיו. המנהלים רואים את התמונה המלאה. לכל אחד בדיוק הנראות שהוא צריך — לא יותר, לא פחות.">Residents see what's available right now. Managers see the full picture. Everyone has exactly the visibility they need — no more, no less.</p>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label" data-en="Why Lot'N'Go" data-he="למה Lot'N'Go">Why Lot'N'Go</div>
+<h2 class="section-title display-font" data-en="Built on the principles of good neighboring." data-he="בנוי על עקרונות השכנות הטובה.">Built on the principles of good neighboring.</h2>
+<p class="section-sub" data-en="No money changes hands between neighbors. No awkward conversations. Just a simple act of community — digitized and managed by your building." data-he="לא עובר כסף בין שכנים. לא שיחות מביכות. רק מחווה קהילתית פשוטה — דיגיטלית ומנוהלת על ידי הבניין.">No money changes hands between neighbors. No awkward conversations. Just a simple act of community — digitized and managed by your building.</p>
+
+<div class="benefits-grid">
+<div class="benefit-card">
+<div class="benefit-icon">🤝</div>
+<h3 data-en="Community trust" data-he="אמון קהילתי">Community trust</h3>
+<p data-en="Only your building's verified residents can see and use spots. No strangers, no strangers' cars." data-he="רק דיירים מאומתים של הבניין שלך יכולים לראות ולהשתמש בחניות. ללא זרים, ללא מכוניות זרות.">Only your building's verified residents can see and use spots. No strangers, no strangers' cars.</p>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-icon">⏱️</div>
+<h3 data-en="Flex availability" data-he="זמינות גמישה">Flex availability</h3>
+<p data-en="Set fixed time slots for predictable routines, or mark your spot available in real time whenever plans change. Your spot, your schedule." data-he="הגדר חלונות זמן קבועים לשגרה צפויה, או סמן את החניה כפנויה בזמן אמת כשהתוכניות משתנות. החניה שלך, הלוח זמנים שלך.">Set fixed time slots for predictable routines, or mark your spot available in real time whenever plans change. Your spot, your schedule.</p>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-icon">📱</div>
+<h3 data-en="Works on every smartphone" data-he="עובד על כל סמארטפון">Works on every smartphone</h3>
+<p data-en="The app is built so it can run directly from your smartphone web browser with no need for an app store. It's simpler, secure and always up to date." data-he="האפליקציה בנויה כך שתוכל לפעול ישירות מדפדפן האינטרנט של הסמארטפון שלך ללא צורך בחנות אפליקציות. פשוטה יותר, מאובטחת ותמיד מעודכנת.">The app is built so it can run directly from your smartphone web browser with no need for an app store. It's simpler, secure and always up to date.</p>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-icon">💳</div>
+<h3 data-en="Simple pricing model" data-he="מודל תמחור פשוט">Simple pricing model</h3>
+<p data-en="A low monthly (or discounted yearly) fee per apartment or spot — paid by the building management or HOA. Free for individual residents." data-he="דמי מנוי חודשיים נמוכים (או שנתיים מוזלים) לדירה או לחניה — משולמים על ידי חברת הניהול או ועד הבית. חינם לדיירים עצמם.">A low monthly (or discounted yearly) fee per apartment or spot — paid by the building management or HOA. Free for individual residents.</p>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-icon">🔔</div>
+<h3 data-en="Instant notifications" data-he="התראות מיידיות">Instant notifications</h3>
+<p data-en="Get alerted the moment a spot opens up, or when someone books yours. Always in the loop." data-he="קבל התראה ברגע שחניה מתפנה, או כשמישהו מזמין את שלך. תמיד מעודכן.">Get alerted the moment a spot opens up, or when someone books yours. Always in the loop.</p>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-icon">👁️</div>
+<h3 data-en="Transparency to all" data-he="שקיפות לכולם">Transparency to all</h3>
+<p data-en="Residents see what's available right now. Managers see the full picture. Everyone has exactly the visibility they need — no more, no less." data-he="הדיירים רואים מה פנוי עכשיו. המנהלים רואים את התמונה המלאה. לכל אחד בדיוק הנראות שהוא צריך — לא יותר, לא פחות.">Residents see what's available right now. Managers see the full picture. Everyone has exactly the visibility they need — no more, no less.</p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- FOR WHO -->
 <section id="who">
-  <div class="section-inner">
-    <div class="section-label" data-en="Who it's for" data-he="למי זה מיועד">Who it's for</div>
-    <h2 class="section-title display-font" data-en="For every person in the building." data-he="לכל אחד בבניין.">For every person in the building.</h2>
-    <p class="section-sub" data-en="Whether you're a resident, a building manager, or running an HOA — Lot'N'Go works for you." data-he="בין אם אתה דייר, מנהל בניין, או ועד בית — Lot'N'Go עובדת בשבילך.">Whether you're a resident, a building manager, or running an HOA — Lot'N'Go works for you.</p>
-    <div class="audience-grid">
-      <div class="audience-card">
-        <div class="audience-badge" data-en="Residents" data-he="דיירים">Residents</div>
-        <h3 data-en="Share when you don't need it. Use when you do." data-he="שתף כשאינך צריך. השתמש כשאתה צריך.">Share when you don't need it. Use when you do.</h3>
-        <p data-en="Commuting today? Share your spot and help a neighbor. Expecting guests tonight? Find a free spot in seconds. Lot'N'Go fits into your day without adding friction." data-he="נוסע לעבודה היום? שתף את החניה שלך ועזור לשכן. מצפה לאורחים הלילה? מצא חניה פנויה תוך שניות. Lot'N'Go משתלבת ביומיום שלך ללא מאמץ.">Commuting today? Share your spot and help a neighbor. Expecting guests tonight? Find a free spot in seconds. Lot'N'Go fits into your day without adding friction.</p>
-      </div>
-      <div class="audience-card">
-        <div class="audience-badge" data-en="Building Managers" data-he="מנהלי בניינים">Building Managers</div>
-        <h3 data-en="Less conflict. Happier tenants. Zero effort." data-he="פחות סכסוכים. דיירים מרוצים. אפס מאמץ.">Less conflict. Happier tenants. Zero effort.</h3>
-        <p data-en="Parking disputes are one of the top sources of neighbor friction. Lot'N'Go eliminates the awkward, gives residents a fair system, and keeps you out of the middle." data-he="סכסוכי חניה הם אחד ממקורות החיכוך העיקריים בין שכנים. Lot'N'Go מבטלת את המבוכה, מעניקה לדיירים מערכת הוגנת, ומוציאה אותך מהאמצע.">Parking disputes are one of the top sources of neighbor friction. Lot'N'Go eliminates the awkward, gives residents a fair system, and keeps you out of the middle.</p>
-      </div>
-      <div class="audience-card">
-        <div class="audience-badge" data-en="HOAs & Committees" data-he="ועדי בתים">HOAs & Committees</div>
-        <h3 data-en="A modern perk that builds community." data-he="הטבה מודרנית שבונה קהילה.">A modern perk that builds community.</h3>
-        <p data-en="Add Lot'N'Go to your building as a residents' benefit. It signals that your community is thoughtful, organized, and neighbor-first." data-he="הוסף את Lot'N'Go לבניין שלך כהטבה לדיירים. זה מסמל שהקהילה שלך מחושבת, מאורגנת, ומעמידה את השכן במרכז.">Add Lot'N'Go to your building as a residents' benefit. It signals that your community is thoughtful, organized, and neighbor-first.</p>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label" data-en="Who it's for" data-he="למי זה מיועד">Who it's for</div>
+<h2 class="section-title display-font" data-en="For every person in the building." data-he="לכל אחד בבניין.">For every person in the building.</h2>
+<p class="section-sub" data-en="Whether you're a resident, a building manager, or running an HOA — Lot'N'Go works for you." data-he="בין אם אתה דייר, מנהל בניין, או ועד בית — Lot'N'Go עובדת בשבילך.">Whether you're a resident, a building manager, or running an HOA — Lot'N'Go works for you.</p>
+
+<div class="audience-grid">
+<div class="audience-card">
+<div class="audience-badge" data-en="Residents" data-he="דיירים">Residents</div>
+<h3 data-en="Share when you don't need it. Use when you do." data-he="שתף כשאינך צריך. השתמש כשאתה צריך.">Share when you don't need it. Use when you do.</h3>
+<p data-en="Commuting today? Share your spot and help a neighbor. Expecting guests tonight? Find a free spot in seconds. Lot'N'Go fits into your day without adding friction." data-he="נוסע לעבודה היום? שתף את החניה שלך ועזור לשכן. מצפה לאורחים הלילה? מצא חניה פנויה תוך שניות. Lot'N'Go משתלבת ביומיום שלך ללא מאמץ.">Commuting today? Share your spot and help a neighbor. Expecting guests tonight? Find a free spot in seconds. Lot'N'Go fits into your day without adding friction.</p>
+</div>
+
+<div class="audience-card">
+<div class="audience-badge" data-en="Building Managers" data-he="מנהלי בניינים">Building Managers</div>
+<h3 data-en="Less conflict. Happier tenants. Zero effort." data-he="פחות סכסוכים. דיירים מרוצים. אפס מאמץ.">Less conflict. Happier tenants. Zero effort.</h3>
+<p data-en="Parking disputes are one of the top sources of neighbor friction. Lot'N'Go eliminates the awkward, gives residents a fair system, and keeps you out of the middle." data-he="סכסוכי חניה הם אחד ממקורות החיכוך העיקריים בין שכנים. Lot'N'Go מבטלת את המבוכה, מעניקה לדיירים מערכת הוגנת, ומוציאה אותך מהאמצע.">Parking disputes are one of the top sources of neighbor friction. Lot'N'Go eliminates the awkward, gives residents a fair system, and keeps you out of the middle.</p>
+</div>
+
+<div class="audience-card">
+<div class="audience-badge" data-en="HOAs & Committees" data-he="ועדי בתים">HOAs & Committees</div>
+<h3 data-en="A modern perk that builds community." data-he="הטבה מודרנית שבונה קהילה.">A modern perk that builds community.</h3>
+<p data-en="Add Lot'N'Go to your building as a residents' benefit. It signals that your community is thoughtful, organized, and neighbor-first." data-he="הוסף את Lot'N'Go לבניין שלך כהטבה לדיירים. זה מסמל שהקהילה שלך מחושבת, מאורגנת, ומעמידה את השכן במרכז.">Add Lot'N'Go to your building as a residents' benefit. It signals that your community is thoughtful, organized, and neighbor-first.</p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- FAQ -->
 <section id="faq">
-  <div class="section-inner">
-    <div class="section-label" data-en="Questions" data-he="שאלות">Questions</div>
-    <h2 class="section-title display-font" data-en="Everything you might wonder." data-he="כל מה שאולי תרצה לדעת.">Everything you might wonder.</h2>
-    <p class="section-sub" data-en="If your question isn't here, reach out at [contact@lotngo.com](mailto:contact@lotngo.com) — we respond fast." data-he="אם השאלה שלך לא כאן, צור קשר בכתובת [contact@lotngo.com](mailto:contact@lotngo.com) — אנחנו מגיבים מהר.">If your question isn't here, reach out at [contact@lotngo.com](mailto:contact@lotngo.com) — we respond fast.</p>
-    <div class="faq-list">
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q"><span data-en="How does pricing work?" data-he="איך התמחור עובד?">How does pricing work?</span><span class="faq-chevron">▾</span></div>
-        <div class="faq-a" data-en="Lot'N'Go is billed to the building management company or HOA — not to individual residents. Pricing is a low monthly fee per apartment or parking spot, with a discounted yearly plan available. This covers the platform, servers, and support. Residents use the app at no personal cost." data-he="Lot'N'Go מחויבת לחברת הניהול או לוועד הבית — לא לדיירים עצמם. התמחור הוא דמי מנוי חודשיים נמוכים לדירה או לחניה, עם מסלול שנתי מוזל. זה מכסה את הפלטפורמה, השרתים והתמיכה. הדיירים משתמשים באפליקציה ללא עלות אישית.">Lot'N'Go is billed to the building management company or HOA — not to individual residents. Pricing is a low monthly fee per apartment or parking spot, with a discounted yearly plan available. This covers the platform, servers, and support. Residents use the app at no personal cost.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q"><span data-en="How does my building join?" data-he="איך הבניין שלי מצטרף?">How does my building join?</span><span class="faq-chevron">▾</span></div>
-        <div class="faq-a" data-en="The building manager or HOA representative signs up via [lotngo.com](http://lotngo.com) and registers the building's marked spots. Residents are then invited by unit number. The whole setup takes under 30 minutes." data-he="מנהל הבניין או נציג ועד הבית נרשם דרך [lotngo.com](http://lotngo.com) ומאגד את חניות הבניין המסומנות. לאחר מכן הדיירים מוזמנים לפי מספר דירה. כל ההגדרה לוקחת פחות מ-30 דקות.">The building manager or HOA representative signs up via [lotngo.com](http://lotngo.com) and registers the building's marked spots. Residents are then invited by unit number. The whole setup takes under 30 minutes.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q"><span data-en="What if someone doesn't vacate the spot on time?" data-he="מה אם מישהו לא מפנה את החניה בזמן?">What if someone doesn't vacate the spot on time?</span><span class="faq-chevron">▾</span></div>
-        <div class="faq-a" data-en="The app sends automatic reminders 15 minutes before the window ends. In rare cases, the spot owner can flag a situation through the app, and the building manager is notified instantly." data-he="האפליקציה שולחת תזכורות אוטומטיות 15 דקות לפני סיום חלון הזמן. במקרים נדירים, בעל החניה יכול לדווח על מצב דרך האפליקציה, ומנהל הבניין מקבל הודעה מיידית.">The app sends automatic reminders 15 minutes before the window ends. In rare cases, the spot owner can flag a situation through the app, and the building manager is notified instantly.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q"><span data-en="Is it only for private residential buildings?" data-he="האם זה רק לבניינים מגוריים פרטיים?">Is it only for private residential buildings?</span><span class="faq-chevron">▾</span></div>
-        <div class="faq-a" data-en="Currently yes — Lot'N'Go is designed for residential buildings with assigned private parking spots. Office buildings and commercial lots are not yet supported, but they're on the roadmap." data-he="כרגע כן — Lot'N'Go מיועדת לבניינים מגוריים עם חניות פרטיות מוקצות. בניינים משרדיים וחניונים מסחריים אינם נתמכים עדיין, אך הם בתכנית הפיתוח.">Currently yes — Lot'N'Go is designed for residential buildings with assigned private parking spots. Office buildings and commercial lots are not yet supported, but they're on the roadmap.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-q"><span data-en="How is it accessible?" data-he="כיצד ניתן לגשת אליה?">How is it accessible?</span><span class="faq-chevron">▾</span></div>
-        <div class="faq-a" data-en="The app is built so it can run directly from your smartphone web browser with no need for an app store. It's simpler, secure and always up to date." data-he="האפליקציה בנויה כך שתפעל ישירות מדפדפן האינטרנט של הסמארטפון שלך, ללא צורך בחנות אפליקציות. פשוטה יותר, מאובטחת ותמיד מעודכנת.">The app is built so it can run directly from your smartphone web browser with no need for an app store. It's simpler, secure and always up to date.</div>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label" data-en="Questions" data-he="שאלות">Questions</div>
+<h2 class="section-title display-font" data-en="Everything you might wonder." data-he="כל מה שאולי תרצה לדעת.">Everything you might wonder.</h2>
+<p class="section-sub" data-en="If your question isn't here, reach out at contact@lotngo.com — we respond fast." data-he="אם השאלה שלך לא כאן, צור קשר בכתובת contact@lotngo.com — אנחנו מגיבים מהר.">If your question isn't here, reach out at contact@lotngo.com — we respond fast.</p>
+
+<div class="faq-list">
+<div class="faq-item">
+<div class="faq-q">
+<span data-en="How does pricing work?" data-he="איך התמחור עובד?">How does pricing work?</span>
+<span class="faq-chevron">▾</span>
+</div>
+<div class="faq-a" data-en="Lot'N'Go is billed to the building management company or HOA — not to individual residents. Pricing is a low monthly fee per apartment or parking spot, with a discounted yearly plan available. This covers the platform, servers, and support. Residents use the app at no personal cost." data-he="Lot'N'Go מחויבת לחברת הניהול או לוועד הבית — לא לדיירים עצמם. התמחור הוא דמי מנוי חודשיים נמוכים לדירה או לחניה, עם מסלול שנתי מוזל. זה מכסה את הפלטפורמה, השרתים והתמיכה. הדיירים משתמשים באפליקציה ללא עלות אישית.">Lot'N'Go is billed to the building management company or HOA — not to individual residents. Pricing is a low monthly fee per apartment or parking spot, with a discounted yearly plan available. This covers the platform, servers, and support. Residents use the app at no personal cost.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">
+<span data-en="How does my building join?" data-he="איך הבניין שלי מצטרף?">How does my building join?</span>
+<span class="faq-chevron">▾</span>
+</div>
+<div class="faq-a" data-en="The building manager or HOA representative signs up via lotngo.com and registers the building's marked spots. Residents are then invited by unit number. The whole setup takes under 30 minutes." data-he="מנהל הבניין או נציג ועד הבית נרשם דרך lotngo.com ומאגד את חניות הבניין המסומנות. לאחר מכן הדיירים מוזמנים לפי מספר דירה. כל ההגדרה לוקחת פחות מ-30 דקות.">The building manager or HOA representative signs up via lotngo.com and registers the building's marked spots. Residents are then invited by unit number. The whole setup takes under 30 minutes.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">
+<span data-en="What if someone doesn't vacate the spot on time?" data-he="מה אם מישהו לא מפנה את החניה בזמן?">What if someone doesn't vacate the spot on time?</span>
+<span class="faq-chevron">▾</span>
+</div>
+<div class="faq-a" data-en="The app sends automatic reminders 15 minutes before the window ends. In rare cases, the spot owner can flag a situation through the app, and the building manager is notified instantly." data-he="האפליקציה שולחת תזכורות אוטומטיות 15 דקות לפני סיום חלון הזמן. במקרים נדירים, בעל החניה יכול לדווח על מצב דרך האפליקציה, ומנהל הבניין מקבל הודעה מיידית.">The app sends automatic reminders 15 minutes before the window ends. In rare cases, the spot owner can flag a situation through the app, and the building manager is notified instantly.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">
+<span data-en="Is it only for private residential buildings?" data-he="האם זה רק לבניינים מגוריים פרטיים?">Is it only for private residential buildings?</span>
+<span class="faq-chevron">▾</span>
+</div>
+<div class="faq-a" data-en="Currently yes — Lot'N'Go is designed for residential buildings with assigned private parking spots. Office buildings and commercial lots are not yet supported, but they're on the roadmap." data-he="כרגע כן — Lot'N'Go מיועדת לבניינים מגוריים עם חניות פרטיות מוקצות. בניינים משרדיים וחניונים מסחריים אינם נתמכים עדיין, אך הם בתכנית הפיתוח.">Currently yes — Lot'N'Go is designed for residential buildings with assigned private parking spots. Office buildings and commercial lots are not yet supported, but they're on the roadmap.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">
+<span data-en="How is it accessible?" data-he="כיצד ניתן לגשת אליה?">How is it accessible?</span>
+<span class="faq-chevron">▾</span>
+</div>
+<div class="faq-a" data-en="The app is built so it can run directly from your smartphone web browser with no need for an app store. It's simpler, secure and always up to date." data-he="האפליקציה בנויה כך שתפעל ישירות מדפדפן האינטרנט של הסמארטפון שלך, ללא צורך בחנות אפליקציות. פשוטה יותר, מאובטחת ותמיד מעודכנת.">The app is built so it can run directly from your smartphone web browser with no need for an app store. It's simpler, secure and always up to date.</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- CTA -->
 <section id="join" style="padding: 2rem 0 6rem;">
-  <div class="cta-banner">
-    <h2 class="display-font" data-en="Be the first to bring Lot'N'Go to your building." data-he="היו הראשונים להביא את Lot'N'Go לבניין שלכם.">Be the first to bring Lot'N'Go to your building.</h2>
-    <p data-en="We're launching soon. Leave your email and we'll reach out when it's ready — no spam, just one message." data-he="אנחנו משיקים בקרוב. השאירו אימייל ונחזור אליכם כשמוכן — ללא ספאם, רק הודעה אחת.">We're launching soon. Leave your email and we'll reach out when it's ready — no spam, just one message.</p>
-    <div id="waitlist-form">
-      <div class="form-group">
-        <label class="form-label" data-en="First Name" data-he="שם פרטי">First Name</label>
-        <input type="text" id="waitlist-firstName" class="form-input" placeholder="John" data-placeholder-en="John" data-placeholder-he="יוחנן"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label" data-en="Last Name" data-he="שם משפחה">Last Name</label>
-        <input type="text" id="waitlist-lastName" class="form-input" placeholder="Doe" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label" data-en="Street Name" data-he="שם הרחוב">Street Name</label>
-        <input type="text" id="waitlist-street" class="form-input" placeholder="Main St" data-placeholder-en="Main St" data-placeholder-he="רחוב הרצל"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label" data-en="Street Number" data-he="מספר הבית">Street Number</label>
-        <input type="text" id="waitlist-streetNum" class="form-input" placeholder="123" data-placeholder-en="123" data-placeholder-he="42"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label" data-en="City" data-he="עיר">City</label>
-        <input type="text" id="waitlist-city" class="form-input" placeholder="Tel Aviv" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label" data-en="Country" data-he="מדינה">Country</label>
-        <input type="text" id="waitlist-country" class="form-input" placeholder="Israel" data-placeholder-en="Israel" data-placeholder-he="ישראל" value="Israel"/>
-      </div>
-      <div class="form-group full">
-        <label class="form-label" data-en="Email" data-he="דוא״ל">Email</label>
-        <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com" data-placeholder-en="your@email.com" data-placeholder-he="your@email.com"/>
-      </div>
-      <div class="form-group full">
-        <label class="form-label" data-en="Phone" data-he="טלפון">Phone</label>
-        <input type="tel" id="waitlist-phone" class="form-input" placeholder="+972547788990" data-placeholder-en="+972547788990" data-placeholder-he="+972547788990"/>
-      </div>
-      <button onclick="submitWaitlist()" class="waitlist-submit" data-en="Join the waitlist" data-he="הצטרפו לרשימת ההמתנה">Join the waitlist</button>
-    </div>
-    <div id="waitlist-thanks" style="display:none; color:#f7f7ff; font-size:1rem; font-weight:600; margin-top:1rem;" data-en="✓ You're on the list! We'll be in touch." data-he="✓ אתם ברשימה! נחזור אליכם בקרוב.">✓ You're on the list! We'll be in touch.</div>
-  </div>
+
+<div class="cta-banner">
+
+<h2 class="display-font" data-en="Be the first to bring Lot'N'Go to your building." data-he="היו הראשונים להביא את Lot'N'Go לבניין שלכם.">Be the first to bring Lot'N'Go to your building.</h2>
+
+<p data-en="We're launching soon. Leave your email and we'll reach out when it's ready — no spam, just one message." data-he="אנחנו משיקים בקרוב. השאירו אימייל ונחזור אליכם כשמוכן — ללא ספאם, רק הודעה אחת.">We're launching soon. Leave your email and we'll reach out when it's ready — no spam, just one message.</p>
+
+<div id="waitlist-form">
+
+<div class="form-group">
+<label class="form-label" data-en="First Name" data-he="שם פרטי">First Name</label>
+<input type="text" id="waitlist-firstName" class="form-input" placeholder="John" data-placeholder-en="John" data-placeholder-he="יוחנן"/>
+</div>
+
+<div class="form-group">
+<label class="form-label" data-en="Last Name" data-he="שם משפחה">Last Name</label>
+<input type="text" id="waitlist-lastName" class="form-input" placeholder="Doe" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
+</div>
+
+<div class="form-group full">
+<label class="form-label" data-en="Email" data-he="דוא״ל">Email</label>
+<input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com" data-placeholder-en="your@email.com" data-placeholder-he="your@email.com"/>
+</div>
+
+<div class="form-group">
+<label class="form-label" data-en="City" data-he="עיר">City</label>
+<input type="text" id="waitlist-city" class="form-input" placeholder="Tel Aviv" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
+</div>
+
+<div class="form-group">
+<label class="form-label" data-en="Phone" data-he="טלפון">Phone</label>
+<input type="tel" id="waitlist-phone" class="form-input" placeholder="+972547788990" data-placeholder-en="+972547788990" data-placeholder-he="+972547788990"/>
+</div>
+
+<button onclick="submitWaitlist()" class="waitlist-submit" data-en="Join the waitlist" data-he="הצטרפו לרשימת ההמתנה">Join the waitlist</button>
+
+</div>
+
+<div id="waitlist-thanks" style="display:none; color:#f7f7ff; font-size:1rem; font-weight:600; margin-top:1rem;" data-en="✓ You're on the list! We'll be in touch." data-he="✓ אתם ברשימה! נחזור אליכם בקרוב.">✓ You're on the list! We'll be in touch.</div>
+
+</div>
+
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div style="font-family:'Georgia',serif; font-size:2rem; margin-bottom:0.5rem;">
-    <span style="font-weight:700; color:#005bc0;">Lot</span><span style="font-weight:400; color:#1a1e2e;">'N'Go</span>
-  </div>
-  <div class="footer-tagline">Park with purpose. Neighbor with care.</div>
-  <div class="footer-links">
-    <a href="privacy.html" data-en="Privacy" data-he="פרטיות">Privacy</a>
-    <a href="terms.html" data-en="Terms" data-he="תנאי שימוש">Terms</a>
-    <a href="mailto:contact@lotngo.com" data-en="Contact" data-he="צור קשר">Contact</a>
-  </div>
-  <div class="footer-copy">© 2026 Lot'N'Go. All rights reserved.</div>
+<div style="font-family:'Georgia',serif; font-size:2rem; margin-bottom:0.5rem;">
+<span style="font-weight:700; color:#005bc0;">Lot</span><span style="font-weight:400; color:#1a1e2e;">'N'Go</span>
+</div>
+<div class="footer-tagline">Park with purpose. Neighbor with care.</div>
+<div class="footer-links">
+<a href="privacy.html" data-en="Privacy" data-he="פרטיות">Privacy</a>
+<a href="terms.html" data-en="Terms" data-he="תנאי שימוש">Terms</a>
+<a href="mailto:contact@lotngo.com" data-en="Contact" data-he="צור קשר">Contact</a>
+</div>
+<div class="footer-copy">© 2026 Lot'N'Go. All rights reserved.</div>
 </footer>
 
 <script>
 function setLang(lang) {
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
-  document.querySelector('nav').dir = 'ltr';
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
-    if (el.tagName === 'INPUT') { el.placeholder = val; }
-    else { el.innerHTML = val; }
-  });
-  document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
-    el.placeholder = el.getAttribute('data-placeholder-' + lang);
-  });
+document.documentElement.lang = lang;
+document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+document.querySelector('nav').dir = 'ltr';
+document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+const val = el.getAttribute('data-' + lang);
+if (el.tagName === 'INPUT') { el.placeholder = val; }
+else { el.innerHTML = val; }
+});
+document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
+el.placeholder = el.getAttribute('data-placeholder-' + lang);
+});
 }
+
+// FAQ Accordion functionality
+document.querySelectorAll('.faq-item .faq-q').forEach(question => {
+question.addEventListener('click', function() {
+const faqItem = this.closest('.faq-item');
+faqItem.classList.toggle('open');
+});
+});
 
 function submitWaitlist() {
-  const firstName = document.getElementById('waitlist-firstName').value.trim();
-  const lastName = document.getElementById('waitlist-lastName').value.trim();
-  const street = document.getElementById('waitlist-street').value.trim();
-  const streetNum = document.getElementById('waitlist-streetNum').value.trim();
-  const city = document.getElementById('waitlist-city').value.trim();
-  const country = document.getElementById('waitlist-country').value.trim();
-  const email = document.getElementById('waitlist-email').value.trim();
-  const phone = document.getElementById('waitlist-phone').value.trim();
-  let hasError = false;
-  [firstName, lastName, street, streetNum, city, country, email].forEach((val, idx) => {
-    const inputs = [
-      document.getElementById('waitlist-firstName'),
-      document.getElementById('waitlist-lastName'),
-      document.getElementById('waitlist-street'),
-      document.getElementById('waitlist-streetNum'),
-      document.getElementById('waitlist-city'),
-      document.getElementById('waitlist-country'),
-      document.getElementById('waitlist-email'),
-      document.getElementById('waitlist-phone')
-    ];
-    if (!val) {
-      inputs[idx].style.outline = '2px solid #ff9999';
-      hasError = true;
-    } else {
-      inputs[idx].style.outline = 'none';
-    }
-  });
+const firstName = document.getElementById('waitlist-firstName').value.trim();
+const lastName = document.getElementById('waitlist-lastName').value.trim();
+const email = document.getElementById('waitlist-email').value.trim();
+const city = document.getElementById('waitlist-city').value.trim();
+const phone = document.getElementById('waitlist-phone').value.trim();
 
-  if (!email.includes('@')) {
-    document.getElementById('waitlist-email').style.outline = '2px solid #ff9999';
-    hasError = true;
-  }
+// Clear previous error states
+document.querySelectorAll('.form-input').forEach(input => {
+input.classList.remove('error');
+});
 
-  if (hasError) return;
+let hasError = false;
 
-  const payload = {
-    first_name: firstName,
-    last_name: lastName,
-    street_name: street,
-    street_number: streetNum,
-    city: city,
-    country: country,
-    email: email,
-    phone_number: phone || undefined
-  };
+// Validate required fields
+const requiredFields = [
+{ id: 'waitlist-firstName', value: firstName, name: 'First Name' },
+{ id: 'waitlist-lastName', value: lastName, name: 'Last Name' },
+{ id: 'waitlist-email', value: email, name: 'Email' },
+{ id: 'waitlist-city', value: city, name: 'City' },
+{ id: 'waitlist-phone', value: phone, name: 'Phone' }
+];
 
- const apiUrl = window.location.hostname === 'localhost'
-    ? 'http://localhost:3001/api/v1/leads'
-    : 'https://api.lotngo.com/api/v1/leads';
+requiredFields.forEach(field => {
+if (!field.value) {
+document.getElementById(field.id).classList.add('error');
+hasError = true;
+}
+});
 
-  fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload)
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(() => {
-      document.getElementById('waitlist-form').style.display = 'none';
-      document.getElementById('waitlist-thanks').style.display = 'block';
-    })
-    .catch(error => {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting the form. Please try again.');
-    });
+// Validate email format
+if (email && !email.includes('@')) {
+document.getElementById('waitlist-email').classList.add('error');
+hasError = true;
+}
+
+// Validate phone format (basic check)
+if (phone && phone.length < 10) {
+document.getElementById('waitlist-phone').classList.add('error');
+hasError = true;
+}
+
+if (hasError) return;
+
+const payload = {
+first_name: firstName,
+last_name: lastName,
+email: email,
+city: city,
+phone_number: phone || undefined
+};
+
+const apiUrl = window.location.hostname === 'localhost'
+? 'http://localhost:3001/api/v1/leads'
+: 'https://api.lotngo.com/api/v1/leads';
+
+fetch(apiUrl, {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(payload)
+})
+.then(response => {
+if (!response.ok) {
+throw new Error(`HTTP error! status: ${response.status}`);
+}
+return response.json();
+})
+.then(() => {
+document.getElementById('waitlist-form').style.display = 'none';
+document.getElementById('waitlist-thanks').style.display = 'block';
+})
+.catch(error => {
+console.error('Error submitting form:', error);
+alert('There was an error submitting the form. Please try again.');
+});
 }
 </script>
+
 </body>
 </html>
