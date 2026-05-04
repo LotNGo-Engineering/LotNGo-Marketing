@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="he" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -301,8 +301,8 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <a href="#join" class="btn-nav" data-en="Get the app" data-he="הצטרפו עכשיו">Get the app</a>
 </div>
 <div class="lang-toggle">
-<button class="lang-btn active" onclick="setLang('en')">EN</button>
-<button class="lang-btn" onclick="setLang('he')">עב</button>
+<button class="lang-btn" onclick="setLang('en')">EN</button>
+<button class="lang-btn active" onclick="setLang('he')">עב</button>
 </div>
 </div>
 </nav>
@@ -770,6 +770,9 @@ alert('There was an error submitting the form. Please try again.');
 });
 }
 </script>
-
+// Set Hebrew as default language on page load
+document.addEventListener('DOMContentLoaded', function() {
+  setLang('he');
+});
 </body>
 </html>
