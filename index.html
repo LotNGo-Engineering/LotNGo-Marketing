@@ -782,75 +782,62 @@ alert('There was an error submitting the form. Please try again.');
 </script>
 
 <script>
-// Israeli Data API Configuration with CORS proxy
-const api_url = "https://api.allorigins.win/raw?url=https://data.gov.il/api/3/action/datastore_search";
-const cities_resource_id = "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba";
-const streets_resource_id = "a7296d1a-f8c9-4b70-96c2-6ebb4352f8e3";
-const city_name_key = "שם_ישוב";
-const street_name_key = "שם_רחוב";
+// Load static data from JSON files
+let citiesData = [];
+let streetsData = {};
 
-// Get data from gov data API
-const getData = (resource_id, q = "", limit = "100") => {
-  return axios.get(api_url, {
-    params: { resource_id, q, limit },
-    responseType: "json"
-  });
-};
-
-// Parse records into option elements
-const parseResponse = (records = [], field_name) => {
-  const parsed = records
-    .map(record => `<option value="${record[field_name].trim()}">`)
-    .join("\n") || "";
-  return Promise.resolve(parsed);
-};
-
-// Fetch data, parse, and populate datalist
-const populateDataList = (id, resource_id, field_name, query, limit) => {
+// Populate datalist from data
+const populateDataList = (id, items = []) => {
   const datalist_element = document.getElementById(id);
   if (!datalist_element) {
     console.log("Datalist with id", id, "doesn't exist in the document, aborting");
     return;
   }
-  getData(resource_id, query, limit)
-    .then(response => parseResponse(response?.data?.result?.records, field_name))
-    .then(html => (datalist_element.innerHTML = html))
-    .catch(error => {
-      console.log("Couldn't get list for", id, "query:", query, error);
-    });
+  const html = items.map(item => `<option value="${item}">`).join("\n");
+  datalist_element.innerHTML = html || '<option value="">';
+};
+
+// Load cities and streets data
+const loadData = async () => {
+  try {
+    const citiesResponse = await fetch('data-cities.json');
+    citiesData = await citiesResponse.json();
+    console.log(`Loaded ${citiesData.length} cities`);
+
+    const streetsResponse = await fetch('data-streets.json');
+    streetsData = await streetsResponse.json();
+    console.log(`Loaded streets for ${Object.keys(streetsData).length} cities`);
+  } catch (error) {
+    console.error('Error loading data:', error);
+  }
 };
 
 // Load saved language or default to Hebrew
-window.addEventListener('load', function() {
+window.addEventListener('load', async function() {
   const savedLang = localStorage.getItem('lotngo-lang') || 'he';
   setLang(savedLang);
 
-  // Load cities on page load
-  populateDataList(
-    'waitlist-cities-data',
-    cities_resource_id,
-    city_name_key,
-    undefined,
-    32000
-  );
+  // Load data from JSON files
+  await loadData();
+
+  // Populate cities datalist
+  populateDataList('waitlist-cities-data', citiesData);
 
   // Load streets when city changes
   const cityInput = document.getElementById('waitlist-city');
   cityInput.addEventListener('change', (event) => {
-    console.log('City changed:', cityInput.value);
-    if (cityInput.value && cityInput.value.trim()) {
-      console.log('Fetching streets for city:', cityInput.value);
-      populateDataList(
-        'waitlist-streets-data',
-        streets_resource_id,
-        street_name_key,
-        {
-          שם_ישוב: cityInput.value
-        },
-        32000
-      );
+    const selectedCity = cityInput.value.trim();
+    console.log('City changed:', selectedCity);
+
+    if (selectedCity && streetsData[selectedCity]) {
+      console.log(`Fetching ${streetsData[selectedCity].length} streets for city:`, selectedCity);
+      populateDataList('waitlist-streets-data', streetsData[selectedCity]);
+    } else if (selectedCity) {
+      console.log('No streets found for city:', selectedCity);
+      populateDataList('waitlist-streets-data', []);
     } else {
       console.log('City input is empty');
+      populateDataList('waitlist-streets-data', []);
     }
   });
 
