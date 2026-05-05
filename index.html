@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lot'N'Go – Park with Purpose</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -574,8 +575,19 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 
 <div class="form-group">
-<label class="form-label" data-en="Street Name" data-he="שם הרחוב">Street Name</label>
-<input type="text" id="waitlist-street" class="form-input" placeholder="Main St" data-placeholder-en="Main St" data-placeholder-he="רחוב הרצל"/>
+<label class="form-label" data-en="City" data-he="עיר">City *</label>
+<input type="text" list="waitlist-cities-data" id="waitlist-city" class="form-input" placeholder="Tel Aviv" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
+<datalist id="waitlist-cities-data">
+<option value="" data-en="Loading..." data-he="טוען...">Loading...</option>
+</datalist>
+</div>
+
+<div class="form-group">
+<label class="form-label" data-en="Street Name" data-he="שם הרחוב">Street Name *</label>
+<input type="text" list="waitlist-streets-data" id="waitlist-street" class="form-input" placeholder="Main St" data-placeholder-en="Main St" data-placeholder-he="רחוב הרצל"/>
+<datalist id="waitlist-streets-data">
+<option value=""></option>
+</datalist>
 </div>
 
 <div class="form-group">
@@ -583,14 +595,14 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <input type="text" id="waitlist-streetNum" class="form-input" placeholder="123" data-placeholder-en="123" data-placeholder-he="42"/>
 </div>
 
+<div class="form-group">
+<label class="form-label" data-en="Number of Apartments" data-he="מספר דירות">Number of Apartments <span style="font-size:0.85rem; color:rgba(247,247,255,0.6);" data-en="(Optional)" data-he="(אופציונלי)">(Optional)</span></label>
+<input type="number" id="waitlist-apartments" class="form-input" placeholder="10" data-placeholder-en="10" data-placeholder-he="10" min="1"/>
+</div>
+
 <div class="form-group full">
 <label class="form-label" data-en="Email" data-he="דוא״ל">Email</label>
 <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com" data-placeholder-en="your@email.com" data-placeholder-he="your@email.com"/>
-</div>
-
-<div class="form-group">
-<label class="form-label" data-en="City" data-he="עיר">City</label>
-<input type="text" id="waitlist-city" class="form-input" placeholder="Tel Aviv" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
 </div>
 
 <div class="form-group">
@@ -655,10 +667,11 @@ faqItem.classList.toggle('open');
 function submitWaitlist() {
 const firstName = document.getElementById('waitlist-firstName').value.trim();
 const lastName = document.getElementById('waitlist-lastName').value.trim();
+const city = document.getElementById('waitlist-city').value.trim();
 const street = document.getElementById('waitlist-street').value.trim();
 const streetNum = document.getElementById('waitlist-streetNum').value.trim();
+const apartments = document.getElementById('waitlist-apartments').value.trim();
 const email = document.getElementById('waitlist-email').value.trim();
-const city = document.getElementById('waitlist-city').value.trim();
 const phone = document.getElementById('waitlist-phone').value.trim();
 
 // Clear previous error states
@@ -669,10 +682,9 @@ input.classList.remove('error');
 let hasError = false;
 
 // Validation patterns
-const namePattern = /^[a-zA-Z\s'-]+$/; // Letters, spaces, hyphens, apostrophes
-const streetPattern = /^[a-zA-Z\s'-]+$/; // Letters, spaces, hyphens, apostrophes
-const streetNumberPattern = /^\d+$/; // Numbers only
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Standard email format
+const namePattern = /^[a-zA-Z\s'-]+$/;
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const streetNumberPattern = /^\d+$/;
 
 // Validate First Name
 if (!firstName) {
@@ -692,20 +704,20 @@ document.getElementById('waitlist-lastName').classList.add('error');
 hasError = true;
 }
 
-// Validate Street Name
-if (!street) {
-document.getElementById('waitlist-street').classList.add('error');
+// Validate City (Mandatory)
+if (!city) {
+document.getElementById('waitlist-city').classList.add('error');
 hasError = true;
-} else if (!streetPattern.test(street)) {
+}
+
+// Validate Street (Mandatory)
+if (!street) {
 document.getElementById('waitlist-street').classList.add('error');
 hasError = true;
 }
 
 // Validate Street Number
-if (!streetNum) {
-document.getElementById('waitlist-streetNum').classList.add('error');
-hasError = true;
-} else if (!streetNumberPattern.test(streetNum)) {
+if (streetNum && !streetNumberPattern.test(streetNum)) {
 document.getElementById('waitlist-streetNum').classList.add('error');
 hasError = true;
 }
@@ -716,15 +728,6 @@ document.getElementById('waitlist-email').classList.add('error');
 hasError = true;
 } else if (!emailPattern.test(email)) {
 document.getElementById('waitlist-email').classList.add('error');
-hasError = true;
-}
-
-// Validate City
-if (!city) {
-document.getElementById('waitlist-city').classList.add('error');
-hasError = true;
-} else if (!namePattern.test(city)) {
-document.getElementById('waitlist-city').classList.add('error');
 hasError = true;
 }
 
@@ -742,10 +745,11 @@ if (hasError) return;
 const payload = {
 first_name: firstName,
 last_name: lastName,
-street_name: street,
-street_number: streetNum,
-email: email,
 city: city,
+street_name: street,
+street_number: streetNum || undefined,
+number_of_apartments: apartments || undefined,
+email: email,
 phone_number: phone || undefined
 };
 
@@ -778,10 +782,82 @@ alert('There was an error submitting the form. Please try again.');
 </script>
 
 <script>
+// Israeli Data API Configuration
+const api_url = "https://data.gov.il/api/3/action/datastore_search";
+const cities_resource_id = "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba";
+const streets_resource_id = "a7296d1a-f8c9-4b70-96c2-6ebb4352f8e3";
+const city_name_key = "שם_ישוב";
+const street_name_key = "שם_רחוב";
+
+// Get data from gov data API
+const getData = (resource_id, q = "", limit = "100") => {
+  return axios.get(api_url, {
+    params: { resource_id, q, limit },
+    responseType: "json"
+  });
+};
+
+// Parse records into option elements
+const parseResponse = (records = [], field_name) => {
+  const parsed = records
+    .map(record => `<option value="${record[field_name].trim()}">`)
+    .join("\n") || "";
+  return Promise.resolve(parsed);
+};
+
+// Fetch data, parse, and populate datalist
+const populateDataList = (id, resource_id, field_name, query, limit) => {
+  const datalist_element = document.getElementById(id);
+  if (!datalist_element) {
+    console.log("Datalist with id", id, "doesn't exist in the document, aborting");
+    return;
+  }
+  getData(resource_id, query, limit)
+    .then(response => parseResponse(response?.data?.result?.records, field_name))
+    .then(html => (datalist_element.innerHTML = html))
+    .catch(error => {
+      console.log("Couldn't get list for", id, "query:", query, error);
+    });
+};
+
 // Load saved language or default to Hebrew
 window.addEventListener('load', function() {
   const savedLang = localStorage.getItem('lotngo-lang') || 'he';
   setLang(savedLang);
+
+  // Load cities on page load
+  populateDataList(
+    'waitlist-cities-data',
+    cities_resource_id,
+    city_name_key,
+    undefined,
+    32000
+  );
+
+  // Load streets when city changes
+  const cityInput = document.getElementById('waitlist-city');
+  cityInput.addEventListener('change', (event) => {
+    console.log('City changed:', cityInput.value);
+    if (cityInput.value && cityInput.value.trim()) {
+      console.log('Fetching streets for city:', cityInput.value);
+      populateDataList(
+        'waitlist-streets-data',
+        streets_resource_id,
+        street_name_key,
+        {
+          שם_ישוב: cityInput.value
+        },
+        32000
+      );
+    } else {
+      console.log('City input is empty');
+    }
+  });
+
+  // Also listen to input event for real-time updates
+  cityInput.addEventListener('input', (event) => {
+    console.log('City input changed (real-time):', cityInput.value);
+  });
 });
 </script>
 
