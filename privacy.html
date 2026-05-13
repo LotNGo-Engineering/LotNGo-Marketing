@@ -1,138 +1,128 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Lot'N'Go</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --primary: #005bc0; --primary-dim: #004fa9;
-    --primary-container: #d6e4ff;
-    --surface: #f8f9fa; --surface-low: #f1f4f6; --surface-lowest: #ffffff;
-    --on-surface: #1a1e2e; --on-surface-muted: #5a6177;
-    --shadow-ambient: 0 12px 32px -4px rgba(43,52,55,0.07);
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--on-surface); line-height: 1.7; }
-  html[lang="he"] body { font-family: 'Heebo', sans-serif; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Lot'N'Go</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #005bc0; --primary-dim: #004fa9;
+      --primary-container: #d6e4ff;
+      --surface: #f8f9fa; --surface-low: #f1f4f6; --surface-lowest: #ffffff;
+      --on-surface: #1a1e2e; --on-surface-muted: #5a6177;
+      --shadow-ambient: 0 12px 32px -4px rgba(43,52,55,0.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: var(--surface); color: var(--on-surface); line-height: 1.7; }
+    html[lang="en"] body { font-family: 'Inter', sans-serif; }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(248,249,250,0.88); backdrop-filter: blur(20px);
-    padding: 0 2rem; height: 70px;
-    display: flex; align-items: center; justify-content: space-between; direction: ltr;
-  }
-  .nav-back { font-size: 0.875rem; font-weight: 500; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
-  .nav-back:hover { opacity: 0.8; }
-  .lang-toggle { display: flex; align-items: center; background: var(--surface-low); border-radius: 8px; overflow: hidden; }
-  .lang-btn { padding: 0.35rem 0.85rem; font-size: 0.8rem; font-weight: 600; border: none; background: transparent; color: var(--on-surface-muted); cursor: pointer; transition: all 0.2s; }
-  .lang-btn.active { background: var(--primary); color: #f7f7ff; border-radius: 8px; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(248,249,250,0.88); backdrop-filter: blur(20px);
+      padding: 0 2rem; height: 70px;
+      display: flex; align-items: center; justify-content: space-between; direction: ltr;
+    }
+    .nav-back { font-size: 0.875rem; font-weight: 500; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+    .nav-back:hover { opacity: 0.8; }
+    .lang-toggle { display: flex; align-items: center; background: var(--surface-low); border-radius: 8px; overflow: hidden; }
+    .lang-btn { padding: 0.35rem 0.85rem; font-size: 0.8rem; font-weight: 600; border: none; background: transparent; color: var(--on-surface-muted); cursor: pointer; transition: all 0.2s; }
+    .lang-btn.active { background: var(--primary); color: #f7f7ff; border-radius: 8px; }
 
-  .page-wrap { max-width: 760px; margin: 0 auto; padding: 7rem 2rem 6rem; }
-  .page-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
-  .page-title { font-family: 'Manrope', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; color: var(--on-surface); margin-bottom: 0.75rem; }
-  html[lang="he"] .page-title { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
-  .page-date { font-size: 0.85rem; color: var(--on-surface-muted); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.07); }
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 7rem 2rem 6rem; }
+    .page-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
+    .page-title { font-family: 'Heebo', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.1; color: var(--on-surface); margin-bottom: 0.75rem; }
+    html[lang="en"] .page-title { font-family: 'Manrope', sans-serif; letter-spacing: -1px; }
+    .page-date { font-size: 0.85rem; color: var(--on-surface-muted); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.07); }
 
-  .section-block { margin-bottom: 2.5rem; }
-  .section-block h2 { font-family: 'Manrope', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--on-surface); margin-bottom: 0.75rem; }
-  html[lang="he"] .section-block h2 { font-family: 'Heebo', sans-serif; }
-  .section-block p { font-size: 0.95rem; color: var(--on-surface-muted); margin-bottom: 0.75rem; line-height: 1.75; }
-  .section-block ul { padding-inline-start: 1.5rem; margin-bottom: 0.75rem; }
-  .section-block ul li { font-size: 0.95rem; color: var(--on-surface-muted); line-height: 1.75; margin-bottom: 0.35rem; }
+    .section-block { margin-bottom: 2.5rem; }
+    .section-block h2 { font-family: 'Heebo', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--on-surface); margin-bottom: 0.75rem; }
+    html[lang="en"] .section-block h2 { font-family: 'Manrope', sans-serif; }
+    .section-block p { font-size: 0.95rem; color: var(--on-surface-muted); margin-bottom: 0.75rem; line-height: 1.75; }
+    .section-block ul { padding-inline-start: 1.5rem; margin-bottom: 0.75rem; }
+    .section-block ul li { font-size: 0.95rem; color: var(--on-surface-muted); line-height: 1.75; margin-bottom: 0.35rem; }
 
-  .highlight-box { background: var(--primary-container); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
-  .highlight-box p { font-size: 0.9rem; color: var(--primary); margin: 0; font-weight: 500; line-height: 1.65; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; background: white; border-radius: 8px; overflow: hidden; }
+    th, td { padding: 12px; border: 1px solid rgba(0,0,0,0.05); text-align: right; }
+    html[lang="en"] th, html[lang="en"] td { text-align: left; }
+    th { background: var(--surface-low); font-weight: 700; color: var(--on-surface); }
 
-  .contact-card { background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow-ambient); }
-  .contact-card p { font-size: 0.9rem; color: var(--on-surface-muted); margin-bottom: 0.4rem; }
-  .contact-card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .highlight-box { background: var(--primary-container); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+    .highlight-box p { font-size: 0.9rem; color: var(--primary); margin: 0; font-weight: 500; line-height: 1.65; }
 
-  footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--on-surface-muted); border-top: 1px solid rgba(0,0,0,0.06); margin-top: 4rem; }
-</style>
+    .contact-card { background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow-ambient); }
+    .contact-card p { font-size: 0.9rem; color: var(--on-surface-muted); margin-bottom: 0.4rem; }
+    .contact-card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+    footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--on-surface-muted); border-top: 1px solid rgba(0,0,0,0.06); margin-top: 4rem; }
+  </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-back">← <span data-en="Back to Lot'N'Go" data-he="חזרה ל-Lot'N'Go">Back to Lot'N'Go</span></a>
+  <a href="index.html" class="nav-back">← <span data-en="Back to Lot'N'Go" data-he="חזרה ל-Lot'N'Go">חזרה ל-Lot'N'Go</span></a>
   <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('he')">עב</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn active" onclick="setLang('he')">עב</button>
   </div>
 </nav>
 
 <div class="page-wrap">
-  <div class="page-label" data-en="Legal" data-he="משפטי">Legal</div>
-  <h1 class="page-title" data-en="Privacy Policy" data-he="מדיניות פרטיות">Privacy Policy</h1>
-  <p class="page-date" data-en="Last updated: April 2026 — This policy applies to the Lot'N'Go website (lotngo.com) and its future application." data-he="עודכן לאחרונה: אפריל 2026 — מדיניות זו חלה על אתר Lot'N'Go (lotngo.com) ועל האפליקציה העתידית שלו.">Last updated: April 2026 — This policy applies to the Lot'N'Go website (lotngo.com) and its future application.</p>
+  <div class="page-label" data-en="Legal" data-he="משפטי">משפטי</div>
+  <h1 class="page-title" data-en="Privacy Policy" data-he="מדיניות פרטיות">מדיניות פרטיות</h1>
+  <p class="page-date" data-en="Last updated: May 2026" data-he="עודכן לאחרונה: מאי 2026">עודכן לאחרונה: מאי 2026</p>
 
   <div class="highlight-box">
-    <p data-en="Lot'N'Go is currently in pre-launch. The application is under development and no user accounts, parking data, or personal profiles are collected at this time. The only data we may collect is your email address if you voluntarily join our waitlist." data-he="Lot'N'Go נמצאת כרגע בשלב טרום-השקה. האפליקציה בפיתוח ואין אנו אוספים נכון להיום חשבונות משתמש, נתוני חניה או פרופילים אישיים. הנתון היחיד שאנו עשויים לאסוף הוא כתובת האימייל שלך אם בחרת להצטרף לרשימת ההמתנה שלנו.">Lot'N'Go is currently in pre-launch. The application is under development and no user accounts, parking data, or personal profiles are collected at this time. The only data we may collect is your email address if you voluntarily join our waitlist.</p>
+    <p data-en="This policy governs data collection on the Lot'N'Go marketing site and its application. We are committed to protecting your privacy within your residential community." data-he="מדיניות זו מסדירה את איסוף הנתונים באתר השיווקי של Lot'N'Go ובאפליקציה. אנו מחויבים להגנה על הפרטיות שלך בתוך הקהילה המשותפת.">מדיניות זו מסדירה את איסוף הנתונים באתר השיווקי של Lot'N'Go ובאפליקציה. אנו מחויבים להגנה על הפרטיות שלך בתוך הקהילה המשותפת.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="1. Who We Are" data-he="1. מי אנחנו">1. Who We Are</h2>
-    <p data-en="Lot'N'Go operates the website lotngo.com and is developing a parking-sharing platform for residential buildings. For any privacy-related inquiries, contact us at contact@lotngo.com." data-he="Lot'N'Go מפעילה את האתר lotngo.com ומפתחת פלטפורמת שיתוף חניות לבניינים מגוריים. לכל פנייה הקשורה לפרטיות, ניתן לפנות אלינו בכתובת contact@lotngo.com.">Lot'N'Go operates the website lotngo.com and is developing a parking-sharing platform for residential buildings. For any privacy-related inquiries, contact us at contact@lotngo.com.</p>
+    <h2 data-en="1. General Information" data-he="1. כללי">1. כללי</h2>
+    <p data-en="Lot'N'Go (the 'Service') is operated by [Yotam Golomb] as a private individual (the 'Operator'). The Service provides a platform for managing and sharing parking spots between residents of the same building." data-he="Lot'N'Go (להלן: 'השירות') מופעל על ידי [יותם גולומב] כאדם פרטי (להלן: 'המפעיל'). השירות מספק פלטפורמה לניהול ושיתוף חניות בין דיירים באותו בניין.">Lot'N'Go (להלן: 'השירות') מופעל על ידי [יותם גולומב] כאדם פרטי (להלן: 'המפעיל'). השירות מספק פלטפורמה לניהול ושיתוף חניות בין דיירים באותו בניין.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="2. What Data We Collect" data-he="2. אילו נתונים אנו אוספים">2. What Data We Collect</h2>
-    <p data-en="At this pre-launch stage, we collect only:" data-he="בשלב טרום-ההשקה הנוכחי, אנו אוספים רק:">At this pre-launch stage, we collect only:</p>
+    <h2 data-en="2. Information We Collect" data-he="2. המידע שאנו אוספים">2. המידע שאנו אוספים</h2>
+    <p data-en="We collect information at two points:" data-he="אנו אוספים מידע בשתי נקודות זמן:">אנו אוספים מידע בשתי נקודות זמן:</p>
     <ul>
-      <li data-en="Your email address, if you choose to join the waitlist." data-he="כתובת האימייל שלך, אם בחרת להצטרף לרשימת ההמתנה.">Your email address, if you choose to join the waitlist.</li>
-      <li data-en="Basic technical data (browser type, page visit) via standard web server logs. This data is not linked to your identity." data-he="נתונים טכניים בסיסיים (סוג דפדפן, ביקור בעמוד) דרך לוגים סטנדרטיים של שרת האינטרנט. נתונים אלה אינם מקושרים לזהותך.">Basic technical data (browser type, page visit) via standard web server logs. This data is not linked to your identity.</li>
+      <li data-en="Marketing Site: Name, email, phone, and building details (address and unit count) for potential building onboarding." data-he="באתר השיווקי: שם, אימייל, טלפון, ופרטי בניין (כתובת וכמות דירות) לצורך יצירת קשר עם בניינים פוטנציאליים.">באתר השיווקי: שם, אימייל, טלפון, ופרטי בניין (כתובת וכמות דירות) לצורך יצירת קשר עם בניינים פוטנציאליים.</li>
+      <li data-en="App Registration: Full name (e.g., 'Cohen Family'), email, phone, apartment number, and parking spot details (number or description)." data-he="ברישום לאפליקציה: שם מלא (יכול להיות שם משפחה בלבד), אימייל, טלפון, מספר דירה, ופרטי חניה (מספר או תיאור טקסטואלי).">ברישום לאפליקציה: שם מלא (יכול להיות שם משפחה בלבד), אימייל, טלפון, מספר דירה, ופרטי חניה (מספר או תיאור טקסטואלי).</li>
     </ul>
-    <p data-en="We do not collect location data, payment data, or any sensitive personal information at this stage." data-he="איננו אוספים נתוני מיקום, נתוני תשלום, או מידע אישי רגיש כלשהו בשלב זה.">We do not collect location data, payment data, or any sensitive personal information at this stage.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="3. How We Use Your Data" data-he="3. כיצד אנו משתמשים בנתונים שלך">3. How We Use Your Data</h2>
-    <p data-en="Your email address, if provided, is used solely to notify you when Lot'N'Go launches. We will not send marketing emails, share your address with third parties, or use it for any other purpose without your explicit consent." data-he="כתובת האימייל שלך, אם סופקה, משמשת אך ורק להודיע לך כאשר Lot'N'Go משיקה. לא נשלח דיוורים שיווקיים, לא נשתף את כתובתך עם צדדים שלישיים, ולא נשתמש בה לכל מטרה אחרת ללא הסכמתך המפורשת.">Your email address, if provided, is used solely to notify you when Lot'N'Go launches. We will not send marketing emails, share your address with third parties, or use it for any other purpose without your explicit consent.</p>
+    <h2 data-en="3. Information Sharing & Visibility" data-he="3. שיתוף מידע ונראות">3. שיתוף מידע ונראות</h2>
+    <p data-en="To enable sharing, certain data is visible to other users in your building:" data-he="כדי לאפשר שיתוף, נתונים מסוימים גלויים למשתמשים אחרים בבניין שלך:">כדי לאפשר שיתוף, נתונים מסוימים גלויים למשתמשים אחרים בבניין שלך:</p>
+    <table>
+      <thead>
+        <tr><th data-en="Data Type" data-he="סוג המידע">סוג המידע</th><th data-en="Visibility" data-he="מי רואה?">מי רואה?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-en="Name & Apt Number" data-he="שם ומספר דירה">שם ומספר דירה</td><td data-en="All verified residents in your building" data-he="כל הדיירים המאומתים בבניין שלך">כל הדיירים המאומתים בבניין שלך</td></tr>
+        <tr><td data-en="Phone & Email" data-he="טלפון ואימייל">טלפון ואימייל</td><td data-en="Building Admin (Va'ad) and the party you share with" data-he="ועד הבית/מנהל הבניין והצד השני לשיתוף">ועד הבית/מנהל הבניין והצד השני לשיתוף</td></tr>
+        <tr><td data-en="Parking Details" data-he="פרטי חניה">פרטי חניה</td><td data-en="All verified residents in your building" data-he="כל הדיירים המאומתים בבניין שלך">כל הדיירים המאומתים בבניין שלך</td></tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="section-block">
-    <h2 data-en="4. Legal Basis for Processing" data-he="4. הבסיס החוקי לאיסוף המידע">4. Legal Basis for Processing</h2>
-    <p data-en="This policy is governed by the Israeli Privacy Protection Law, 5741–1981 and its regulations, and is designed to align with the EU General Data Protection Regulation (GDPR) for users in the European Union." data-he="מדיניות זו מוסדרת על פי חוק הגנת הפרטיות, התשמ"א-1981 ותקנותיו, ומיועדת להיות תואמת לתקנת הגנת המידע הכללית של האיחוד האירופי (GDPR) עבור משתמשים באיחוד האירופי.">This policy is governed by the Israeli Privacy Protection Law, 5741–1981 and its regulations, and is designed to align with the EU General Data Protection Regulation (GDPR) for users in the European Union.</p>
-    <p data-en="The legal basis for processing your email (where applicable under GDPR) is your freely given, specific, and informed consent at the point of submission." data-he="הבסיס החוקי לעיבוד האימייל שלך (ככל שחל ה-GDPR) הוא הסכמתך החופשית, הספציפית והמושכלת בעת הגשת הטופס.">The legal basis for processing your email (where applicable under GDPR) is your freely given, specific, and informed consent at the point of submission.</p>
+    <h2 data-en="4. Data Protection & Liability Disclaimer" data-he="4. הגנת מידע והגבלת אחריות">4. הגנת מידע והגבלת אחריות</h2>
+    <p data-en="The Operator uses standard cloud infrastructure providers. However, as the system is managed by a private individual, we cannot guarantee absolute immunity from security breaches." data-he="המפעיל משתמש בספקי תשתית ענן סטנדרטיים. עם זאת, מאחר והמערכת מנוהלת על ידי אדם פרטי, איננו יכולים להבטיח חסינות מוחלטת מפני פריצות אבטחה.">המפעיל משתמש בספקי תשתית ענן סטנדרטיים. עם זאת, מאחר והמערכת מנוהלת על ידי אדם פרטי, איננו יכולים להבטיח חסינות מוחלטת מפני פריצות אבטחה.</p>
+    <p data-en="The Operator shall not be liable for any data breach, leak, or unauthorized access caused by third-party infrastructure failure, provided the Operator did not act with gross negligence." data-he="המפעיל לא יהיה אחראי לכל דליפת מידע או גישה בלתי מורשית הנובעת מכשל בתשתיות צד ג', ובלבד שהמפעיל לא פעל ברשלנות פושעת.">המפעיל לא יהיה אחראי לכל דליפת מידע או גישה בלתי מורשית הנובעת מכשל בתשתיות צד ג', ובלבד שהמפעיל לא פעל ברשלנות פושעת.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="5. Your Rights" data-he="5. הזכויות שלך">5. Your Rights</h2>
-    <p data-en="Regardless of your location, you have the right to:" data-he="ללא קשר למיקומך, יש לך את הזכות:">Regardless of your location, you have the right to:</p>
-    <ul>
-      <li data-en="Access the personal data we hold about you." data-he="לגשת למידע האישי שאנו מחזיקים עליך.">Access the personal data we hold about you.</li>
-      <li data-en="Request correction of inaccurate data." data-he="לבקש תיקון של נתונים שגויים.">Request correction of inaccurate data.</li>
-      <li data-en="Request deletion of your data at any time." data-he="לבקש מחיקת הנתונים שלך בכל עת.">Request deletion of your data at any time.</li>
-      <li data-en="Withdraw consent for processing (e.g. remove yourself from the waitlist)." data-he="לבטל את הסכמתך לשמירת המידע (לדוגמה, הסרה מרשימת ההמתנה).">Withdraw consent for processing (e.g. remove yourself from the waitlist).</li>
-      <li data-en="Lodge a complaint with the relevant data protection authority in your country." data-he="להגיש תלונה לרשות הגנת המידע הרלוונטית במדינתך.">Lodge a complaint with the relevant data protection authority in your country.</li>
-    </ul>
-    <p data-en="To exercise any of these rights, email us at contact@lotngo.com." data-he="לממש כל אחת מהזכויות הללו, שלח לנו אימייל לכתובת contact@lotngo.com.">To exercise any of these rights, email us at contact@lotngo.com.</p>
+    <h2 data-en="5. Your Rights" data-he="5. הזכויות שלך">5. הזכויות שלך</h2>
+    <p data-en="You have the right to access your information or request its deletion at any time. To do so, please contact us at contact@lotngo.com." data-he="יש לך את הזכות לעיין במידע שלך או לבקש את מחיקתו בכל עת. לשם כך, ניתן לפנות אלינו בכתובת contact@lotngo.com.">יש לך את הזכות לעיין במידע שלך או לבקש את מחיקתו בכל עת. לשם כך, ניתן לפנות אלינו בכתובת contact@lotngo.com.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="6. Cookies" data-he="6. עוגיות">6. Cookies</h2>
-    <p data-en="The Lot'N'Go website does not currently use tracking cookies, analytics tools, or advertising scripts. If this changes in future, this policy will be updated and users will be notified." data-he="אתר Lot'N'Go אינו משתמש כרגע בעוגיות מעקב, כלי אנליטיקה או סקריפטים פרסומיים. אם זה ישתנה בעתיד, מדיניות זו תעודכן והמשתמשים יקבלו הודעה.">The Lot'N'Go website does not currently use tracking cookies, analytics tools, or advertising scripts. If this changes in future, this policy will be updated and users will be notified.</p>
-  </div>
-
-  <div class="section-block">
-    <h2 data-en="7. Data Retention" data-he="7. שמירת נתונים">7. Data Retention</h2>
-    <p data-en="Waitlist email addresses are retained until the service launches or until you request removal, whichever comes first. Server logs are retained for a maximum of 30 days." data-he="כתובות אימייל מרשימת ההמתנה נשמרות עד להשקת השירות או עד לבקשת הסרה, המוקדם מביניהם. לוגי שרת נשמרים לתקופה מקסימלית של 30 יום.">Waitlist email addresses are retained until the service launches or until you request removal, whichever comes first. Server logs are retained for a maximum of 30 days.</p>
-  </div>
-
-  <div class="section-block">
-    <h2 data-en="8. Changes to This Policy" data-he="8. שינויים במדיניות זו">8. Changes to This Policy</h2>
-    <p data-en="As Lot'N'Go develops and launches, this policy will be updated to reflect new data practices. Material changes will be communicated via email to waitlist subscribers." data-he="ככל ש-Lot'N'Go מתפתחת ומשיקה, מדיניות זו תעודכן כדי לשקף פרקטיקות נתונים חדשות. שינויים מהותיים יועברו בדוא"ל למנויי רשימת ההמתנה.">As Lot'N'Go develops and launches, this policy will be updated to reflect new data practices. Material changes will be communicated via email to waitlist subscribers.</p>
-  </div>
-
-  <div class="section-block">
-    <h2 data-en="9. Contact" data-he="9. יצירת קשר">9. Contact</h2>
+    <h2 data-en="6. Contact" data-he="6. יצירת קשר">6. יצירת קשר</h2>
     <div class="contact-card">
-      <p data-en="For any questions about this Privacy Policy:" data-he="לכל שאלה בנוגע למדיניות פרטיות זו:">For any questions about this Privacy Policy:</p>
+      <p data-en="For any privacy concerns:" data-he="לכל נושא הקשור לפרטיות:">לכל נושא הקשור לפרטיות:</p>
       <p><strong>Lot'N'Go</strong></p>
       <p><a href="mailto:contact@lotngo.com">contact@lotngo.com</a></p>
-      <p><a href="https://lotngo.com">lotngo.com</a></p>
     </div>
   </div>
 </div>
@@ -145,11 +135,18 @@ function setLang(lang) {
   document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
   document.querySelector('nav').dir = 'ltr';
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  const activeBtn = document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`);
+  if (activeBtn) activeBtn.classList.add('active');
+  
   document.querySelectorAll('[data-' + lang + ']').forEach(el => {
     el.innerHTML = el.getAttribute('data-' + lang);
   });
 }
+// Set initial language based on document state
+window.onload = () => {
+  const currentLang = document.documentElement.lang || 'he';
+  setLang(currentLang);
+};
 </script>
 </body>
 </html>
