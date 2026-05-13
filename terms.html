@@ -1,125 +1,126 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Use — Lot'N'Go</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --primary: #005bc0; --primary-dim: #004fa9;
-    --primary-container: #d6e4ff;
-    --surface: #f8f9fa; --surface-low: #f1f4f6; --surface-lowest: #ffffff;
-    --on-surface: #1a1e2e; --on-surface-muted: #5a6177;
-    --shadow-ambient: 0 12px 32px -4px rgba(43,52,55,0.07);
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--on-surface); line-height: 1.7; }
-  html[lang="he"] body { font-family: 'Heebo', sans-serif; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use — Lot'N'Go</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #005bc0; --primary-dim: #004fa9;
+      --primary-container: #d6e4ff;
+      --surface: #f8f9fa; --surface-low: #f1f4f6; --surface-lowest: #ffffff;
+      --on-surface: #1a1e2e; --on-surface-muted: #5a6177;
+      --shadow-ambient: 0 12px 32px -4px rgba(43,52,55,0.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: var(--surface); color: var(--on-surface); line-height: 1.7; }
+    html[lang="en"] body { font-family: 'Inter', sans-serif; }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(248,249,250,0.88); backdrop-filter: blur(20px);
-    padding: 0 2rem; height: 70px;
-    display: flex; align-items: center; justify-content: space-between; direction: ltr;
-  }
-  .nav-back { font-size: 0.875rem; font-weight: 500; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
-  .nav-back:hover { opacity: 0.8; }
-  .lang-toggle { display: flex; align-items: center; background: var(--surface-low); border-radius: 8px; overflow: hidden; }
-  .lang-btn { padding: 0.35rem 0.85rem; font-size: 0.8rem; font-weight: 600; border: none; background: transparent; color: var(--on-surface-muted); cursor: pointer; transition: all 0.2s; }
-  .lang-btn.active { background: var(--primary); color: #f7f7ff; border-radius: 8px; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(248,249,250,0.88); backdrop-filter: blur(20px);
+      padding: 0 2rem; height: 70px;
+      display: flex; align-items: center; justify-content: space-between; direction: ltr;
+    }
+    .nav-back { font-size: 0.875rem; font-weight: 500; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+    .nav-back:hover { opacity: 0.8; }
+    .lang-toggle { display: flex; align-items: center; background: var(--surface-low); border-radius: 8px; overflow: hidden; }
+    .lang-btn { padding: 0.35rem 0.85rem; font-size: 0.8rem; font-weight: 600; border: none; background: transparent; color: var(--on-surface-muted); cursor: pointer; transition: all 0.2s; }
+    .lang-btn.active { background: var(--primary); color: #f7f7ff; border-radius: 8px; }
 
-  .page-wrap { max-width: 760px; margin: 0 auto; padding: 7rem 2rem 6rem; }
-  .page-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
-  .page-title { font-family: 'Manrope', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; color: var(--on-surface); margin-bottom: 0.75rem; }
-  html[lang="he"] .page-title { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
-  .page-date { font-size: 0.85rem; color: var(--on-surface-muted); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.07); }
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 7rem 2rem 6rem; }
+    .page-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
+    .page-title { font-family: 'Heebo', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.1; color: var(--on-surface); margin-bottom: 0.75rem; }
+    html[lang="en"] .page-title { font-family: 'Manrope', sans-serif; letter-spacing: -1px; }
+    .page-date { font-size: 0.85rem; color: var(--on-surface-muted); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.07); }
 
-  .section-block { margin-bottom: 2.5rem; }
-  .section-block h2 { font-family: 'Manrope', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--on-surface); margin-bottom: 0.75rem; }
-  html[lang="he"] .section-block h2 { font-family: 'Heebo', sans-serif; }
-  .section-block p { font-size: 0.95rem; color: var(--on-surface-muted); margin-bottom: 0.75rem; line-height: 1.75; }
-  .section-block ul { padding-inline-start: 1.5rem; margin-bottom: 0.75rem; }
-  .section-block ul li { font-size: 0.95rem; color: var(--on-surface-muted); line-height: 1.75; margin-bottom: 0.35rem; }
+    .section-block { margin-bottom: 2.5rem; }
+    .section-block h2 { font-family: 'Heebo', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--on-surface); margin-bottom: 0.75rem; }
+    html[lang="en"] .section-block h2 { font-family: 'Manrope', sans-serif; }
+    .section-block p { font-size: 0.95rem; color: var(--on-surface-muted); margin-bottom: 0.75rem; line-height: 1.75; }
 
-  .highlight-box { background: var(--primary-container); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
-  .highlight-box p { font-size: 0.9rem; color: var(--primary); margin: 0; font-weight: 500; line-height: 1.65; }
+    .highlight-box { background: var(--primary-container); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+    .highlight-box p { font-size: 0.9rem; color: var(--primary); margin: 0; font-weight: 500; line-height: 1.65; }
 
-  .contact-card { background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow-ambient); }
-  .contact-card p { font-size: 0.9rem; color: var(--on-surface-muted); margin-bottom: 0.4rem; }
-  .contact-card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .contact-card { background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow-ambient); }
+    .contact-card p { font-size: 0.9rem; color: var(--on-surface-muted); margin-bottom: 0.4rem; }
+    .contact-card a { color: var(--primary); text-decoration: none; font-weight: 500; }
 
-  footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--on-surface-muted); border-top: 1px solid rgba(0,0,0,0.06); margin-top: 4rem; }
-</style>
+    footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--on-surface-muted); border-top: 1px solid rgba(0,0,0,0.06); margin-top: 4rem; }
+  </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-back">← <span data-en="Back to Lot'N'Go" data-he="חזרה ל-Lot'N'Go">Back to Lot'N'Go</span></a>
+  <a href="index.html" class="nav-back">← <span data-en="Back to Lot'N'Go" data-he="חזרה ל-Lot'N'Go">חזרה ל-Lot'N'Go</span></a>
   <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('he')">עב</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn active" onclick="setLang('he')">עב</button>
   </div>
 </nav>
 
 <div class="page-wrap">
-  <div class="page-label" data-en="Legal" data-he="משפטי">Legal</div>
-  <h1 class="page-title" data-en="Terms of Use" data-he="תנאי שימוש">Terms of Use</h1>
-  <p class="page-date" data-en="Last updated: April 2026 — These terms apply to the Lot'N'Go website (lotngo.com) and its future application." data-he="עודכן לאחרונה: אפריל 2026 — תנאים אלה חלים על אתר Lot'N'Go (lotngo.com) ועל האפליקציה העתידית שלו.">Last updated: April 2026 — These terms apply to the Lot'N'Go website (lotngo.com) and its future application.</p>
+  <div class="page-label" data-en="Legal" data-he="משפטי">משפטי</div>
+  <h1 class="page-title" data-en="Terms of Use" data-he="תנאי שימוש">תנאי שימוש</h1>
+  <p class="page-date" data-en="Last updated: May 2026" data-he="עודכן לאחרונה: מאי 2026">עודכן לאחרונה: מאי 2026</p>
 
   <div class="highlight-box">
-    <p data-en="Lot'N'Go is currently in pre-launch. These terms govern your use of the website and waitlist only. Full terms of service for the application will be published upon launch." data-he="Lot'N'Go נמצאת כרגע בשלב טרום-השקה. תנאים אלה מסדירים את השימוש שלך באתר ורשימת ההמתנה בלבד. תנאי שירות מלאים לאפליקציה יפורסמו עם ההשקה.">Lot'N'Go is currently in pre-launch. These terms govern your use of the website and waitlist only. Full terms of service for the application will be published upon launch.</p>
+    <p data-en="Lot'N'Go is a community parking management tool. By using this website or the application, you agree to these terms and acknowledge that the service is provided by a private individual." data-he="Lot'N'Go היא כלי לניהול חנייה קהילתית. בשימוש באתר או באפליקציה, הנך מסכים לתנאים אלו ומאשר כי ידוע לך שהשירות ניתן על ידי אדם פרטי.">Lot'N'Go היא כלי לניהול חנייה קהילתית. בשימוש באתר או באפליקציה, הנך מסכים לתנאים אלו ומאשר כי ידוע לך שהשירות ניתן על ידי אדם פרטי.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="1. Acceptance of Terms" data-he="1. קבלת התנאים">1. Acceptance of Terms</h2>
-    <p data-en="By accessing lotngo.com or joining the waitlist, you agree to be bound by these Terms of Use. If you do not agree, please do not use the website." data-he="בגישה ל-lotngo.com או בהצטרפות לרשימת ההמתנה, אתה מסכים להיות מחויב לתנאי שימוש אלה. אם אינך מסכים, אנא אל תשתמש באתר.">By accessing lotngo.com or joining the waitlist, you agree to be bound by these Terms of Use. If you do not agree, please do not use the website.</p>
+    <h2 data-en="1. Acceptance of Terms" data-he="1. קבלת התנאים">1. קבלת התנאים</h2>
+    <p data-en="The service is operated by Yotam Golomb ('the Operator'). Accessing the website or registering for the app constitutes your full agreement to these terms. If you do not agree, please cease use immediately." data-he="השירות מופעל על ידי [יותם גולומב] (להלן: 'המפעיל'). הגישה לאתר או הרישום לאפליקציה מהווים הסכמה מלאה לתנאים אלו. אם אינך מסכים, אנא הפסק את השימוש לאלתר.">השירות מופעל על ידי [יותם גולומב] (להלן: 'המפעיל'). הגישה לאתר או הרישום לאפליקציה מהווים הסכמה מלאה לתנאים אלו. אם אינך מסכים, אנא הפסק את השימוש לאלתר.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="2. About the Service" data-he="2. אודות השירות">2. About the Service</h2>
-    <p data-en="Lot'N'Go is a parking-sharing platform under development, designed for residents of residential buildings to voluntarily share their privately assigned parking spots with other verified residents in their building during defined time windows." data-he="Lot'N'Go היא פלטפורמת שיתוף חניות בפיתוח, המיועדת לדיירים בבניינים מגוריים לשתף מרצונם את חניות הרכב המוקצות להם עם דיירים מאומתים אחרים בבניינם בחלונות זמן מוגדרים.">Lot'N'Go is a parking-sharing platform under development, designed for residents of residential buildings to voluntarily share their privately assigned parking spots with other verified residents in their building during defined time windows.</p>
-    <p data-en="The platform facilitates voluntary sharing only. Lot'N'Go is not a parking rental service and no commercial transaction takes place between residents." data-he="הפלטפורמה מאפשרת שיתוף מרצון בלבד. Lot'N'Go אינה שירות השכרת חניות ולא מתבצעת עסקה מסחרית בין דיירים.">The platform facilitates voluntary sharing only. Lot'N'Go is not a parking rental service and no commercial transaction takes place between residents.</p>
+    <h2 data-en="2. Nature of Service" data-he="2. מהות השירות">2. מהות השירות</h2>
+    <p data-en="Lot'N'Go provides a platform for residents to coordinate the sharing of parking spots. The Operator is not a parking provider, an estate agent, or a party to any agreement between residents. The service is a coordination tool only." data-he="Lot'N'Go מספקת פלטפורמה לדיירים לתיאום שיתוף חניות. המפעיל אינו ספק חניה, אינו מתווך ואינו צד לכל הסכם בין דיירים. השירות הוא כלי תיאום בלבד.">Lot'N'Go מספקת פלטפורמה לדיירים לתיאום שיתוף חניות. המפעיל אינו ספק חניה, אינו מתווך ואינו צד לכל הסכם בין דיירים. השירות הוא כלי תיאום בלבד.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="3. Waitlist" data-he="3. רשימת המתנה">3. Waitlist</h2>
-    <p data-en="By submitting your email address to join the waitlist, you consent to receiving a single notification email when the Lot'N'Go service launches. You may request removal at any time by emailing contact@lotngo.com." data-he="בהגשת כתובת האימייל שלך להצטרפות לרשימת ההמתנה, אתה מסכים לקבל אימייל הודעה יחיד כאשר שירות Lot'N'Go משיק. ניתן לבקש הסרה בכל עת על ידי שליחת אימייל ל-contact@lotngo.com.">By submitting your email address to join the waitlist, you consent to receiving a single notification email when the Lot'N'Go service launches. You may request removal at any time by emailing contact@lotngo.com.</p>
+    <h2 data-en="3. Building Bylaws Compliance" data-he="3. כפיפות לתקנון הבית המשותף">3. כפיפות לתקנון הבית המשותף</h2>
+    <p data-en="The right to share a parking spot is subject to your building's specific bylaws and the decisions of the building's committee (Va'ad HaBayit). Users are solely responsible for ensuring their participation does not violate community rules." data-he="הזכות לשתף חניה כפופה לתקנון הבית המשותף ולהחלטות ועד הבית בבניין שלך. המשתמשים אחראים בלעדית לוודא כי השתתפותם אינה מפרה את כללי הקהילה.">הזכות לשתף חניה כפופה לתקנון הבית המשותף ולהחלטות ועד הבית בבניין שלך. המשתמשים אחראים בלעדית לוודא כי השתתפותם אינה מפרה את כללי הקהילה.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="4. Intellectual Property" data-he="4. קניין רוחני">4. Intellectual Property</h2>
-    <p data-en="All content on lotngo.com — including the Lot'N'Go name, logo, design, and text — is the property of Lot'N'Go and is protected under applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without prior written permission." data-he="כל התוכן ב-lotngo.com — לרבות שם Lot'N'Go, הלוגו, העיצוב והטקסט — הם רכושה של Lot'N'Go ומוגנים בחוקי קניין רוחני החלים. אינך רשאי לשכפל, להפיץ או ליצור יצירות נגזרות ללא אישור מראש ובכתב.">All content on lotngo.com — including the Lot'N'Go name, logo, design, and text — is the property of Lot'N'Go and is protected under applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without prior written permission.</p>
+    <h2 data-en="4. Registration & Marketing Site" data-he="4. רישום ואתר שיווקי">4. רישום ואתר שיווקי</h2>
+    <p data-en="When submitting details on the marketing site, you represent that you are a resident or authorized representative of the building. In the app, you must provide accurate data (name, apartment, parking spot location)." data-he="בעת השארת פרטים באתר השיווקי, הנך מצהיר כי אתה דייר או נציג מורשה בבניין. באפליקציה, חלה חובה לספק נתונים מדויקים (שם, דירה, ומיקום חניה).">בעת השארת פרטים באתר השיווקי, הנך מצהיר כי אתה דייר או נציג מורשה בבניין. באפליקציה, חלה חובה לספק נתונים מדויקים (שם, דירה, ומיקום חניה).</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="5. Disclaimer of Warranties" data-he="5. הצהרת אחריות">5. Disclaimer of Warranties</h2>
-    <p data-en="The Lot'N'Go website and any information contained herein are provided on an 'as is' basis without warranties of any kind. We do not guarantee the accuracy, completeness, or availability of the website at any time." data-he="אתר Lot'N'Go וכל מידע הכלול בו מסופקים על בסיס 'כפי שהם' ללא כל אחריות מכל סוג. איננו מתחייבים לדיוק, לשלמות, או לזמינות האתר בכל עת.">The Lot'N'Go website and any information contained herein are provided on an 'as is' basis without warranties of any kind. We do not guarantee the accuracy, completeness, or availability of the website at any time.</p>
+    <h2 data-en="5. User Conduct" data-he="5. התנהגות משתמשים">5. התנהגות משתמשים</h2>
+    <p data-en="Users must not: use the service for unauthorized commercial purposes, harass other residents, or provide false parking availability. The Building Admin or the Operator may suspend access for violations." data-he="המשתמשים מתחייבים שלא: להשתמש בשירות למטרות מסחריות לא מורשות, להטריד דיירים אחרים, או לספק מידע כוזב על חניה. מנהל הבניין או המפעיל רשאים להשעות גישה במקרה של הפרה.">המשתמשים מתחייבים שלא: להשתמש בשירות למטרות מסחריות לא מורשות, להטריד דיירים אחרים, או לספק מידע כוזב על חניה. מנהל הבניין או המפעיל רשאים להשעות גישה במקרה של הפרה.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="6. Limitation of Liability" data-he="6. הגבלת אחריות">6. Limitation of Liability</h2>
-    <p data-en="To the fullest extent permitted by law, Lot'N'Go shall not be liable for any indirect, incidental, or consequential damages arising from your use of, or inability to use, the website or the waitlist service." data-he="במידה המרבית המותרת על פי חוק, Lot'N'Go לא תהיה אחראית לכל נזק עקיף, מקרי או תוצאתי הנובע מהשימוש שלך, או אי-יכולתך להשתמש, באתר או בשירות רשימת ההמתנה.">To the fullest extent permitted by law, Lot'N'Go shall not be liable for any indirect, incidental, or consequential damages arising from your use of, or inability to use, the website or the waitlist service.</p>
+    <h2 data-en="6. Limitation of Liability" data-he="6. הגבלת אחריות">6. הגבלת אחריות</h2>
+    <p data-en="The service is provided 'As-Is'. To the maximum extent permitted by law, the Operator shall not be liable for: (a) Damages to vehicles or property; (b) Personal injury occurring in the parking area; (c) Disputes between neighbors; or (d) Technical failures of the system." data-he="השירות ניתן כמות שהוא (As-Is). במידה המרבית המותרת בחוק, המפעיל לא יהיה אחראי ל: (א) נזקים לרכבים או לרכוש; (ב) פגיעות גוף המתרחשות בשטח החניון; (ג) סכסוכים בין שכנים; או (ד) תקלות טכניות במערכת.">השירות ניתן כמות שהוא (As-Is). במידה המרבית המותרת בחוק, המפעיל לא יהיה אחראי ל: (א) נזקים לרכבים או לרכוש; (ב) פגיעות גוף המתרחשות בשטח החניון; (ג) סכסוכים בין שכנים; או (ד) תקלות טכניות במערכת.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="7. Governing Law" data-he="7. סמכות השיפוט">7. Governing Law</h2>
-    <p data-en="These Terms of Use are governed by the laws of the State of Israel. For users in the European Union, applicable EU consumer protection regulations also apply. Any disputes shall be subject to the exclusive jurisdiction of the competent courts in Israel." data-he="תנאי שימוש אלה כפופים לדיני מדינת ישראל. עבור משתמשים באיחוד האירופי, חלות גם תקנות הגנת הצרכן הרלוונטיות של האיחוד האירופי. כל סכסוך יהיה נתון לסמכות השיפוט הבלעדית של בתי המשפט המוסמכים בישראל.">These Terms of Use are governed by the laws of the State of Israel. For users in the European Union, applicable EU consumer protection regulations also apply. Any disputes shall be subject to the exclusive jurisdiction of the competent courts in Israel.</p>
+    <h2 data-en="7. Indemnification" data-he="7. שיפוי">7. שיפוי</h2>
+    <p data-en="You agree to indemnify and hold the Operator harmless from any claims, losses, or damages arising from your breach of these terms or your interactions with other residents." data-he="הנך מתחייב לשפות את המפעיל בגין כל טענה, הפסד או נזק הנובעים מהפרת תנאים אלו על ידך או מהתנהלותך מול דיירים אחרים.">הנך מתחייב לשפות את המפעיל בגין כל טענה, הפסד או נזק הנובעים מהפרת תנאים אלו על ידך או מהתנהלותך מול דיירים אחרים.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="8. Changes to These Terms" data-he="8. שינויים בתנאים אלה">8. Changes to These Terms</h2>
-    <p data-en="We reserve the right to update these Terms of Use at any time. Continued use of the website following any changes constitutes acceptance of the revised terms. Significant changes will be communicated to waitlist subscribers by email." data-he="אנו שומרים לעצמנו את הזכות לעדכן תנאי שימוש אלה בכל עת. המשך השימוש באתר לאחר כל שינוי מהווה קבלה של התנאים המעודכנים. שינויים משמעותיים יועברו למנויי רשימת ההמתנה בדוא"ל.">We reserve the right to update these Terms of Use at any time. Continued use of the website following any changes constitutes acceptance of the revised terms. Significant changes will be communicated to waitlist subscribers by email.</p>
+    <h2 data-en="8. Termination" data-he="8. הפסקת שירות">8. הפסקת שירות</h2>
+    <p data-en="The Operator reserves the right to modify or discontinue the service at any time without notice. No liability shall arise from such termination." data-he="המפעיל שומר לעצמו את הזכות לשנות או להפסיק את השירות בכל עת ללא הודעה מוקדמת. לא תהיה למפעיל כל אחריות בגין הפסקה כזו.">המפעיל שומר לעצמו את הזכות לשנות או להפסיק את השירות בכל עת ללא הודעה מוקדמת. לא תהיה למפעיל כל אחריות בגין הפסקה כזו.</p>
   </div>
 
   <div class="section-block">
-    <h2 data-en="9. Contact" data-he="9. יצירת קשר">9. Contact</h2>
+    <h2 data-en="9. Governing Law" data-he="9. סמכות שיפוט">9. סמכות שיפוט</h2>
+    <p data-en="These terms are governed by the laws of the State of Israel. Any disputes shall be settled exclusively in the competent courts of Israel." data-he="תנאים אלו כפופים לדיני מדינת ישראל. כל סכסוך יידון בלעדית בבתי המשפט המוסמכים בישראל.">תנאים אלו כפופים לדיני מדינת ישראל. כל סכסוך יידון בלעדית בבתי המשפט המוסמכים בישראל.</p>
+  </div>
+
+  <div class="section-block">
+    <h2 data-en="10. Contact" data-he="10. יצירת קשר">10. יצירת קשר</h2>
     <div class="contact-card">
-      <p data-en="For any questions about these Terms of Use:" data-he="לכל שאלה בנוגע לתנאי שימוש אלה:">For any questions about these Terms of Use:</p>
+      <p data-en="For any legal or technical inquiries:" data-he="לכל שאלה משפטית או טכנית:">לכל שאלה משפטית או טכנית:</p>
       <p><strong>Lot'N'Go</strong></p>
       <p><a href="mailto:contact@lotngo.com">contact@lotngo.com</a></p>
-      <p><a href="https://lotngo.com">lotngo.com</a></p>
     </div>
   </div>
 </div>
@@ -132,11 +133,17 @@ function setLang(lang) {
   document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
   document.querySelector('nav').dir = 'ltr';
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  const activeBtn = document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`);
+  if (activeBtn) activeBtn.classList.add('active');
+  
   document.querySelectorAll('[data-' + lang + ']').forEach(el => {
     el.innerHTML = el.getAttribute('data-' + lang);
   });
 }
+window.onload = () => {
+  const currentLang = document.documentElement.lang || 'he';
+  setLang(currentLang);
+};
 </script>
 </body>
 </html>
