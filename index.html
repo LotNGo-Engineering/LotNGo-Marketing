@@ -151,9 +151,23 @@ html[lang="he"] .spot-card { text-align: right; }
 .chip-offered { background: #d6eddf; color: #1a6b35; }
 .spot-label { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--on-surface); }
 .spot-meta { font-size: 0.8rem; color: var(--on-surface-muted); margin-top: 0.25rem; }
-/* SECTIONS */
+
+/* SECTIONS - DYNAMIC TEXT ALIGNMENT BASED ON LANGUAGE */
 section { padding: 6rem 2rem; }
 .section-inner { max-width: 1040px; margin: 0 auto; }
+
+/* English Alignment (Left-aligned) */
+html[lang="en"] .section-inner,
+html[lang="en"] .carousel-container { text-align: left; }
+html[lang="en"] .section-title,
+html[lang="en"] .section-sub { margin-left: 0; margin-right: auto; }
+
+/* Hebrew Alignment (Right-aligned) */
+html[lang="he"] .section-inner,
+html[lang="he"] .carousel-container { text-align: right; }
+html[lang="he"] .section-title,
+html[lang="he"] .section-sub { margin-right: 0; margin-left: auto; }
+
 .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
 .section-title {
 font-family: 'Manrope', sans-serif;
@@ -162,6 +176,7 @@ letter-spacing: -0.8px; color: var(--on-surface); max-width: 600px; margin-botto
 }
 html[lang="he"] .section-title { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
 .section-sub { font-size: 1rem; color: var(--on-surface-muted); max-width: 520px; line-height: 1.7; margin-bottom: 3rem; }
+
 /* PROBLEM */
 .problem { background: var(--surface-lowest); }
 .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
@@ -170,13 +185,64 @@ html[lang="he"] .section-title { font-family: 'Heebo', sans-serif; letter-spacin
 .problem-card h3 { font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
 html[lang="he"] .problem-card h3 { font-family: 'Heebo', sans-serif; }
 .problem-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
-/* HOW IT WORKS */
-.hiw-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-.step { background: var(--surface-lowest); border-radius: 16px; padding: 2rem; box-shadow: var(--shadow-ambient); }
-.step-num { font-family: 'Manrope', sans-serif; font-size: 3rem; font-weight: 800; color: var(--primary-container); line-height: 1; margin-bottom: 0.75rem; }
-.step h3 { font-family: 'Manrope', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-html[lang="he"] .step h3 { font-family: 'Heebo', sans-serif; }
-.step p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
+
+/* HOW IT WORKS STATIC STEPS ORIGINAL */
+.how-it-works { background: var(--surface-low); }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 4rem; }
+.step-card { text-align: center; background: var(--surface-lowest); border-radius: 24px; padding: 2.5rem 2rem; box-shadow: var(--shadow-ambient); }
+.step-num { font-family: 'Manrope', sans-serif; font-size: 3.5rem; font-weight: 800; color: rgba(0,91,192,0.08); line-height: 1; margin-bottom: 0.5rem; }
+.step-card h3 { font-family: 'Manrope', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+html[lang="he"] .step-card h3 { font-family: 'Heebo', sans-serif; }
+.step-card p { font-size: 0.9rem; color: var(--on-surface-muted); line-height: 1.6; }
+
+/* PRODUCT TOUR CAROUSEL */
+.carousel-section { background: var(--surface-low); padding-top: 4rem; }
+.carousel-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; position: relative; }
+
+/* Keep Step Tab Navigation Buttons always perfectly centered in both languages */
+.carousel-tabs { 
+  display: flex; 
+  justify-content: center !important; 
+  gap: 0.75rem; 
+  flex-wrap: wrap; 
+  margin-bottom: 0.5rem; 
+  width: 100%; 
+}
+
+.carousel-tab-btn { background: var(--surface-lowest); border: 1px solid rgba(0,0,0,0.06); padding: 0.6rem 1.2rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; color: var(--on-surface-muted); cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.carousel-tab-btn.active { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+
+/* Force physical LTR layout container for Left and Right Arrow Buttons placement */
+.carousel-view-wrapper { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  width: 100%; 
+  gap: 1.5rem; 
+  position: relative; 
+  direction: ltr !important; 
+}
+
+/* Align text dynamically according to active window layer rules */
+html[lang="he"] .carousel-main-content { text-align: right; }
+html[lang="en"] .carousel-main-content { text-align: left; }
+
+.carousel-main-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; max-width: 420px; width: 100%; flex-grow: 1; }
+.carousel-text-block { min-height: 100px; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+.carousel-step-title { font-size: 1.3rem; font-weight: 800; color: var(--on-surface); margin-bottom: 0.5rem; }
+.carousel-step-desc { font-size: 0.95rem; color: var(--on-surface-muted); line-height: 1.6; }
+.carousel-phone-frame { width: 100%; max-width: 290px; background: #ffffff; border-radius: 36px; padding: 0px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12), 0 0 1px 1px rgba(0,0,0,0.04); overflow: hidden; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+.carousel-phone-frame img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+/* Arrows Navigation Styling */
+.carousel-nav-btn { background: var(--surface-lowest); border: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-ambient); transition: all 0.2s; z-index: 10; flex-shrink: 0; }
+.carousel-nav-btn:hover { background: var(--primary-container); transform: scale(1.05); }
+
+@media (max-width: 640px) {
+.carousel-view-wrapper { gap: 0.5rem; }
+.carousel-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
+}
+
 /* BENEFITS */
 .benefits { background: var(--surface-lowest); }
 .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
@@ -274,7 +340,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 
 <body>
 
-<!-- NAV -->
 <nav>
 <svg height="58" viewBox="0 0 320 75" xmlns="http://www.w3.org/2000/svg">
 <defs>
@@ -309,7 +374,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <div class="hero-bg"></div>
 <div>
@@ -345,11 +409,10 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
-<!-- PROBLEM -->
 <section class="problem" id="problem">
 <div class="section-inner">
 <div class="section-label" data-en="The Reality" data-he="חניות - החיים עצמם">The Reality</div>
-<h2 class="section-title display-font" data-en="No street parking outside. Yet dozens of empty spots inside." data-he="מצוקת החניה בשכונה אמיתית. הפתרון כבר נמצא בתוך הבניין.">No street parking outside. Yet dozens of empty spots inside.</h2>
+<h2 class="section-title display-font" data-en="No street parking outside. Yet dozens of empty spots inside." data-he="מצוקת חניה בשכונה אמיתית. הפתרון כבר נמצא בתוך הבניין.">No street parking outside. Yet dozens of empty spots inside.</h2>
 <p class="section-sub" data-en="While new developments leave guests and service providers stranded on the street, your building's private, assigned spots sit completely empty during the day." data-he="בזמן שהרחובות בחוץ חסומים ונטולי חניה, עשרות חניות פרטיות בבניין שלכם עומדות ריקות בכל רגע נתון. Lot'N'Go מחברת ביניהן בבטחה.">While new developments leave guests and service providers stranded on the street, your building's private, assigned spots sit completely empty during the day.</p>
 
 <div class="problem-grid">
@@ -380,36 +443,68 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
+<section class="how-it-works" id="how">
 <div class="section-inner">
 <div class="section-label" data-en="How it works" data-he="איך זה עובד">How it works</div>
-<h2 class="section-title display-font" data-en="Three steps to a calmer building." data-he="שלושה צעדים לבניין רגוע יותר.">Three steps to a calmer building.</h2>
-<p class="section-sub" data-en="No registration fees. No complex setup. Just neighbors helping neighbors — with a little help from your phone." data-he="ללא דמי רישום. ללא הגדרות מורכבות. רק שכנים שעוזרים לשכנים — עם קצת עזרה מהטלפון.">No registration fees. No complex setup. Just neighbors helping neighbors — with a little help from your phone.</p>
+<h2 class="section-title display-font" data-en="Three simple steps.<br>Total peace of mind." data-he="שלושה שלבים פשוטים.<br>שקט נפשי מוחלט.">Three simple steps.<br>Total peace of mind.</h2>
+<p class="section-sub" data-en="No hardware, no complex admin. Lot'N'Go sets up your building in 15 minutes, allowing completely fluid integration between neighbors." data-he="ללא התקנת חומרה וללא סיבוכים ניהוליים. Lot'N'Go מחברת את הבניין שלכם ב-15 דקות ומאפשרות שיתוף חניות יעיל וזורם בין השכנים.">No hardware, no complex admin. Lot'N'Go sets up your building in 15 minutes, allowing completely fluid integration between neighbors.</p>
 
-<div class="hiw-steps">
-<div class="step">
+<div class="steps-grid">
+<div class="step-card">
 <div class="step-num">01</div>
-<h3 data-en="Share your window" data-he="שתף את חלון הזמן עבור החניה שלך">Share your window</h3>
-<p data-en="You're out all day. You'll be back at 7. Open the app, tap your spot, set the time window. Done in 20 seconds." data-he="אתה בחוץ כל היום. תחזור ב-7. פתח את האפליקציה, לחץ על החניה שלך, הגדר את חלון הזמן. נגמר תוך 20 שניות.">You're out all day. You'll be back at 7. Open the app, tap your spot, set the time window. Done in 20 seconds.</p>
+<h3 data-en="Share Your Window" data-he="משתפים חלון זמן">Share Your Window</h3>
+<p data-en="Leaving for work or away for the weekend? Open the web app and flag your spot as open for those specific hours. You decide exactly when." data-he="יוצאים לעבודה או נוסעים לסופ&quot;ש? סמנו באפליקציה את השעות שבהן החניה שלכם פנויה. אתם קובעים בדיוק מתי ובאילו תנאים.">Leaving for work or away for the weekend? Open the web app and flag your spot as open for those specific hours. You decide exactly when.</p>
 </div>
 
-<div class="step">
+<div class="step-card">
 <div class="step-num">02</div>
-<h3 data-en="Neighbor gets notified" data-he="השכן מקבל התראה">Neighbor gets notified</h3>
-<p data-en="Residents in your building see available spots in real time. Need a spot for your guest? Reserve it instantly." data-he="הדיירים בבניין שלך רואים חניות פנויות בזמן אמת. צריך חניה לאורח? הזמן מיידית.">Residents in your building see available spots in real time. Need a spot for your guest? Reserve it instantly.</p>
+<h3 data-en="Neighbor Finds & Claims" data-he="השכן מוצא ומשריין">Neighbor Finds & Claims</h3>
+<p data-en="A neighbor expecting a visitor or delivery checks the live dashboard, views the available windows, and claims the spot for their guest instantly." data-he="שכן שמחכה לאורח, טכנאי או משלוח בודק את לוח הזמנים של הבניין, רואה מה פנוי ומשריין את החניה עבור האורח שלו ברגע.">A neighbor expecting a visitor or delivery checks the live dashboard, views the available windows, and claims the spot for their guest instantly.</p>
 </div>
 
-<div class="step">
+<div class="step-card">
 <div class="step-num">03</div>
-<h3 data-en="Everyone wins" data-he="כולם מרוויחים">Everyone wins</h3>
-<p data-en="Your spot gets used. Your neighbor is stress-free. The building feels a little more like a community." data-he="החניה שלך מנוצלת. השכן שלך רגוע. הבניין מרגיש קצת יותר כמו קהילה.">Your spot gets used. Your neighbor is stress-free. The building feels a little more like a community.</p>
+<h3 data-en="Everyone Wins" data-he="כולם מרוויחים מהסדר">Everyone Wins</h3>
+<p data-en="The guest parks safely inside, the street stays clear, and your neighbor is incredibly grateful. Automatic reminders ensure the spot is vacated perfectly on time." data-he="האורח חונה בבטחה בחניון התת-קרקעי, הרחוב נשאר פנוי והשכן מודה לכם מקרב לב. תזכורות אוטומטיות מוודאות שהחניה תתפנה בדיוק בזמן.">The guest parks safely inside, the street stays clear, and your neighbor is incredibly grateful. Automatic reminders ensure the spot is vacated perfectly on time.</p>
 </div>
 </div>
 </div>
 </section>
 
-<!-- BENEFITS -->
+<section class="carousel-section">
+<div class="section-inner">
+<div class="section-label" data-en="Product Tour" data-he="הצצה לאפליקציה">Product Tour</div>
+<h2 class="section-title display-font" data-en="See it in action." data-he="איך זה נראה בפועל?">See it in action.</h2>
+<p class="section-sub" data-en="Swipe through the clean user interface to experience the fluid tracking and scheduling lifecycle." data-he="דפדפו במסכים כדי לראות את ממשק המשתמש הנקי ואת זרימת העבודה הפשוטה של המערכת בזמן אמת.">Swipe through the clean user interface to experience the fluid tracking and scheduling lifecycle.</p>
+
+<div class="carousel-container">
+  <div class="carousel-tabs">
+    <button class="carousel-tab-btn active" onclick="goToStep(0)" data-en="1. Release Spot" data-he="1. שחרור חניה">1. שחרור חניה</button>
+    <button class="carousel-tab-btn" onclick="goToStep(1)" data-en="2. Find Spot" data-he="2. מציאת חניה">2. מציאת חניה</button>
+    <button class="carousel-tab-btn" onclick="goToStep(2)" data-en="3. Claim Spot" data-he="3. שריון מיידי">3. שריון מיידי</button>
+    <button class="carousel-tab-btn" onclick="goToStep(3)" data-en="4. Active Session" data-he="4. מעקב וסדר">4. מעקב וסדר</button>
+  </div>
+
+  <div class="carousel-view-wrapper">
+    <button class="carousel-nav-btn" onclick="navigateCarousel(-1)">❮</button>
+
+    <div class="carousel-main-content">
+      <div class="carousel-text-block">
+        <h3 id="carousel-title" class="carousel-step-title"></h3>
+        <p id="carousel-desc" class="carousel-step-desc"></p>
+      </div>
+
+      <div class="carousel-phone-frame">
+        <img id="carousel-img" src="" alt="App Screenshot">
+      </div>
+    </div>
+
+    <button class="carousel-nav-btn" onclick="navigateCarousel(1)">❯</button>
+  </div>
+</div>
+</div>
+</section>
+
 <section class="benefits" id="benefits">
 <div class="section-inner">
 <div class="section-label" data-en="Why Lot'N'Go" data-he="למה Lot'N'Go">Why Lot'N'Go</div>
@@ -444,7 +539,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
-<!-- FOR WHO -->
 <section id="who">
 <div class="section-inner">
 <div class="section-label" data-en="Who it's for" data-he="למי זה מיועד">Who it's for</div>
@@ -461,7 +555,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <div class="audience-card">
 <div class="audience-badge" data-en="Building Managers" data-he="מנהלי בניינים">Building Managers</div>
 <h3 data-en="Zero administration. Perfect order in the garage." data-he="אפס ניהול, סדר מופתי בחניון התת-קרקעי.">Zero administration. Perfect order in the garage.</h3>
-<p data-en="Instead of dealing with double-parked moving trucks, stranded technicians, and endless complaints in the building's WhatsApp group — the system lets residents self-manage vehicle traffic automatically." data-he="במקום להתעסק עם טכנאים תקועים, משאיות הובלה שחוסמות את הנתיב ותלונות בלתי פוסקות בקבוצת הווטסאפ – המערכת מאפשרת לדיירים לנהל את תנועת הרכבים והספקים בעצמם ..">Instead of dealing with double-parked moving trucks, stranded technicians, and endless complaints in the building's WhatsApp group — the system lets residents self-manage vehicle traffic automatically.</p>
+<p data-en="Instead of dealing with double-parked moving trucks, stranded technicians, and endless complaints in the building's WhatsApp group — the system lets residents self-manage vehicle traffic automatically." data-he="במקום להתעסק עם טכנאים תקועים, משאיות הובלה שחוסמות את הנתיב ותלונות בלתי פוסקות בקבוצת הווטסאפ – המערכת מאפשרת לדיירים לנהל את תנועת הרכבים והספקים בעצמם.">Instead of dealing with double-parked moving trucks, stranded technicians, and endless complaints in the building's WhatsApp group — the system lets residents self-manage vehicle traffic automatically.</p>
 </div>
 
 <div class="audience-card">
@@ -473,7 +567,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
 <div class="section-inner">
 <div class="section-label" data-en="Questions" data-he="שאלות">Questions</div>
@@ -503,7 +596,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <span data-en="What are the advantages for Residents?" data-he="מה היתרונות לדיירים?">What are the advantages for Residents?</span>
 <span class="faq-chevron">▾</span>
 </div>
-<div class="faq-a" data-en="Park stress-free. Share your spot when you're away and help neighbors. Find a free spot in seconds when you need one. No money changes hands, no awkward conversations — just good neighboring made simple." data-he="חניה ללא לחץ. שתף את החניה שלך כשאתה בחוץ וסייע לשכנים. מצא חניה חינם בשניות כשאתה צריך. ללא כסף בין שכנים, ללא שיחות מביכות — רק שכנות טובה שהופכת להיות פשוטה.">Park stress-free. Share your spot when you're away and help neighbors. Find a free spot in seconds when you need one. No money changes hands, no awkward conversations — just good neighboring made simple.</div>
+<div class="faq-a" data-en="Park stress-free. Share your spot when you're away and help neighbors. Find a free spot in seconds when you need one. No money changes hands, no awkward conversations — just good neighboring made simple." data-he="חניה ללא לחץ. שתף את החניה שלך כשאתה בחוץ וסייע לשכנים. מצא חניה חינם בשניות כשאתה צריך. ללא כסף בין שכנים, ללא שיחות מביכות — רק שכנות טובה שהופכת להיות פשוטה.">Park stress-free. Share your spot when you're away and help neighbors. Find a free spot in seconds when you need one. No money changes hands, no awkward conversations — just good neighboring made simple."</div>
 </div>
 
 <div class="faq-item">
@@ -511,7 +604,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <span data-en="What are the advantages for Building Managers & HOAs?" data-he="מה היתרונות למנהלי בניינים וועדים?">What are the advantages for Building Managers & HOAs?</span>
 <span class="faq-chevron">▾</span>
 </div>
-<div class="faq-a" data-en="Less conflict, happier residents, zero management headache. Reduce parking disputes before they start. Show your community you care with a modern, thoughtful amenity. The system runs itself — you just activate it once." data-he="פחות סכסוכים, דיירים מרוצים, אפס כאב ראש ניהול. הפחת סכסוכי חניה עוד לפני שהם מתחילים. הראה לקהילה שלך שאתה דואג עם הטבה מודרנית וחשובה. המערכת עובדת לבד — אתה פשוט מפעיל אותה פעם אחת.">Less conflict, happier residents, zero management headache. Reduce parking disputes before they start. Show your community you care with a modern, thoughtful amenity. The system runs itself — you just activate it once.</div>
+<div class="faq-a" data-en="Less conflict, happier residents, zero management headache. Reduce parking disputes before they start. Show your community you care with a modern, thoughtful amenity. The system runs itself — you just activate it once." data-he="פחות סכסוכים, דיירים מרוצים, אפס כאב ראש ניהולי. הפחת סכסוכי חניה עוד לפני שהם מתחילים. הראה לקהילה שלך שאתה דואג עם הטבה מודרנית וחשובה. המערכת עובדת לבד — אתה פשוט מפעיל אותה פעם אחת.">Less conflict, happier residents, zero management headache. Reduce parking disputes before they start. Show your community you care with a modern, thoughtful amenity. The system runs itself — you just activate it once.</div>
 </div>
 
 <div class="faq-item">
@@ -557,7 +650,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
-<!-- CTA -->
 <section id="join" style="padding: 2rem 0 6rem;">
 
 <div class="cta-banner">
@@ -624,7 +716,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 
 </section>
 
-<!-- FOOTER -->
 <footer>
 <div style="font-family:'Georgia',serif; font-size:2rem; margin-bottom:0.5rem;">
 <span style="font-weight:700; color:#005bc0;">Lot</span><span style="font-weight:400; color:#1a1e2e;">'N'Go</span>
@@ -639,9 +730,73 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </footer>
 
 <script>
+// Carousel Data Structure with matching -HE and -EN file naming suffixes
+let currentCarouselStep = 0;
+const carouselData = [
+  {
+    he: { title: "משחררים את החניה בקלות", desc: "נוסעים לסופ\"ש או יוצאים ליום שלם לעבודה? מסמנים את שעות היעדרות שלכם ישירות מהדפדפן, בלי חפירות בווטסאפ ובלי לבקש טובות." },
+    en: { title: "Release Your Spot in Seconds", desc: "Going away for the weekend or heading to work? Mark your vacancy window directly from your smartphone with no app store download required." },
+    imgHe: "ReleaseSpot-HE.jpeg",
+    imgEn: "ReleaseSpot-EN.jpeg"
+  },
+  {
+    he: { title: "השכנים מוצאים מה פנוי", desc: "צריכים חניה זמנית למשפחה או לטכנאי? הדיירים המאומתים בבניין רואים רשימה נקייה ומעודכנת בזמן אמת של כל החניות הפנויות כרגע." },
+    en: { title: "Neighbors Find Vacant Spots", desc: "Need a temporary space for a guest or plumber? Verified building residents instantly see a clean, real-time list of available private parking windows." },
+    imgHe: "FindSpot-HE.jpeg",
+    imgEn: "FindSpot-EN.jpeg"
+  },
+  {
+    he: { title: "משריינים בלחיצה", desc: "בודקים את תנאי השירות, רואים את מיקום החניה המדויק ומשריינים אותה מיד. המערכת שומרת על פרטיות מלאה של השכנים בבניין." },
+    en: { title: "Claim Legitimate Access", desc: "Review the parameters, verify the exact location inside the garage, and secure the spot with two simple clicks. Perfect order, zero social friction." },
+    imgHe: "ClaimSpot-HE.jpeg",
+    imgEn: "ClaimSpot-EN.jpeg"
+  },
+  {
+    he: { title: "מעקב וסדר בזמן אמת", desc: "אין יותר אי-נעימויות בחניון. האפליקציה מציגה טיימר ספירה לאחור ומזכירה אוטומטית למזמין לפנות את החניה 15 דקות לפני סיום הזמן." },
+    en: { title: "Track Active Sessions Securely", desc: "Never worry about neighbor disputes. The countdown timer keeps everything transparent, firing automated reminders 15 minutes before the time ends." },
+    imgHe: "ActiveSession-HE.jpeg",
+    imgEn: "ActiveSession-EN.jpeg"
+  }
+];
 
+// Main Product Tour Carousel Logic
+function updateCarousel() {
+  const currentLang = document.documentElement.lang || 'he';
+  const step = carouselData[currentCarouselStep];
+  
+  // Update titles and descriptions based on current chosen language
+  document.getElementById('carousel-title').innerHTML = step[currentLang].title;
+  document.getElementById('carousel-desc').innerHTML = step[currentLang].desc;
+  
+  // Fetch matching image suffix dynamically based on language choice
+  const imageSource = currentLang === 'he' ? step.imgHe : step.imgEn;
+  document.getElementById('carousel-img').src = imageSource;
+  
+  // Update visual state indicators of tab layout row
+  const tabs = document.querySelectorAll('.carousel-tab-btn');
+  tabs.forEach((tab, index) => {
+    if (index === currentCarouselStep) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+}
 
-// Set Language Function
+function goToStep(index) {
+  currentCarouselStep = index;
+  updateCarousel();
+}
+
+// Custom step advancement index handler
+function navigateCarousel(direction) {
+  currentCarouselStep += direction;
+  if (currentCarouselStep >= carouselData.length) currentCarouselStep = 0;
+  if (currentCarouselStep < 0) currentCarouselStep = carouselData.length - 1;
+  updateCarousel();
+}
+
+// Modified Language Switcher that keeps image references intact while updating elements
 function setLang(lang) {
 document.documentElement.lang = lang;
 document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
@@ -656,11 +811,15 @@ else { el.innerHTML = val; }
 document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
 el.placeholder = el.getAttribute('data-placeholder-' + lang);
 });
-// Store the language preference
+
+// Update carousel viewport state smoothly when active language flips
+updateCarousel();
+
+// Track language choice inside storage boundaries
 localStorage.setItem('lotngo-lang', lang);
 }
 
-// FAQ Accordion functionality
+// FAQ Collapse / Expand trigger functions
 document.querySelectorAll('.faq-item .faq-q').forEach(question => {
 question.addEventListener('click', function() {
 const faqItem = this.closest('.faq-item');
@@ -678,19 +837,18 @@ const apartments = document.getElementById('waitlist-apartments').value.trim();
 const email = document.getElementById('waitlist-email').value.trim();
 const phone = document.getElementById('waitlist-phone').value.trim();
 
-// Clear previous error states
+// Reset error feedback styling
 document.querySelectorAll('.form-input').forEach(input => {
 input.classList.remove('error');
 });
 
 let hasError = false;
 
-// Validation patterns
+// Basic structures validation
 const namePattern = /^[a-zA-Z\s'-]+$/;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const streetNumberPattern = /^\d+$/;
 
-// Validate First Name
 if (!firstName) {
 document.getElementById('waitlist-firstName').classList.add('error');
 hasError = true;
@@ -699,7 +857,6 @@ document.getElementById('waitlist-firstName').classList.add('error');
 hasError = true;
 }
 
-// Validate Last Name
 if (!lastName) {
 document.getElementById('waitlist-lastName').classList.add('error');
 hasError = true;
@@ -708,25 +865,21 @@ document.getElementById('waitlist-lastName').classList.add('error');
 hasError = true;
 }
 
-// Validate City (Mandatory)
 if (!city) {
 document.getElementById('waitlist-city').classList.add('error');
 hasError = true;
 }
 
-// Validate Street (Mandatory)
 if (!street) {
 document.getElementById('waitlist-street').classList.add('error');
 hasError = true;
 }
 
-// Validate Street Number
 if (streetNum && !streetNumberPattern.test(streetNum)) {
 document.getElementById('waitlist-streetNum').classList.add('error');
 hasError = true;
 }
 
-// Validate Email
 if (!email) {
 document.getElementById('waitlist-email').classList.add('error');
 hasError = true;
@@ -735,7 +888,6 @@ document.getElementById('waitlist-email').classList.add('error');
 hasError = true;
 }
 
-// Validate Phone
 if (!phone) {
 document.getElementById('waitlist-phone').classList.add('error');
 hasError = true;
@@ -786,11 +938,10 @@ alert('There was an error submitting the form. Please try again.');
 </script>
 
 <script>
-// Load static data from JSON files
+// Load async data properties
 let citiesData = [];
 let streetsData = {};
 
-// Populate datalist from data
 const populateDataList = (id, items = []) => {
   const datalist_element = document.getElementById(id);
   if (!datalist_element) {
@@ -801,7 +952,6 @@ const populateDataList = (id, items = []) => {
   datalist_element.innerHTML = html || '<option value="">';
 };
 
-// Load cities and streets data
 const loadData = async () => {
   try {
     const citiesResponse = await fetch('data-cities.json');
@@ -816,18 +966,17 @@ const loadData = async () => {
   }
 };
 
-// Load saved language or default to Hebrew
 window.addEventListener('load', async function() {
   const savedLang = localStorage.getItem('lotngo-lang') || 'he';
   setLang(savedLang);
 
-  // Load data from JSON files
+  // Run carousel layout state synchronization setup mapping logic loops early
+  updateCarousel();
+
   await loadData();
 
-  // Populate cities datalist
   populateDataList('waitlist-cities-data', citiesData);
 
-  // Load streets when city changes
   const cityInput = document.getElementById('waitlist-city');
   cityInput.addEventListener('change', (event) => {
     const selectedCity = cityInput.value.trim();
@@ -845,7 +994,6 @@ window.addEventListener('load', async function() {
     }
   });
 
-  // Also listen to input event for real-time updates
   cityInput.addEventListener('input', (event) => {
     console.log('City input changed (real-time):', cityInput.value);
   });
