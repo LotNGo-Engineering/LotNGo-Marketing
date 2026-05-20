@@ -33,50 +33,220 @@ overflow-x: hidden;
 html[lang="he"] body { font-family: 'Heebo', sans-serif; }
 html[lang="he"] .display-font { font-family: 'Heebo', sans-serif; }
 .display-font { font-family: 'Manrope', sans-serif; }
-/* NAV */
+
+/* NAV & RESPONSIVE TOP BAR */
 nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-background: rgba(248,249,250,0.82);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-padding: 0 2rem;
-height: 70px;
-display: flex; align-items: center; justify-content: space-between;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(248,249,250,0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0 1.5rem;
+  height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
 }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
+nav > svg {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.nav-links { 
+  display: flex; 
+  gap: 1.5rem; 
+  align-items: center; 
+}
 .nav-links a {
-font-size: 0.875rem; font-weight: 500;
-color: var(--on-surface-muted); text-decoration: none;
-transition: color 0.2s;
+  font-size: 0.875rem; font-weight: 500;
+  color: var(--on-surface-muted); text-decoration: none;
+  transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--primary); }
 .btn-nav {
-background: linear-gradient(135deg, var(--primary), var(--primary-dim));
-color: #f7f7ff !important;
-padding: 0.5rem 1.25rem; border-radius: 8px;
-font-size: 0.875rem; font-weight: 600;
-text-decoration: none; border: none; cursor: pointer;
-transition: opacity 0.2s;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+  color: #f7f7ff !important;
+  padding: 0.5rem 1rem; border-radius: 8px;
+  font-size: 0.875rem; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
 }
 .btn-nav:hover { opacity: 0.9; }
+
 /* LANG TOGGLE */
 .lang-toggle {
-display: flex; align-items: center; gap: 0;
-background: var(--surface-low);
-border-radius: 8px; overflow: hidden;
+  display: flex; align-items: center; gap: 0;
+  background: var(--surface-low);
+  border-radius: 8px; overflow: hidden;
+  flex-shrink: 0;
 }
 .lang-btn {
-padding: 0.35rem 0.85rem;
-font-size: 0.8rem; font-weight: 600;
-border: none; background: transparent;
-color: var(--on-surface-muted); cursor: pointer;
-transition: all 0.2s;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem; font-weight: 600;
+  border: none; background: transparent;
+  color: var(--on-surface-muted); cursor: pointer;
+  transition: all 0.2s;
 }
 .lang-btn.active {
-background: var(--primary);
-color: #f7f7ff;
-border-radius: 8px;
+  background: var(--primary);
+  color: #f7f7ff;
+  border-radius: 8px;
 }
+
+/* MOBILE RESPONSIVE FIXES */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 0.75rem;
+  }
+  
+  /* Hide 'How it works' and 'Benefits', but KEEP the FAQ link visible */
+  .nav-links a:not(.btn-nav):not([href="#faq"]) {
+    display: none;
+  }
+  
+  /* Tighten gaps between items to make sure they fit */
+  .nav-links {
+    gap: 0.6rem;
+  }
+  
+  /* Make the FAQ link font slightly more compact and clean on mobile */
+  .nav-links a[href="#faq"] {
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  /* Make the button slightly more compact */
+  .btn-nav {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Downscale the logo slightly and shift its scaling anchor based on reading layout */
+  nav > svg {
+    transform: scale(0.8);
+    max-width: 140px;
+  }
+  
+  html[lang="he"] nav > svg {
+    transform-origin: right center;
+  }
+  html[lang="en"] nav > svg {
+    transform-origin: left center;
+  }
+}
+
+/* Ultra-narrow screen adjustment (below 360px width) */
+@media (max-width: 360px) {
+  .nav-links {
+    gap: 0.4rem;
+  }
+  .nav-links a[href="#faq"] {
+    display: none;
+  }
+}
+
+/* SPOT CARDS */
+.hero-visual { margin: 4rem auto 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 500px; }
+.spot-card { background: var(--surface-lowest); border-radius: 16px; padding: 1.25rem 1.5rem; box-shadow: var(--shadow-ambient); min-width: 160px; text-align: left; }
+html[lang="he"] .spot-card { text-align: right; }
+.spot-chip { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 100px; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.chip-available { background: var(--primary-container); color: var(--primary); }
+.chip-offered { background: #d6eddf; color: #1a6b35; }
+.spot-label { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--on-surface); }
+.spot-meta { font-size: 0.8rem; color: var(--on-surface-muted); margin-top: 0.25rem; }
+
+/* SECTIONS - DYNAMIC TEXT ALIGNMENT BASED ON LANGUAGE */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1040px; margin: 0 auto; }
+
+/* English Alignment (Left-aligned) */
+html[lang="en"] .section-inner,
+html[lang="en"] .carousel-container { text-align: left; }
+html[lang="en"] .section-title,
+html[lang="en"] .section-sub { margin-left: 0; margin-right: auto; }
+
+/* Hebrew Alignment (Right-aligned) */
+html[lang="he"] .section-inner,
+html[lang="he"] .carousel-container { text-align: right; }
+html[lang="he"] .section-title,
+html[lang="he"] .section-sub { margin-right: 0; margin-left: auto; }
+
+.section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
+.section-title {
+font-family: 'Manrope', sans-serif;
+font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.12;
+letter-spacing: -0.8px; color: var(--on-surface); max-width: 600px; margin-bottom: 1rem;
+}
+html[lang="he"] .section-title { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
+.section-title .accent { color: var(--primary); }
+.section-sub { font-size: 1rem; color: var(--on-surface-muted); max-width: 520px; line-height: 1.7; margin-bottom: 3rem; }
+
+/* PROBLEM */
+.problem { background: var(--surface-lowest); }
+.problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.problem-card { background: var(--surface-low); border-radius: 16px; padding: 1.75rem; }
+.problem-icon { font-size: 1.5rem; margin-bottom: 1rem; width: 48px; height: 48px; background: var(--primary-container); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.problem-card h3 { font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+html[lang="he"] .problem-card h3 { font-family: 'Heebo', sans-serif; }
+.problem-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
+
+/* HOW IT WORKS STATIC STEPS ORIGINAL */
+.how-it-works { background: var(--surface-low); }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 4rem; }
+.step-card { text-align: center; background: var(--surface-lowest); border-radius: 24px; padding: 2.5rem 2rem; box-shadow: var(--shadow-ambient); }
+.step-num { font-family: 'Manrope', sans-serif; font-size: 3.5rem; font-weight: 800; color: rgba(0,91,192,0.08); line-height: 1; margin-bottom: 0.5rem; }
+.step-card h3 { font-family: 'Manrope', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+html[lang="he"] .step-card h3 { font-family: 'Heebo', sans-serif; }
+.step-card p { font-size: 0.9rem; color: var(--on-surface-muted); line-height: 1.6; }
+
+/* PRODUCT TOUR CAROUSEL */
+.carousel-section { background: var(--surface-low); padding-top: 4rem; }
+.carousel-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; position: relative; }
+.carousel-tabs { display: flex; justify-content: center !important; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.5rem; width: 100%; }
+.carousel-tab-btn { background: var(--surface-lowest); border: 1px solid rgba(0,0,0,0.06); padding: 0.6rem 1.2rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; color: var(--on-surface-muted); cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.carousel-tab-btn.active { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.carousel-view-wrapper { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 1.5rem; position: relative; direction: ltr !important; }
+html[lang="he"] .carousel-main-content { text-align: right; }
+html[lang="en"] .carousel-main-content { text-align: left; }
+.carousel-main-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; max-width: 420px; width: 100%; flex-grow: 1; }
+.carousel-text-block { min-height: 100px; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+.carousel-step-title { font-size: 1.3rem; font-weight: 800; color: var(--on-surface); margin-bottom: 0.5rem; }
+.carousel-step-desc { font-size: 0.95rem; color: var(--on-surface-muted); line-height: 1.6; }
+.carousel-phone-frame { width: 100%; max-width: 290px; background: #ffffff; border-radius: 36px; padding: 0px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12), 0 0 1px 1px rgba(0,0,0,0.04); overflow: hidden; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+.carousel-phone-frame img { width: 100%; height: auto; display: block; object-fit: contain; }
+.carousel-nav-btn { background: var(--surface-lowest); border: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-ambient); transition: all 0.2s; z-index: 10; flex-shrink: 0; }
+.carousel-nav-btn:hover { background: var(--primary-container); transform: scale(1.05); }
+
+@media (max-width: 640px) {
+.carousel-view-wrapper { gap: 0.5rem; }
+.carousel-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
+}
+
+/* BENEFITS */
+.benefits { background: var(--surface-lowest); }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+.benefit-card { background: var(--surface-low); border-radius: 16px; padding: 1.75rem; }
+.benefit-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-dim)); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.1rem; }
+.benefit-card h3 { font-family: 'Manrope', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+html[lang="he"] .benefit-card h3 { font-family: 'Heebo', sans-serif; }
+.benefit-card p { font-size: 0.83rem; color: var(--on-surface-muted); line-height: 1.6; }
+
+/* AUDIENCE */
+.audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.audience-card { background: var(--surface-lowest); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-ambient); }
+.audience-badge { display: inline-block; background: var(--primary-container); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
+.audience-card h3 { font-family: 'Manrope', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+html[lang="he"] .audience-card h3 { font-family: 'Heebo', sans-serif; }
+.audience-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.65; }
+
+/* FAQ */
+.faq-list { max-width: 680px; }
+.faq-item { background: var(--surface-lowest); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: var(--shadow-ambient); cursor: pointer; }
+.faq-q { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; }
+html[lang="he"] .faq-q { font-family: 'Heebo', sans-serif; }
+.faq-chevron { color: var(--primary); font-size: 1rem; transition: transform 0.2s; display: inline-block; }
+.faq-a { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.7; margin-top: 0.75rem; display: none; }
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+
 /* HERO */
 .hero {
 min-height: 100vh;
@@ -142,131 +312,7 @@ text-decoration: none; border: none; cursor: pointer;
 box-shadow: var(--shadow-ambient); transition: background 0.2s; display: inline-block;
 }
 .btn-secondary:hover { background: var(--secondary-container); }
-/* SPOT CARDS */
-.hero-visual { margin: 4rem auto 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 500px; }
-.spot-card { background: var(--surface-lowest); border-radius: 16px; padding: 1.25rem 1.5rem; box-shadow: var(--shadow-ambient); min-width: 160px; text-align: left; }
-html[lang="he"] .spot-card { text-align: right; }
-.spot-chip { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 100px; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
-.chip-available { background: var(--primary-container); color: var(--primary); }
-.chip-offered { background: #d6eddf; color: #1a6b35; }
-.spot-label { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--on-surface); }
-.spot-meta { font-size: 0.8rem; color: var(--on-surface-muted); margin-top: 0.25rem; }
 
-/* SECTIONS - DYNAMIC TEXT ALIGNMENT BASED ON LANGUAGE */
-section { padding: 6rem 2rem; }
-.section-inner { max-width: 1040px; margin: 0 auto; }
-
-/* English Alignment (Left-aligned) */
-html[lang="en"] .section-inner,
-html[lang="en"] .carousel-container { text-align: left; }
-html[lang="en"] .section-title,
-html[lang="en"] .section-sub { margin-left: 0; margin-right: auto; }
-
-/* Hebrew Alignment (Right-aligned) */
-html[lang="he"] .section-inner,
-html[lang="he"] .carousel-container { text-align: right; }
-html[lang="he"] .section-title,
-html[lang="he"] .section-sub { margin-right: 0; margin-left: auto; }
-
-.section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.75rem; }
-.section-title {
-font-family: 'Manrope', sans-serif;
-font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.12;
-letter-spacing: -0.8px; color: var(--on-surface); max-width: 600px; margin-bottom: 1rem;
-}
-html[lang="he"] .section-title { font-family: 'Heebo', sans-serif; letter-spacing: 0; }
-.section-sub { font-size: 1rem; color: var(--on-surface-muted); max-width: 520px; line-height: 1.7; margin-bottom: 3rem; }
-
-/* PROBLEM */
-.problem { background: var(--surface-lowest); }
-.problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-.problem-card { background: var(--surface-low); border-radius: 16px; padding: 1.75rem; }
-.problem-icon { font-size: 1.5rem; margin-bottom: 1rem; width: 48px; height: 48px; background: var(--primary-container); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-.problem-card h3 { font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-html[lang="he"] .problem-card h3 { font-family: 'Heebo', sans-serif; }
-.problem-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.6; }
-
-/* HOW IT WORKS STATIC STEPS ORIGINAL */
-.how-it-works { background: var(--surface-low); }
-.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 4rem; }
-.step-card { text-align: center; background: var(--surface-lowest); border-radius: 24px; padding: 2.5rem 2rem; box-shadow: var(--shadow-ambient); }
-.step-num { font-family: 'Manrope', sans-serif; font-size: 3.5rem; font-weight: 800; color: rgba(0,91,192,0.08); line-height: 1; margin-bottom: 0.5rem; }
-.step-card h3 { font-family: 'Manrope', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
-html[lang="he"] .step-card h3 { font-family: 'Heebo', sans-serif; }
-.step-card p { font-size: 0.9rem; color: var(--on-surface-muted); line-height: 1.6; }
-
-/* PRODUCT TOUR CAROUSEL */
-.carousel-section { background: var(--surface-low); padding-top: 4rem; }
-.carousel-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; position: relative; }
-
-/* Keep Step Tab Navigation Buttons always perfectly centered in both languages */
-.carousel-tabs { 
-  display: flex; 
-  justify-content: center !important; 
-  gap: 0.75rem; 
-  flex-wrap: wrap; 
-  margin-bottom: 0.5rem; 
-  width: 100%; 
-}
-
-.carousel-tab-btn { background: var(--surface-lowest); border: 1px solid rgba(0,0,0,0.06); padding: 0.6rem 1.2rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; color: var(--on-surface-muted); cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-.carousel-tab-btn.active { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
-
-/* Force physical LTR layout container for Left and Right Arrow Buttons placement */
-.carousel-view-wrapper { 
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
-  width: 100%; 
-  gap: 1.5rem; 
-  position: relative; 
-  direction: ltr !important; 
-}
-
-/* Align text dynamically according to active window layer rules */
-html[lang="he"] .carousel-main-content { text-align: right; }
-html[lang="en"] .carousel-main-content { text-align: left; }
-
-.carousel-main-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; max-width: 420px; width: 100%; flex-grow: 1; }
-.carousel-text-block { min-height: 100px; display: flex; flex-direction: column; justify-content: center; width: 100%; }
-.carousel-step-title { font-size: 1.3rem; font-weight: 800; color: var(--on-surface); margin-bottom: 0.5rem; }
-.carousel-step-desc { font-size: 0.95rem; color: var(--on-surface-muted); line-height: 1.6; }
-.carousel-phone-frame { width: 100%; max-width: 290px; background: #ffffff; border-radius: 36px; padding: 0px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12), 0 0 1px 1px rgba(0,0,0,0.04); overflow: hidden; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
-.carousel-phone-frame img { width: 100%; height: auto; display: block; object-fit: contain; }
-
-/* Arrows Navigation Styling */
-.carousel-nav-btn { background: var(--surface-lowest); border: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-ambient); transition: all 0.2s; z-index: 10; flex-shrink: 0; }
-.carousel-nav-btn:hover { background: var(--primary-container); transform: scale(1.05); }
-
-@media (max-width: 640px) {
-.carousel-view-wrapper { gap: 0.5rem; }
-.carousel-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
-}
-
-/* BENEFITS */
-.benefits { background: var(--surface-lowest); }
-.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
-.benefit-card { background: var(--surface-low); border-radius: 16px; padding: 1.75rem; }
-.benefit-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-dim)); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.1rem; }
-.benefit-card h3 { font-family: 'Manrope', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
-html[lang="he"] .benefit-card h3 { font-family: 'Heebo', sans-serif; }
-.benefit-card p { font-size: 0.83rem; color: var(--on-surface-muted); line-height: 1.6; }
-/* AUDIENCE */
-.audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.audience-card { background: var(--surface-lowest); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-ambient); }
-.audience-badge { display: inline-block; background: var(--primary-container); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
-.audience-card h3 { font-family: 'Manrope', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
-html[lang="he"] .audience-card h3 { font-family: 'Heebo', sans-serif; }
-.audience-card p { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.65; }
-/* FAQ */
-.faq-list { max-width: 680px; }
-.faq-item { background: var(--surface-lowest); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: var(--shadow-ambient); cursor: pointer; }
-.faq-q { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; }
-html[lang="he"] .faq-q { font-family: 'Heebo', sans-serif; }
-.faq-chevron { color: var(--primary); font-size: 1rem; transition: transform 0.2s; display: inline-block; }
-.faq-a { font-size: 0.875rem; color: var(--on-surface-muted); line-height: 1.7; margin-top: 0.75rem; display: none; }
-.faq-item.open .faq-a { display: block; }
-.faq-item.open .faq-chevron { transform: rotate(180deg); }
 /* CTA BANNER */
 .cta-banner { background: linear-gradient(135deg, var(--primary), var(--primary-dim)); border-radius: 24px; padding: 3rem 2rem; text-align: center; max-width: 960px; margin-left: auto; margin-right: auto; }
 .cta-banner h2 { font-family: 'Manrope', sans-serif; font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800; color: var(--on-primary); margin-bottom: 1rem; }
@@ -328,6 +374,7 @@ font-family: 'Inter', sans-serif;
 transition: opacity 0.2s;
 }
 .waitlist-submit:hover { opacity: 0.9; }
+
 /* FOOTER */
 footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: center; }
 .footer-tagline { font-size: 0.85rem; color: var(--on-surface-muted); margin-bottom: 1.5rem; margin-top: 0.4rem; }
@@ -360,11 +407,10 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <text x="71" y="58" font-family="Arial,sans-serif" font-size="7.5" fill="#5a6177" letter-spacing="2">PARK WITH PURPOSE</text>
 </svg>
 
-<div style="display:flex; align-items:center; gap:1.5rem;">
 <div class="nav-links">
 <a href="#how" data-en="How it works" data-he="איך זה עובד">How it works</a>
 <a href="#benefits" data-en="Benefits" data-he="יתרונות">Benefits</a>
-<a href="#faq" data-en="FAQ" data-he="שאלות נפוצות">FAQ</a>
+<a href="#faq" data-en="FAQ" data-he="FAQ">FAQ</a>
 <a href="#join" class="btn-nav" data-en="Get the app" data-he="הצטרפו עכשיו">Get the app</a>
 
 <div class="lang-toggle">
@@ -652,22 +698,18 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </section>
 
 <section id="join" style="padding: 2rem 0 6rem;">
-
 <div class="cta-banner">
-
 <h2 class="display-font" data-en="Be the first to bring Lot'N'Go to your building." data-he="היו הראשונים להביא את Lot'N'Go לבניין שלכם.">Be the first to bring Lot'N'Go to your building.</h2>
-
 <p data-en="We're launching soon. Leave your email and we'll reach out when it's ready — no spam, just one message." data-he="אנחנו משיקים בקרוב. השאירו אימייל ונחזור אליכם כשמוכן — ללא ספאם, רק הודעה אחת.">We're launching soon. Leave your email and we'll reach out when it's ready — no spam, just one message.</p>
 
 <div id="waitlist-form">
-
 <div class="form-group">
 <label class="form-label" data-en="First Name" data-he="שם פרטי">First Name</label>
 <input type="text" id="waitlist-firstName" class="form-input" placeholder="John" data-placeholder-en="John" data-placeholder-he="יוחנן"/>
 </div>
 
 <div class="form-group">
-<label class="form-label" data-en="Last Name" data-he="שם משחפה">Last Name</label>
+<label class="form-label" data-en="Last Name" data-he="שם משפחה">Last Name</label>
 <input type="text" id="waitlist-lastName" class="form-input" placeholder="Doe" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
 </div>
 
@@ -708,13 +750,10 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 
 <button onclick="submitWaitlist()" class="waitlist-submit" data-en="Join the waitlist" data-he="הצטרפו לרשימת ההמתנה">Join the waitlist</button>
-
 </div>
 
 <div id="waitlist-thanks" style="display:none; color:#f7f7ff; font-size:1rem; font-weight:600; margin-top:1rem;" data-en="✓ You're on the list! We'll be in touch." data-he="✓ אתם ברשימה! נחזור אליכם בקרוב.">✓ You're on the list! We'll be in touch.</div>
-
 </div>
-
 </section>
 
 <footer>
@@ -731,7 +770,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </footer>
 
 <script>
-// Carousel Data Structure with matching -HE and -EN file naming suffixes
 let currentCarouselStep = 0;
 const carouselData = [
   {
@@ -760,20 +798,16 @@ const carouselData = [
   }
 ];
 
-// Main Product Tour Carousel Logic
 function updateCarousel() {
   const currentLang = document.documentElement.lang || 'he';
   const step = carouselData[currentCarouselStep];
   
-  // Update titles and descriptions based on current chosen language
   document.getElementById('carousel-title').innerHTML = step[currentLang].title;
   document.getElementById('carousel-desc').innerHTML = step[currentLang].desc;
   
-  // Fetch matching image suffix dynamically based on language choice
   const imageSource = currentLang === 'he' ? step.imgHe : step.imgEn;
   document.getElementById('carousel-img').src = imageSource;
   
-  // Update visual state indicators of tab layout row
   const tabs = document.querySelectorAll('.carousel-tab-btn');
   tabs.forEach((tab, index) => {
     if (index === currentCarouselStep) {
@@ -789,7 +823,6 @@ function goToStep(index) {
   updateCarousel();
 }
 
-// Custom step advancement index handler
 function navigateCarousel(direction) {
   currentCarouselStep += direction;
   if (currentCarouselStep >= carouselData.length) currentCarouselStep = 0;
@@ -797,7 +830,6 @@ function navigateCarousel(direction) {
   updateCarousel();
 }
 
-// Modified Language Switcher that keeps image references intact while updating elements
 function setLang(lang) {
 document.documentElement.lang = lang;
 document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
@@ -813,14 +845,10 @@ document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
 el.placeholder = el.getAttribute('data-placeholder-' + lang);
 });
 
-// Update carousel viewport state smoothly when active language flips
 updateCarousel();
-
-// Track language choice inside storage boundaries
 localStorage.setItem('lotngo-lang', lang);
 }
 
-// FAQ Collapse / Expand trigger functions
 document.querySelectorAll('.faq-item .faq-q').forEach(question => {
 question.addEventListener('click', function() {
 const faqItem = this.closest('.faq-item');
@@ -838,14 +866,11 @@ const apartments = document.getElementById('waitlist-apartments').value.trim();
 const email = document.getElementById('waitlist-email').value.trim();
 const phone = document.getElementById('waitlist-phone').value.trim();
 
-// Reset error feedback styling
 document.querySelectorAll('.form-input').forEach(input => {
 input.classList.remove('error');
 });
 
 let hasError = false;
-
-// Basic structures validation
 const namePattern = /^[a-zA-Z\s'-]+$/;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const streetNumberPattern = /^\d+$/;
@@ -853,15 +878,9 @@ const streetNumberPattern = /^\d+$/;
 if (!firstName) {
 document.getElementById('waitlist-firstName').classList.add('error');
 hasError = true;
-} else if (!namePattern.test(firstName)) {
-document.getElementById('waitlist-firstName').classList.add('error');
-hasError = true;
 }
 
 if (!lastName) {
-document.getElementById('waitlist-lastName').classList.add('error');
-hasError = true;
-} else if (!namePattern.test(lastName)) {
 document.getElementById('waitlist-lastName').classList.add('error');
 hasError = true;
 }
@@ -939,16 +958,12 @@ alert('There was an error submitting the form. Please try again.');
 </script>
 
 <script>
-// Load async data properties
 let citiesData = [];
 let streetsData = {};
 
 const populateDataList = (id, items = []) => {
   const datalist_element = document.getElementById(id);
-  if (!datalist_element) {
-    console.log("Datalist with id", id, "doesn't exist in the document, aborting");
-    return;
-  }
+  if (!datalist_element) return;
   const html = items.map(item => `<option value="${item}">`).join("\n");
   datalist_element.innerHTML = html || '<option value="">';
 };
@@ -957,11 +972,8 @@ const loadData = async () => {
   try {
     const citiesResponse = await fetch('data-cities.json');
     citiesData = await citiesResponse.json();
-    console.log(`Loaded ${citiesData.length} cities`);
-
     const streetsResponse = await fetch('data-streets.json');
     streetsData = await streetsResponse.json();
-    console.log(`Loaded streets for ${Object.keys(streetsData).length} cities`);
   } catch (error) {
     console.error('Error loading data:', error);
   }
@@ -970,33 +982,18 @@ const loadData = async () => {
 window.addEventListener('load', async function() {
   const savedLang = localStorage.getItem('lotngo-lang') || 'he';
   setLang(savedLang);
-
-  // Run carousel layout state synchronization setup mapping logic loops early
   updateCarousel();
-
   await loadData();
-
   populateDataList('waitlist-cities-data', citiesData);
 
   const cityInput = document.getElementById('waitlist-city');
   cityInput.addEventListener('change', (event) => {
     const selectedCity = cityInput.value.trim();
-    console.log('City changed:', selectedCity);
-
     if (selectedCity && streetsData[selectedCity]) {
-      console.log(`Fetching ${streetsData[selectedCity].length} streets for city:`, selectedCity);
       populateDataList('waitlist-streets-data', streetsData[selectedCity]);
-    } else if (selectedCity) {
-      console.log('No streets found for city:', selectedCity);
-      populateDataList('waitlist-streets-data', []);
     } else {
-      console.log('City input is empty');
       populateDataList('waitlist-streets-data', []);
     }
-  });
-
-  cityInput.addEventListener('input', (event) => {
-    console.log('City input changed (real-time):', cityInput.value);
   });
 });
 </script>
