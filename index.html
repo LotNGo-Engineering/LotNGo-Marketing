@@ -387,42 +387,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 
 <body>
 
-  <nav>
-  <svg height="58" viewBox="0 0 320 75" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="navGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#005bc0"/>
-        <stop offset="100%" style="stop-color:#004fa9"/>
-      </linearGradient>
-    </defs>
-    <rect x="0" y="2" width="58" height="58" rx="14" fill="url(#navGrad)"/>
-    <text x="29" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="36" font-weight="700" fill="#f7f7ff">P</text>
-    <circle cx="50" cy="58" r="11" fill="#ffffff"/>
-    <path d="M44 58 L50 52 L50 55.5 L57 55.5 L57 60.5 L50 60.5 L50 64 Z" fill="#005bc0"/>
-    <text x="70" y="42" font-family="Georgia,serif" font-size="30" font-weight="700" fill="#005bc0">Lot</text>
-    <text x="122" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">'</text>
-    <text x="130" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">N</text>
-    <text x="155" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">'</text>
-    <text x="163" y="42" font-family="Georgia,serif" font-size="30" font-weight="400" fill="#1a1e2e">Go</text>
-    <text x="71" y="58" font-family="Arial,sans-serif" font-size="7.5" fill="#5a6177" letter-spacing="2">PARK WITH PURPOSE</text>
-  </svg>
-
-  <div style="display:flex; align-items:center; gap:1.5rem;">
-    <div class="nav-links">
-      <a href="#how" data-en="How it works" data-he="איך זה עובד">How it works</a>
-      <a href="#benefits" data-en="Benefits" data-he="יתרונות">Benefits</a>
-      <a href="#faq" data-en="FAQ" data-he="שאלות נפוצות">FAQ</a>
-      <a href="#join" class="btn-nav" data-en="Get the app" data-he="הצטרפו עכשיו">Get the app</a>
-    </div>
-
-    <div class="lang-toggle">
-      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" data-lang="he" onclick="setLang('he')">עב</button>
-    </div>
-  </div>
-</nav>
-
-<--<nav>
+<nav>
 <svg height="58" viewBox="0 0 320 75" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <linearGradient id="navGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -453,7 +418,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <button class="lang-btn active" onclick="setLang('he')">עב</button>
 </div>
 </div>
-</nav>-->
+</nav>
 
 <section class="hero">
 <div class="hero-bg"></div>
@@ -865,7 +830,7 @@ function navigateCarousel(direction) {
   updateCarousel();
 }
 
-<--function setLang(lang) {
+function setLang(lang) {
 document.documentElement.lang = lang;
 document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
 document.querySelector('nav').dir = 'ltr';
@@ -878,39 +843,7 @@ else { el.innerHTML = val; }
 });
 document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
 el.placeholder = el.getAttribute('data-placeholder-' + lang);
-});-->
-
-  function setLang(lang) {
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
-  document.querySelector('nav').dir = 'ltr';
-  
-  // Clean up active styling on selection safely
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    if (b.getAttribute('data-lang') === lang) {
-      b.classList.add('active');
-    } else {
-      b.classList.remove('active');
-    }
-  });
-
-  // Safe innerHTML conversion looping blocks
-  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
-    if (el.tagName === 'INPUT') { 
-      el.placeholder = val; 
-    } else { 
-      el.innerHTML = val; 
-    }
-  });
-
-  document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
-    el.placeholder = el.getAttribute('data-placeholder-' + lang);
-  });
-
-  updateCarousel();
-  localStorage.setItem('lotngo-lang', lang);
-}
+});
 
 updateCarousel();
 localStorage.setItem('lotngo-lang', lang);
