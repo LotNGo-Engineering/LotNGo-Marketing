@@ -774,6 +774,42 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
       <input type="number" id="waitlist-apartments" class="form-input" placeholder="10" min="1"/>
     </div>
 
+     <div class="form-group">
+      <label class="form-label" data-en="Country *" data-he="מדינה *">מדינה *</label>
+      <select id="waitlist-country" class="form-input">
+        <option value="" data-en="Select a country" data-he="בחר מדינה">בחר מדינה</option>
+        <option value="Israel">Israel / ישראל</option>
+        <option value="United States">United States / ארצות הברית</option>
+        <option value="United Kingdom">United Kingdom / בריטניה</option>
+        <option value="Canada">Canada / קנדה</option>
+        <option value="France">France / צרפת</option>
+        <option value="Germany">Germany / גרמניה</option>
+        <option value="Spain">Spain / ספרד</option>
+        <option value="Italy">Italy / איטליה</option>
+        <option value="Netherlands">Netherlands / הולנד</option>
+        <option value="Belgium">Belgium / בלגיה</option>
+        <option value="Switzerland">Switzerland / שוויץ</option>
+        <option value="Austria">Austria / אוסטריה</option>
+        <option value="Sweden">Sweden / שוודיה</option>
+        <option value="Norway">Norway / נורווגיה</option>
+        <option value="Denmark">Denmark / דנמרק</option>
+        <option value="Poland">Poland / פולין</option>
+        <option value="Czech Republic">Czech Republic / צ'כיה</option>
+        <option value="Hungary">Hungary / הונגריה</option>
+        <option value="Romania">Romania / רומניה</option>
+        <option value="Greece">Greece / יוון</option>
+        <option value="Portugal">Portugal / פורטוגל</option>
+        <option value="Ireland">Ireland / אירלנד</option>
+        <option value="Australia">Australia / אוסטרליה</option>
+        <option value="New Zealand">New Zealand / ניו זילנד</option>
+        <option value="Japan">Japan / יפן</option>
+        <option value="South Korea">South Korea / דרום קוריאה</option>
+        <option value="Singapore">Singapore / סינגפור</option>
+        <option value="Hong Kong">Hong Kong / הונג קונג</option>
+        <option value="Other">Other / אחר</option>
+      </select>
+    </div>
+
     <div class="form-divider"><span data-en="Contact Details" data-he="פרטי התקשרות">פרטי התקשרות</span></div>
 
     <div class="form-group full">
@@ -870,6 +906,7 @@ function submitWaitlist() {
     street_name: document.getElementById('waitlist-street').value.trim(),
     street_number: document.getElementById('waitlist-streetNum').value.trim() || undefined,
     number_of_apartments: document.getElementById('waitlist-apartments').value.trim() || undefined,
+    country: document.getElementById('waitlist-country').value.trim(),
     email: document.getElementById('waitlist-email').value.trim(),
     phone_number: document.getElementById('waitlist-phone').value.trim() || undefined
   };
