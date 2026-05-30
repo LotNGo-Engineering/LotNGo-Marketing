@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -768,6 +769,13 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
       </label>
       <input type="number" id="waitlist-apartments" class="form-input" placeholder="10" min="1"/>
     </div>
+    <div class="form-group">
+      <label class="form-label">
+        <span data-en="No. of Floors" data-he="מספר קומות">מספר קומות</span>
+        <span style="font-size:0.75rem; opacity:0.6; margin-inline-start:0.3rem;" data-en="(Optional)" data-he="(אופציונלי)">(אופציונלי)</span>
+      </label>
+      <input type="number" id="waitlist-floors" class="form-input" placeholder="5" min="1"/>
+    </div>
 
      <div class="form-group">
       <label class="form-label" data-en="Country *" data-he="מדינה *">מדינה *</label>
@@ -901,6 +909,7 @@ function submitWaitlist() {
     street_name: document.getElementById('waitlist-street').value.trim(),
     street_number: document.getElementById('waitlist-streetNum').value.trim() || undefined,
     number_of_apartments: document.getElementById('waitlist-apartments').value.trim() || undefined,
+    number_of_floors: document.getElementById('waitlist-floors').value.trim() || undefined,
     country: document.getElementById('waitlist-country').value.trim(),
     email: document.getElementById('waitlist-email').value.trim(),
     phone_number: document.getElementById('waitlist-phone').value.trim() || undefined
