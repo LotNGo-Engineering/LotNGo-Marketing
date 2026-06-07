@@ -369,12 +369,37 @@ html[lang="he"] .cta-banner h2 { font-family: 'Heebo', sans-serif; }
 
 #waitlist-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
+.form-grid-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
 @media (max-width: 560px) {
-  #waitlist-form { grid-template-columns: 1fr; }
+  .form-grid-inner { grid-template-columns: 1fr; }
   .cta-banner { padding: 2.5rem 1.5rem; }
+}
+.form-hint {
+  font-size: 0.8rem;
+  color: rgba(247,247,255,0.75);
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+.form-microcopy {
+  font-size: 0.78rem;
+  color: rgba(247,247,255,0.65);
+  text-align: center;
+  margin-top: 0.5rem;
+  grid-column: 1 / -1;
+}
+.optional-tag {
+  font-size: 0.72rem;
+  opacity: 0.65;
+  margin-inline-start: 0.3rem;
+  font-weight: 400;
 }
 
 .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
@@ -737,96 +762,120 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 
 <div class="waitlist-card">
   <div id="waitlist-form">
-    <div class="form-group">
-      <label class="form-label" data-en="First Name" data-he="שם פרטי">שם פרטי</label>
-      <input type="text" id="waitlist-firstName" class="form-input" placeholder="יוחנן" data-placeholder-en="John" data-placeholder-he="יוחנן"/>
-    </div>
-    <div class="form-group">
-      <label class="form-label" data-en="Last Name" data-he="שם משפחה">שם משפחה</label>
-      <input type="text" id="waitlist-lastName" class="form-input" placeholder="כהן" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
-    </div>
-
-    <div class="form-divider"><span data-en="Building Info" data-he="פרטי הבניין">פרטי הבניין</span></div>
-
-    <div class="form-group">
-      <label class="form-label" data-en="City *" data-he="עיר *">עיר *</label>
-      <input type="text" list="waitlist-cities-data" id="waitlist-city" class="form-input" placeholder="תל אביב" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
-      <datalist id="waitlist-cities-data"><option value="" data-en="Loading..." data-he="טוען...">טוען...</option></datalist>
-    </div>
-    <div class="form-group">
-      <label class="form-label" data-en="Street Name *" data-he="שם הרחוב *">שם הרחוב *</label>
-      <input type="text" list="waitlist-streets-data" id="waitlist-street" class="form-input" placeholder="רחוב הרצל" data-placeholder-en="Main St" data-placeholder-he="רחוב הרצל"/>
-      <datalist id="waitlist-streets-data"><option value=""></option></datalist>
-    </div>
-    <div class="form-group">
-      <label class="form-label" data-en="Street Number" data-he="מספר הבית">מספר הבית</label>
-      <input type="text" id="waitlist-streetNum" class="form-input" placeholder="42" data-placeholder-en="123" data-placeholder-he="42"/>
-    </div>
-    <div class="form-group">
-      <label class="form-label">
-        <span data-en="No. of Apartments" data-he="מספר דירות">מספר דירות</span>
-        <span style="font-size:0.75rem; opacity:0.6; margin-inline-start:0.3rem;" data-en="(Optional)" data-he="(אופציונלי)">(אופציונלי)</span>
-      </label>
-      <input type="number" id="waitlist-apartments" class="form-input" placeholder="10" min="1"/>
-    </div>
-    <div class="form-group">
-      <label class="form-label">
-        <span data-en="No. of Floors" data-he="מספר קומות">מספר קומות</span>
-        <span style="font-size:0.75rem; opacity:0.6; margin-inline-start:0.3rem;" data-en="(Optional)" data-he="(אופציונלי)">(אופציונלי)</span>
-      </label>
-      <input type="number" id="waitlist-floors" class="form-input" placeholder="5" min="1"/>
-    </div>
-
-     <div class="form-group">
-      <label class="form-label" data-en="Country *" data-he="מדינה *">מדינה *</label>
-      <select id="waitlist-country" class="form-input">
-        <option value="" data-en="Select a country" data-he="בחר מדינה">בחר מדינה</option>
-        <option value="Israel">Israel / ישראל</option>
-        <option value="United States">United States / ארצות הברית</option>
-        <option value="United Kingdom">United Kingdom / בריטניה</option>
-        <option value="Canada">Canada / קנדה</option>
-        <option value="France">France / צרפת</option>
-        <option value="Germany">Germany / גרמניה</option>
-        <option value="Spain">Spain / ספרד</option>
-        <option value="Italy">Italy / איטליה</option>
-        <option value="Netherlands">Netherlands / הולנד</option>
-        <option value="Belgium">Belgium / בלגיה</option>
-        <option value="Switzerland">Switzerland / שוויץ</option>
-        <option value="Austria">Austria / אוסטריה</option>
-        <option value="Sweden">Sweden / שוודיה</option>
-        <option value="Norway">Norway / נורווגיה</option>
-        <option value="Denmark">Denmark / דנמרק</option>
-        <option value="Poland">Poland / פולין</option>
-        <option value="Czech Republic">Czech Republic / צ'כיה</option>
-        <option value="Hungary">Hungary / הונגריה</option>
-        <option value="Romania">Romania / רומניה</option>
-        <option value="Greece">Greece / יוון</option>
-        <option value="Portugal">Portugal / פורטוגל</option>
-        <option value="Ireland">Ireland / אירלנד</option>
-        <option value="Australia">Australia / אוסטרליה</option>
-        <option value="New Zealand">New Zealand / ניו זילנד</option>
-        <option value="Japan">Japan / יפן</option>
-        <option value="South Korea">South Korea / דרום קוריאה</option>
-        <option value="Singapore">Singapore / סינגפור</option>
-        <option value="Hong Kong">Hong Kong / הונג קונג</option>
-        <option value="Other">Other / אחר</option>
+    <!-- ROLE SELECTOR — always visible, drives progressive disclosure -->
+    <div class="form-group full">
+      <label class="form-label" data-en="I am a... *" data-he="אני... *">אני... *</label>
+      <select id="waitlist-leadType" class="form-input" onchange="onLeadTypeChange()">
+        <option value="" data-en="Choose your role" data-he="בחרו תפקיד">בחרו תפקיד</option>
+        <option value="hoa_member" data-en="HOA member / building rep" data-he="חבר ועד בית / נציג בניין">חבר ועד בית / נציג בניין</option>
+        <option value="resident" data-en="Interested resident" data-he="דייר/ת מתעניין/ת">דייר/ת מתעניין/ת</option>
       </select>
+      <div id="lead-type-hint" class="form-hint" style="display:none;"></div>
     </div>
 
-    <div class="form-divider"><span data-en="Contact Details" data-he="פרטי התקשרות">פרטי התקשרות</span></div>
-
-    <div class="form-group full">
-      <label class="form-label" data-en="Email" data-he="דוא״ל">דוא״ל</label>
-      <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com"/>
+    <!-- ALWAYS-VISIBLE FIELDS (once a role is chosen) -->
+    <div id="core-fields" style="display:none; grid-column:1 / -1; display:none;">
+      <div class="form-divider"><span data-en="Your Details" data-he="הפרטים שלכם">הפרטים שלכם</span></div>
+      <div class="form-grid-inner">
+        <div class="form-group">
+          <label class="form-label" data-en="First Name *" data-he="שם פרטי *">שם פרטי *</label>
+          <input type="text" id="waitlist-firstName" class="form-input" placeholder="יוחנן" data-placeholder-en="John" data-placeholder-he="יוחנן"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Email *" data-he="דוא״ל *">דוא״ל *</label>
+          <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="City *" data-he="עיר *">עיר *</label>
+          <input type="text" list="waitlist-cities-data" id="waitlist-city" class="form-input" placeholder="תל אביב" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
+          <datalist id="waitlist-cities-data"><option value="" data-en="Loading..." data-he="טוען...">טוען...</option></datalist>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            <span data-en="Phone" data-he="טלפון">טלפון</span>
+            <span class="optional-tag" data-en="(Optional)" data-he="(אופציונלי)">(אופציונלי)</span>
+          </label>
+          <input type="tel" id="waitlist-phone" class="form-input" placeholder="+972547788990" inputmode="tel"/>
+        </div>
+      </div>
     </div>
-    <div class="form-group full">
-      <label class="form-label" data-en="Phone" data-he="טלפון">טלפון</label>
-      <input type="tel" id="waitlist-phone" class="form-input" placeholder="+972547788990"/>
+
+    <!-- HOA-ONLY FIELDS -->
+    <div id="hoa-fields" style="display:none; grid-column:1 / -1;">
+      <div class="form-divider"><span data-en="Building Info" data-he="פרטי הבניין">פרטי הבניין</span></div>
+      <div class="form-grid-inner">
+        <div class="form-group">
+          <label class="form-label" data-en="Last Name *" data-he="שם משפחה *">שם משפחה *</label>
+          <input type="text" id="waitlist-lastName" class="form-input" placeholder="כהן" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Street Name *" data-he="שם הרחוב *">שם הרחוב *</label>
+          <input type="text" list="waitlist-streets-data" id="waitlist-street" class="form-input" placeholder="רחוב הרצל" data-placeholder-en="Main St" data-placeholder-he="רחוב הרצל"/>
+          <datalist id="waitlist-streets-data"><option value=""></option></datalist>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            <span data-en="Street Number" data-he="מספר הבית">מספר הבית</span>
+            <span class="optional-tag" data-en="(Optional)" data-he="(אופציונלי)">(אופציונלי)</span>
+          </label>
+          <input type="text" id="waitlist-streetNum" class="form-input" placeholder="42" data-placeholder-en="123" data-placeholder-he="42"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            <span data-en="No. of Apartments" data-he="מספר דירות">מספר דירות</span>
+            <span class="optional-tag" data-en="(Optional)" data-he="(אופציונלי)">(אופציונלי)</span>
+          </label>
+          <input type="number" id="waitlist-apartments" class="form-input" placeholder="10" min="1" inputmode="numeric"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            <span data-en="No. of Floors" data-he="מספר קומות">מספר קומות</span>
+            <span class="optional-tag" data-en="(Optional)" data-he="(אופציונלי)">(אופציונלי)</span>
+          </label>
+          <input type="number" id="waitlist-floors" class="form-input" placeholder="5" min="1" inputmode="numeric"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Country *" data-he="מדינה *">מדינה *</label>
+          <select id="waitlist-country" class="form-input">
+            <option value="" data-en="Select a country" data-he="בחרו מדינה">בחרו מדינה</option>
+            <option value="Israel" selected>Israel / ישראל</option>
+            <option value="United States">United States / ארצות הברית</option>
+            <option value="United Kingdom">United Kingdom / בריטניה</option>
+            <option value="Canada">Canada / קנדה</option>
+            <option value="France">France / צרפת</option>
+            <option value="Germany">Germany / גרמניה</option>
+            <option value="Spain">Spain / ספרד</option>
+            <option value="Italy">Italy / איטליה</option>
+            <option value="Netherlands">Netherlands / הולנד</option>
+            <option value="Belgium">Belgium / בלגיה</option>
+            <option value="Switzerland">Switzerland / שוויץ</option>
+            <option value="Austria">Austria / אוסטריה</option>
+            <option value="Sweden">Sweden / שוודיה</option>
+            <option value="Norway">Norway / נורווגיה</option>
+            <option value="Denmark">Denmark / דנמרק</option>
+            <option value="Poland">Poland / פולין</option>
+            <option value="Czech Republic">Czech Republic / צ'כיה</option>
+            <option value="Hungary">Hungary / הונגריה</option>
+            <option value="Romania">Romania / רומניה</option>
+            <option value="Greece">Greece / יוון</option>
+            <option value="Portugal">Portugal / פורטוגל</option>
+            <option value="Ireland">Ireland / אירלנד</option>
+            <option value="Australia">Australia / אוסטרליה</option>
+            <option value="New Zealand">New Zealand / ניו זילנד</option>
+            <option value="Japan">Japan / יפן</option>
+            <option value="South Korea">South Korea / דרום קוריאה</option>
+            <option value="Singapore">Singapore / סינגפור</option>
+            <option value="Hong Kong">Hong Kong / הונג קונג</option>
+            <option value="Other">Other / אחר</option>
+          </select>
+        </div>
+      </div>
     </div>
 
-    <button onclick="submitWaitlist()" class="waitlist-submit" data-en="Join the waitlist →" data-he="הצטרפו לרשימת ההמתנה ←">הצטרפו לרשימת ההמתנה ←</button>
+    <button id="waitlist-submit-btn" onclick="submitWaitlist()" class="waitlist-submit" style="display:none;" data-en="Join the waitlist →" data-he="הצטרפו לרשימת ההמתנה ←">הצטרפו לרשימת ההמתנה ←</button>
+    <p id="waitlist-microcopy" class="form-microcopy" style="display:none;" data-en="No spam. We'll reach out within 2 business days." data-he="ללא ספאם. נחזור אליכם תוך 2 ימי עסקים.">ללא ספאם. נחזור אליכם תוך 2 ימי עסקים.</p>
   </div>
-  <div id="waitlist-thanks" style="display:none; color:#f7f7ff; font-size:1.1rem; font-weight:700; padding: 2rem 0;" data-en="✓ You're on the list! We'll be in touch soon." data-he="✓ אתם ברשימה! נחזור אליכם בקרוב.">✓ אתם ברשימה! נחזור אליכם בקרוב.</div>
+  <div id="waitlist-thanks" style="display:none; color:#f7f7ff; font-size:1.1rem; font-weight:700; padding: 2rem 0; text-align:center;" data-en="✓ You're on the list! We'll be in touch soon." data-he="✓ אתם ברשימה! נחזור אליכם בקרוב.">✓ אתם ברשימה! נחזור אליכם בקרוב.</div>
 </div>
 </div>
 </section>
@@ -880,6 +929,12 @@ function setLang(lang) {
     el.placeholder = el.getAttribute('data-placeholder-' + lang);
   });
   updateCarousel();
+  // Re-render the lead-type hint in the new language if it's visible
+  const hint = document.getElementById('lead-type-hint');
+  const leadTypeEl = document.getElementById('waitlist-leadType');
+  if (hint && leadTypeEl && leadTypeEl.value && LEAD_TYPE_HINTS[leadTypeEl.value]) {
+    hint.textContent = LEAD_TYPE_HINTS[leadTypeEl.value][lang];
+  }
   localStorage.setItem('lotngo-lang', lang);
 }
 
@@ -887,33 +942,99 @@ document.querySelectorAll('.faq-item .faq-q').forEach(q => {
   q.addEventListener('click', function() { this.closest('.faq-item').classList.toggle('open'); });
 });
 
+// Localized hint shown under the role selector
+const LEAD_TYPE_HINTS = {
+  hoa_member: {
+    en: "Great — we'll get your building set up. Tell us a bit about it below.",
+    he: "מצוין — נעזור לכם להקים את הבניין במערכת. ספרו לנו עליו כמה פרטים."
+  },
+  resident: {
+    en: "Awesome. We'll email you a 1-pager you can forward to your vaad bayit.",
+    he: "מעולה. נשלח לכם מסמך קצר שתוכלו להעביר לוועד הבית."
+  }
+};
+
+function onLeadTypeChange() {
+  const leadType = document.getElementById('waitlist-leadType').value;
+  const lang = document.documentElement.lang || 'he';
+  const coreFields = document.getElementById('core-fields');
+  const hoaFields = document.getElementById('hoa-fields');
+  const submitBtn = document.getElementById('waitlist-submit-btn');
+  const microcopy = document.getElementById('waitlist-microcopy');
+  const hint = document.getElementById('lead-type-hint');
+
+  if (!leadType) {
+    coreFields.style.display = 'none';
+    hoaFields.style.display = 'none';
+    submitBtn.style.display = 'none';
+    microcopy.style.display = 'none';
+    hint.style.display = 'none';
+    return;
+  }
+
+  coreFields.style.display = 'block';
+  submitBtn.style.display = 'block';
+  microcopy.style.display = 'block';
+  hint.style.display = 'block';
+  hint.textContent = LEAD_TYPE_HINTS[leadType][lang];
+
+  if (leadType === 'hoa_member') {
+    hoaFields.style.display = 'block';
+  } else {
+    hoaFields.style.display = 'none';
+  }
+}
+
 function submitWaitlist() {
-  const fields = ['waitlist-firstName','waitlist-lastName','waitlist-city','waitlist-street','waitlist-email','waitlist-phone'];
+  const leadTypeEl = document.getElementById('waitlist-leadType');
+  const leadType = leadTypeEl.value;
   document.querySelectorAll('.form-input').forEach(i => i.classList.remove('error'));
   let hasError = false;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  fields.forEach(id => {
+
+  if (!leadType) {
+    leadTypeEl.classList.add('error');
+    return;
+  }
+
+  // Required for both roles
+  const requiredCore = ['waitlist-firstName','waitlist-email','waitlist-city'];
+  requiredCore.forEach(id => {
     const el = document.getElementById(id);
     if (!el.value.trim()) { el.classList.add('error'); hasError = true; }
   });
+
+  // Required only for HOA path
+  if (leadType === 'hoa_member') {
+    ['waitlist-lastName','waitlist-street','waitlist-country'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) { el.classList.add('error'); hasError = true; }
+    });
+  }
+
   const emailEl = document.getElementById('waitlist-email');
   if (emailEl.value && !emailPattern.test(emailEl.value)) { emailEl.classList.add('error'); hasError = true; }
   const phoneEl = document.getElementById('waitlist-phone');
   if (phoneEl.value && phoneEl.value.trim().length < 10) { phoneEl.classList.add('error'); hasError = true; }
   if (hasError) return;
 
+  // Build payload — only include fields that apply to the chosen role
+  const val = (id) => (document.getElementById(id).value || '').trim();
   const payload = {
-    first_name: document.getElementById('waitlist-firstName').value.trim(),
-    last_name: document.getElementById('waitlist-lastName').value.trim(),
-    city: document.getElementById('waitlist-city').value.trim(),
-    street_name: document.getElementById('waitlist-street').value.trim(),
-    street_number: document.getElementById('waitlist-streetNum').value.trim() || undefined,
-    number_of_apartments: document.getElementById('waitlist-apartments').value.trim() || undefined,
-    number_of_floors: document.getElementById('waitlist-floors').value.trim() || undefined,
-    country: document.getElementById('waitlist-country').value.trim(),
-    email: document.getElementById('waitlist-email').value.trim(),
-    phone_number: document.getElementById('waitlist-phone').value.trim() || undefined
+    lead_type: leadType,
+    first_name: val('waitlist-firstName'),
+    email: val('waitlist-email'),
+    city: val('waitlist-city'),
+    phone_number: val('waitlist-phone') || undefined
   };
+  if (leadType === 'hoa_member') {
+    payload.last_name = val('waitlist-lastName') || undefined;
+    payload.street_name = val('waitlist-street') || undefined;
+    payload.street_number = val('waitlist-streetNum') || undefined;
+    payload.number_of_apartments = val('waitlist-apartments') || undefined;
+    payload.number_of_floors = val('waitlist-floors') || undefined;
+    payload.country = val('waitlist-country') || undefined;
+  }
 
   const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3001/api/v1/leads' : 'https://api.lotngo.com/api/v1/leads';
   fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
