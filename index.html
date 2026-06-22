@@ -301,6 +301,76 @@ html[lang="en"] .carousel-main-content { text-align: left; }
   .carousel-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
 }
 
+   /* FEATURES */
+.features { background: var(--surface-lowest); }
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.feature-card {
+  background: var(--surface-low);
+  border-radius: 16px; padding: 1.75rem;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px -4px rgba(0,91,192,0.1);
+}
+.feature-highlight {
+  background: linear-gradient(135deg, #eef4ff, #dde8ff);
+  border: 1px solid rgba(0,91,192,0.12);
+}
+.feature-badge {
+  position: absolute; top: 14px;
+  background: var(--primary); color: #fff;
+  font-family: 'Inter', sans-serif; font-size: 0.65rem;
+  font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 20px;
+}
+html[dir="ltr"] .feature-badge { right: 14px; }
+html[dir="rtl"] .feature-badge { left: 14px; }
+.feature-icon-lg {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--surface-lowest);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.feature-card h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem;
+}
+html[lang="he"] .feature-card h3 { font-family: 'Heebo', sans-serif; }
+.feature-card p {
+  font-size: 0.83rem; color: var(--on-surface-muted); line-height: 1.6;
+}
+
+/* APP STORES */
+.app-stores { background: var(--surface); }
+.store-badges {
+  display: flex; gap: 1.5rem;
+  justify-content: center; align-items: center;
+  margin-top: 2rem; flex-wrap: wrap;
+}
+.store-badge {
+  position: relative;
+  opacity: 0.92;
+  transition: opacity 0.2s, transform 0.2s;
+  direction: ltr;
+}
+.store-badge img { display: block; }
+.store-badge:hover {
+  opacity: 1; transform: scale(1.04);
+}
+.store-soon {
+  text-align: center;
+  font-family: 'Inter', sans-serif; font-size: 0.7rem;
+  font-weight: 600; color: var(--primary);
+  margin-top: 0.5rem; letter-spacing: 0.03em;
+}
+html[lang="he"] .store-soon { font-family: 'Heebo', sans-serif; }
+
 /* BENEFITS */
 .benefits { background: var(--surface-lowest); }
 .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
