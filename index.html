@@ -55,6 +55,9 @@ nav {
 }
 nav > svg { flex-shrink: 0; transition: transform 0.2s; }
 .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+html[lang="he"] .nav-links { flex-direction: row-reverse; }
+.lang-toggle { order: 0; }
+html[lang="he"] .lang-toggle { order: -1; }
 .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--on-surface-muted); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--primary); }
 .btn-nav {
@@ -592,6 +595,13 @@ html[lang="he"] .cta-banner h2 { font-family: 'Heebo', sans-serif; }
   font-weight: 500; margin-top: 0.3rem; display: block;
 }
 
+/* WHATSAPP COMPARE responsive */
+@media (max-width: 600px) {
+  #whatsapp-compare .section-inner > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* FOOTER */
 footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: center; }
 .footer-tagline { font-size: 0.85rem; color: var(--on-surface-muted); margin-bottom: 1.5rem; margin-top: 0.4rem; }
@@ -619,6 +629,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </svg>
 <div class="nav-links">
 <a href="#how" data-en="How it works" data-he="איך זה עובד">How it works</a>
+<a href="#product-tour" data-en="Product Tour" data-he="סיור באפליקציה">Product Tour</a>
 <a href="#features" data-en="Features" data-he="פיצ'רים">Features</a>
 <a href="#benefits" data-en="Benefits" data-he="יתרונות">Benefits</a>
 <a href="#faq" data-en="FAQ" data-he="שאלות">FAQ</a>
@@ -639,22 +650,28 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <div>
 <div class="badges-row">
 <div class="hero-eyebrow" data-en="Good Neighboring, Reimagined" data-he="שכנות טובה, מעוצבת מחדש">Good Neighboring, Reimagined</div>
-   <div class="coming-soon-badge"
-       style="background: #d6eddf; color: #1a6b35;"
-       data-en="🟢 Now Live!"
-       data-he="🟢 השירות פעיל!">
-       🟢 השירות פעיל!
-  </div>
+<div class="coming-soon-badge"
+     style="background: #d6eddf; color: #1a6b35;"
+     data-en="🟢 Now Live!"
+     data-he="🟢 השירות פעיל!">
+     🟢 השירות פעיל!
+</div>
 </div>
 <h1 class="display-font" data-en="No parking outside?<br>A community <span class='accent'>solution inside.</span>" data-he="מצוקת חניה בחוץ?<br><span class='accent'>פתרון קהילתי בפנים.</span> ">מצוקת חניה בחוץ?<br><span class="accent">פתרון קהילתי בפנים.</span></h1>
 <p class="hero-sub" data-en="Your building's private and secure parking network. Lot'N'Go lets residents safely share their assigned spots with verified neighbors only — effortlessly, and exactly when they sit empty." data-he="רשת החניה הפרטית והסגורה של הבניין שלכם. Lot'N'Go מאפשרת לכם לשתף את החניה הרשומה שלכם עם שכנים מאומתים בלבד — בקלות, בביטחון מלא, וכשהיא ממילא עומדת ריקה.">רשת החניה הפרטית והסגורה של הבניין שלכם. Lot'N'Go מאפשרת לכם לשתף את החניה הרשומה שלכם עם שכנים מאומתים בלבד — בקלות, בביטחון מלא, וכשהיא ממילא עומדת ריקה.</p>
 
-   <p class="hero-fomo" 
-       style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 500; color: #e67e22;" 
-       data-en="⏳ Note: To ensure personal onboarding, our launch phase is limited. Only 3 spots left for the buildings early access program." 
-       data-he="⏳ לתשומת לבכם: כדי להבטיח ליווי והתקנה מושלמת, סבב ההשקה המוקדמת מוגבל. נותרו רק עוד 3 מקומות אחרונים לבניינים חדשים.">
-       ⏳ לתשומת לבכם: כדי להבטיח ליווי והתקנה מושלמת, סבב ההשקה המוקדמת מוגבל. נותרו רק עוד 3 מקומות אחרונים לבניינים חדשים.
-    </p>
+<p class="hero-social-proof"
+   style="font-size: 0.9rem; margin-bottom: 0.75rem; font-weight: 600; color: var(--primary); opacity: 0.85;"
+   data-en="✔ Already live in Rosh Ha'ayin — 38 residents sharing daily"
+   data-he="✔ כבר פעיל בראש העין — 38 דיירים משתפים חניות מדי יום">
+   ✔ כבר פעיל בראש העין — 38 דיירים משתפים חניות מדי יום
+</p>
+<p class="hero-fomo"
+   style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 500; color: #e67e22;"
+   data-en="⏳ To ensure personal onboarding, our launch is limited. Only 3 spots left for new buildings."
+   data-he="⏳ כדי להבטיח ליווי והתקנה מושלמת, סבב ההשקה מוגבל. נותרו רק עוד 3 מקומות אחרונים לבניינים חדשים.">
+   ⏳ כדי להבטיח ליווי והתקנה מושלמת, סבב ההשקה מוגבל. נותרו רק עוד 3 מקומות אחרונים לבניינים חדשים.
+</p>
    
 <div class="hero-cta">
 <a href="#join" class="btn-primary" data-en="Join your building" data-he="הצטרפו עם הבניין שלכם">הצטרפו עם הבניין שלכם</a>
@@ -674,8 +691,16 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <div class="stats-strip">
   <div class="stats-strip-inner">
     <div class="stat-item">
-      <span class="stat-num" data-en="1+" data-he="1+">1+</span>
-      <span class="stat-label" data-en="Active building community" data-he="בניין פעיל ראשון במערכת">בניין פעיל ראשון במערכת</span>
+      <span class="stat-num" data-en="70%" data-he="70%">70%</span>
+      <span class="stat-label" data-en="Fewer parking messages in WhatsApp" data-he="הפחתה בהודעות חיפוש חניה בוואטסאפ">הפחתה בהודעות חיפוש חניה בוואטסאפ</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-en="~15" data-he="~15">~15</span>
+      <span class="stat-label" data-en="Spots shared daily" data-he="חניות זמינות משותפות ברמה יומית">חניות זמינות משותפות ברמה יומית</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-en="38" data-he="38">38</span>
+      <span class="stat-label" data-en="Active residents" data-he="דיירים פעילים במערכת">דיירים פעילים במערכת</span>
     </div>
     <div class="stat-item">
       <span class="stat-num" data-en="100%" data-he="100%">100%</span>
@@ -685,14 +710,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
       <span class="stat-num" data-en="0" data-he="0">0</span>
       <span class="stat-label" data-en="Hardware required" data-he="ציוד נדרש להתקנה">ציוד נדרש להתקנה</span>
     </div>
-    <div class="stat-item">
-      <span class="stat-num" data-en="70%" data-he="70%">70%</span>
-      <span class="stat-label" data-en="Reduced parking messages in Whatsapp" data-he="הפחתה בהודעות חיפוש חניה בוואטסאפ">הפחתה בהודעות חיפוש חניה בוואטסאפ</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num" data-en="~15" data-he="~15">~15</span>
-      <span class="stat-label" data-en="Available Parking Spots Daily" data-he="חניות זמינות משותפות ברמה יומית">חניות זמינות משותפות ברמה יומית</span>
-    </div>  
   </div>
 </div>
 
@@ -745,11 +762,14 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </section>
 
 <!-- CAROUSEL -->
-<section class="carousel-section">
+<section class="carousel-section" id="product-tour">
 <div class="section-inner">
 <div class="section-label" data-en="Product Tour" data-he="הצצה לאפליקציה">הצצה לאפליקציה</div>
 <h2 class="section-title display-font" data-en="See it in action." data-he="איך זה נראה בפועל?">איך זה נראה בפועל?</h2>
 <p class="section-sub" data-en="Swipe through the clean user interface to experience the fluid tracking and scheduling lifecycle." data-he="דפדפו במסכים כדי לראות את ממשק המשתמש הנקי ואת זרימת העבודה הפשוטה של המערכת בזמן אמת.">דפדפו במסכים כדי לראות את ממשק המשתמש הנקי ואת זרימת העבודה הפשוטה של המערכת בזמן אמת.</p>
+<div style="margin-bottom: 2rem;">
+  <a href="https://youtube.com/shorts/apAekxLcbRA" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.95rem;" data-en="▶ Watch the full tour" data-he="▶ צפו בסיור המלא">▶ צפו בסיור המלא</a>
+</div>
 <div class="carousel-container">
   <div class="carousel-tabs">
     <button class="carousel-tab-btn active" onclick="goToStep(0)" data-en="1. Release Spot" data-he="1. שחרור חניה">1. שחרור חניה</button>
@@ -859,8 +879,8 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
-<!-- APP STORES COMING SOON -->
-<section class="app-stores">
+<!-- APP STORES COMING SOON — hidden until launch -->
+<section class="app-stores" style="display:none;">
 <div class="section-inner" style="text-align:center;">
 <div class="section-label" style="text-align:center;" data-en="Get the app" data-he="הורידו את האפליקציה">הורידו את האפליקציה</div>
 <h2 class="section-title display-font" style="max-width:100%; text-align:center; margin-left:auto; margin-right:auto;" data-en="Coming soon to your favorite app store." data-he="בקרוב בחנות האפליקציות שלכם.">בקרוב בחנות האפליקציות שלכם.</h2>
@@ -909,6 +929,111 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
+<!-- WHATSAPP vs LOT'N'GO -->
+<section id="whatsapp-compare" style="background: var(--surface-low);">
+<div class="section-inner">
+<div class="section-label" data-en="WhatsApp vs Lot'N'Go" data-he="וואטסאפ מול Lot'N'Go">וואטסאפ מול Lot'N'Go</div>
+<h2 class="section-title display-font" data-en="Your building group chat wasn't built for parking." data-he="קבוצת הוואטסאפ לא נבנתה לניהול חניות.">קבוצת הוואטסאפ לא נבנתה לניהול חניות.</h2>
+<p class="section-sub" data-en="One parking request spams 50 phones. Most mute the group. Offers get buried. Lot'N'Go replaces the chaos with a silent, real-time dashboard." data-he="הודעה אחת של 'יש למישהו חניה פנויה?' מציקה ל-50 טלפונים. הרוב משתיקים את הקבוצה. Lot'N'Go מחליפה את הבלגן בלוח שקט ובזמן אמת.">הודעה אחת של 'יש למישהו חניה פנויה?' מציקה ל-50 טלפונים. הרוב משתיקים את הקבוצה. Lot'N'Go מחליפה את הבלגן בלוח שקט ובזמן אמת.</p>
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 720px;">
+  <div style="background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; border-top: 3px solid #e74c3c;">
+    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: #e74c3c;" data-en="❌ WhatsApp Group" data-he="❌ קבוצת וואטסאפ">❌ קבוצת וואטסאפ</h3>
+    <ul style="list-style: none; font-size: 0.85rem; color: var(--on-surface-muted); line-height: 2;">
+      <li data-en="Spams everyone's phone" data-he="מציפה את הטלפון של כולם">מציפה את הטלפון של כולם</li>
+      <li data-en="Most residents mute the group" data-he="רוב הדיירים משתיקים">רוב הדיירים משתיקים</li>
+      <li data-en="Offers buried in minutes" data-he="הודעות נעלמות תוך דקות">הודעות נעלמות תוך דקות</li>
+      <li data-en="Awkward public asking for favors" data-he="מבקשים טובות בפרהסיה">מבקשים טובות בפרהסיה</li>
+      <li data-en="No order, no tracking" data-he="בלי סדר, בלי מעקב">בלי סדר, בלי מעקב</li>
+    </ul>
+  </div>
+  <div style="background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; border-top: 3px solid var(--primary);">
+    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary);" data-en="✔ Lot'N'Go" data-he="✔ Lot'N'Go">✔ Lot'N'Go</h3>
+    <ul style="list-style: none; font-size: 0.85rem; color: var(--on-surface-muted); line-height: 2;">
+      <li data-en="Silent — zero notifications to neighbors" data-he="שקט מוחלט — אפס הודעות לשכנים">שקט מוחלט — אפס הודעות לשכנים</li>
+      <li data-en="Real-time dashboard, always up to date" data-he="לוח בזמן אמת, תמיד מעודכן">לוח בזמן אמת, תמיד מעודכן</li>
+      <li data-en="Claim in 2 clicks, instantly" data-he="שריון ב-2 קליקים, מיידי">שריון ב-2 קליקים, מיידי</li>
+      <li data-en="Private — no one sees who asked" data-he="פרטי — אף אחד לא רואה מי ביקש">פרטי — אף אחד לא רואה מי ביקש</li>
+      <li data-en="Auto reminders & perfect order" data-he="תזכורות אוטומטיות וסדר מושלם">תזכורות אוטומטיות וסדר מושלם</li>
+    </ul>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS CAROUSEL -->
+<section style="background: var(--surface-lowest); padding: 4rem 2rem;">
+<div class="section-inner" style="text-align: center; max-width: 720px; margin: 0 auto;">
+<div class="section-label" style="text-align: center;" data-en="What residents say" data-he="מה הדיירים אומרים">מה הדיירים אומרים</div>
+<h2 class="section-title display-font" style="text-align:center; margin-left:auto; margin-right:auto;" data-en="Real feedback from real neighbors." data-he="פידבקים אמיתיים משכנים אמיתיים.">פידבקים אמיתיים משכנים אמיתיים.</h2>
+
+<div id="testimonial-carousel" style="position:relative; min-height: 180px; margin-top: 2rem;">
+  <div class="testimonial-slide" style="display:block;">
+    <blockquote style="font-size: 1.15rem; font-style: italic; color: var(--on-surface); line-height: 1.8; margin: 0 0 1rem; position: relative; padding: 0 1.5rem;">
+      <span style="font-size: 3rem; color: var(--primary); opacity: 0.2; position: absolute; top: -0.5rem; inset-inline-start: -0.5rem; font-family: Georgia, serif;">"</span>
+      <span data-en="Since Lot'N'Go launched in our building, the parking WhatsApp group went completely silent. My parents visited last Friday and had a spot waiting — no phone calls, no stress. It just works." data-he="מאז ש-Lot'N'Go נכנסה לבניין שלנו, קבוצת החניות בוואטסאפ השתתקה לגמרי. ההורים שלי באו בשישי האחרון והחניה כבר חיכתה להם — בלי טלפונים, בלי לחץ. זה פשוט עובד.">מאז ש-Lot'N'Go נכנסה לבניין שלנו, קבוצת החניות בוואטסאפ השתתקה לגמרי. ההורים שלי באו בשישי האחרון והחניה כבר חיכתה להם — בלי טלפונים, בלי לחץ. זה פשוט עובד.</span>
+    </blockquote>
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);" data-en="— Noa, Rosh Ha'ayin" data-he="— נעה, ראש העין">— נעה, ראש העין</div>
+  </div>
+  <div class="testimonial-slide" style="display:none;">
+    <blockquote style="font-size: 1.15rem; font-style: italic; color: var(--on-surface); line-height: 1.8; margin: 0 0 1rem; position: relative; padding: 0 1.5rem;">
+      <span style="font-size: 3rem; color: var(--primary); opacity: 0.2; position: absolute; top: -0.5rem; inset-inline-start: -0.5rem; font-family: Georgia, serif;">"</span>
+      <span data-en="This is genius — can I be an investor?" data-he="זה גאוני — אפשר להיות משקיע?">זה גאוני — אפשר להיות משקיע?</span>
+    </blockquote>
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);" data-en="— Moshe, Rosh Ha'ayin" data-he="— משה, ראש העין">— משה, ראש העין</div>
+  </div>
+  <div class="testimonial-slide" style="display:none;">
+    <blockquote style="font-size: 1.15rem; font-style: italic; color: var(--on-surface); line-height: 1.8; margin: 0 0 1rem; position: relative; padding: 0 1.5rem;">
+      <span style="font-size: 3rem; color: var(--primary); opacity: 0.2; position: absolute; top: -0.5rem; inset-inline-start: -0.5rem; font-family: Georgia, serif;">"</span>
+      <span data-en="Simple design, solves a real problem." data-he="עיצוב פשוט, פותר בעיה אמיתית.">עיצוב פשוט, פותר בעיה אמיתית.</span>
+    </blockquote>
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);" data-en="— Anat, Rosh Ha'ayin" data-he="— ענת, ראש העין">— ענת, ראש העין</div>
+  </div>
+  <div class="testimonial-slide" style="display:none;">
+    <blockquote style="font-size: 1.15rem; font-style: italic; color: var(--on-surface); line-height: 1.8; margin: 0 0 1rem; position: relative; padding: 0 1.5rem;">
+      <span style="font-size: 3rem; color: var(--primary); opacity: 0.2; position: absolute; top: -0.5rem; inset-inline-start: -0.5rem; font-family: Georgia, serif;">"</span>
+      <span data-en="It's clear a lot of thought was invested in this. Great job." data-he="רואים שהושקעה בזה הרבה מחשבה. עבודה מצוינת.">רואים שהושקעה בזה הרבה מחשבה. עבודה מצוינת.</span>
+    </blockquote>
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);" data-en="— Ziv, Rosh Ha'ayin" data-he="— זיו, ראש העין">— זיו, ראש העין</div>
+  </div>
+</div>
+
+<!-- Dots -->
+<div id="testimonial-dots" style="display:flex; justify-content:center; gap:0.5rem; margin-top:1.25rem; direction:ltr;">
+  <span class="t-dot" onclick="goToTestimonial(0)" style="width:10px;height:10px;border-radius:50%;background:var(--primary);cursor:pointer;transition:opacity 0.2s;opacity:1;"></span>
+  <span class="t-dot" onclick="goToTestimonial(1)" style="width:10px;height:10px;border-radius:50%;background:var(--primary);cursor:pointer;transition:opacity 0.2s;opacity:0.25;"></span>
+  <span class="t-dot" onclick="goToTestimonial(2)" style="width:10px;height:10px;border-radius:50%;background:var(--primary);cursor:pointer;transition:opacity 0.2s;opacity:0.25;"></span>
+  <span class="t-dot" onclick="goToTestimonial(3)" style="width:10px;height:10px;border-radius:50%;background:var(--primary);cursor:pointer;transition:opacity 0.2s;opacity:0.25;"></span>
+</div>
+
+</div>
+</section>
+
+<!-- HOW YOUR BUILDING JOINS -->
+<section id="onboarding-steps" style="background: var(--surface-low);">
+<div class="section-inner">
+<div class="section-label" data-en="Getting started" data-he="איך מתחילים">איך מתחילים</div>
+<h2 class="section-title display-font" data-en="Your building is 3 steps away." data-he="הבניין שלכם 3 צעדים משם.">הבניין שלכם 3 צעדים משם.</h2>
+<p class="section-sub" data-en="No hardware, no IT department, no budget approval. A building rep signs up and you're live in under 30 minutes." data-he="ללא חומרה, ללא מחלקת IT, ללא אישור תקציבי. נציג הבניין נרשם ואתם באוויר תוך פחות מ-30 דקות.">ללא חומרה, ללא מחלקת IT, ללא אישור תקציבי. נציג הבניין נרשם ואתם באוויר תוך פחות מ-30 דקות.</p>
+<div class="steps-grid">
+<div class="step-card">
+  <div class="step-num-wrapper"><div class="step-num">01</div></div>
+  <h3 data-en="A rep signs up" data-he="נציג נרשם">נציג נרשם</h3>
+  <p data-en="A vaad bayit member or building manager fills out the form below. We contact you within 2 business days to set up your building." data-he="חבר ועד בית או מנהל בניין ממלא את הטופס למטה. אנחנו יוצרים קשר תוך 2 ימי עסקים כדי להקים את הבניין.">חבר ועד בית או מנהל בניין ממלא את הטופס למטה. אנחנו יוצרים קשר תוך 2 ימי עסקים כדי להקים את הבניין.</p>
+</div>
+<div class="step-card">
+  <div class="step-num-wrapper"><div class="step-num">02</div></div>
+  <h3 data-en="We configure together" data-he="מגדירים ביחד">מגדירים ביחד</h3>
+  <p data-en="In a short onboarding call, we map parking levels, set up invite codes, and tailor the system to your building's layout. ~15 minutes." data-he="בשיחת הכרות קצרה, ממפים את קומות החניה, מגדירים קודי הזמנה ומתאימים את המערכת לבניין שלכם. כ-15 דקות.">בשיחת הכרות קצרה, ממפים את קומות החניה, מגדירים קודי הזמנה ומתאימים את המערכת לבניין שלכם. כ-15 דקות.</p>
+</div>
+<div class="step-card">
+  <div class="step-num-wrapper"><div class="step-num">03</div></div>
+  <h3 data-en="Residents join & share" data-he="הדיירים מצטרפים ומשתפים">הדיירים מצטרפים ומשתפים</h3>
+  <p data-en="Residents get an invite code, register their spots, and start sharing. The building's parking problem starts solving itself from day one." data-he="הדיירים מקבלים קוד הזמנה, רושמים את החניות ומתחילים לשתף. בעיית החניה של הבניין מתחילה להיפתר מהיום הראשון.">הדיירים מקבלים קוד הזמנה, רושמים את החניות ומתחילים לשתף. בעיית החניה של הבניין מתחילה להיפתר מהיום הראשון.</p>
+</div>
+</div>
+</div>
+</section>
+
 <!-- FAQ -->
 <section id="faq">
 <div class="section-inner">
@@ -917,10 +1042,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <p class="section-sub" data-en="If your question isn't here, reach out at contact@lotngo.com — we respond fast." data-he="אם השאלה שלך לא כאן, צור קשר בכתובת contact@lotngo.com — אנחנו מגיבים מהר.">אם השאלה שלך לא כאן, צור קשר בכתובת contact@lotngo.com — אנחנו מגיבים מהר.</p>
 <div class="faq-list">
 <div class="faq-item" style="border: 2px solid var(--primary-container); background: rgba(214,228,255,0.15);">
-<div class="faq-q" style="color: var(--primary-dim);"><span data-en="Why not just use our building's WhatsApp group?" data-he="למה שלא נישאר פשוט בקבוצת הוואטסאפ של הבניין?">למה שלא נישאר פשוט בקבוצת הוואטסאפ של הבניין?</span><span class="faq-chevron">▾</span></div>
-<div class="faq-a" data-en="Because WhatsApp groups mean noise and chaos. One request spams everyone's phone, meaning most people mute the group entirely. Plus, many residents hate publicly begging for favors, and offers get buried under chat history in minutes.<br><br><strong>Lot'N'Go brings total silence.</strong> You open the app, find a spot, claim it in two clicks, and park—no group spam, no social awkwardness, and perfect order." data-he="כי וואטסאפ מייצר בעיקר ספאם ובלגן. הודעה אחת מציקה לכל הבניין, הרוב משתיקים את הקבוצה, וכשבאמת צריך חניה — אף אחד לא רואה. בנוסף, דיירים שונאים לבקש טובות בפרהסיה והודעות נעלמות בפיד תוך דקות.<br><br><strong>Lot'N'Go הופכת את הבלגן לאפליקציה שקטה שמציגה הכל בזמן אמת.</strong> נכנסים, רואים מה פנוי ומשריינים בשנייה — בלי לחפור לשכנים ובלי לבקש טובות.">כי וואטסאפ מייצר בעיקר ספאם ובלגן. הודעה אחת מציקה לכל הבניין, הרוב משתיקים את הקבוצה, וכשבאמת צריך חניה — אף אחד לא רואה.<br><br><strong>Lot'N'Go הופכת את הבלגן לאפליקציה שקטה שמציגה הכל בזמן אמת.</strong> נכנסים, רואים מה פנוי ומשריינים בשנייה — בלי לחפור לשכנים ובלי לבקש טובות.</div>
-</div>
-<div class="faq-item" style="border: 2px solid var(--primary-container); background: rgba(214,228,255,0.15);">
 <div class="faq-q" style="color: var(--primary-dim);">
 <span data-en="Why would I share my spot 'out of the goodness of my heart'? Do I have to manage it daily?" data-he="למה שמישהו ישתף את החניה שלו 'מטוב לב'? והאם צריך לנהל את זה בכל יום מחדש?">למה שמישהו ישתף את החניה שלו 'מטוב לב'? והאם צריך לנהל את זה בכל יום מחדש?</span>
 <span class="faq-chevron">▾</span>
@@ -928,7 +1049,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <div class="faq-a" data-en="First, it requires zero daily effort. You can set up a recurring weekly schedule once (e.g., while you're at work), and the system opens the spot automatically.<br><br>Second, neighborly goodwill is a two-way street. Today you help a neighbor whose parents are visiting, and tomorrow when you have a technician coming, a spot will be waiting for you. By helping keep the building organized, you ensure peace of mind for yourself when you need it most." data-he="קודם כל, זה דורש אפס מאמץ יומיומי. מגדירים פעם אחת חלונות זמן שבועיים קבועים (למשל, שעות העבודה שלכם), והמערכת פותחת את החניה באופן אוטומטי לחלוטין.<br><br>מעבר לזה, שכנות טובה היא גלגל דו-סטרי: היום אתם עוזרים לשכן שההורים שלו באים לביקור, ומחר כשיגיע אליכם טכנאי או אורח, חניה פנויה תחכה לכם בקליק. כשאתם עוזרים לייצר סדר בבניין, אתם קונים לעצמכם שקט נפשי לפעמים שבהן אתם תהיו אלו שחייבים פתרון.">קודם כל, זה דורש אפס מאמץ יומיומי. מגדירים פעם אחת חלונות זמן שבועיים קבועים (למשל, שעות העבודה שלכם באופיס), והמערכת פותחת את החניה באופן אוטומטי לחלוטין.<br><br>מעבר לזה, שכנות טובה היא גלגל דו-סטרי: היום אתם עוזרים לשכן שההורים שלו באים לביקור, ומחר כשיגיע אליכם טכנאי או אורח, חניה פנויה תחכה לכם בקליק. כשאתם עוזרים לייצר סדר בבניין, אתם קונים לעצמכם שקט נפשי לפעמים שבהן אתם תהיו אלו שחייבים פתרון.</div>
 </div>
 
-<div class="faq-item"><div class="faq-q"><span data-en="Does it cost money to use Lot'N'Go?" data-he="האם השירות ב-Lot'N'Go עולה כסף?">האם השירות ב-Lot'N'Go עולה כסף?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="Currently, Lot'N'Go is running an exclusive closed beta phase, making the platform 100% free for participating residents, building committees, and HOAs." data-he="כעת פלטפורמת Lot'N'Go נמצאת בשלב בטא סגור ויוקרתי, ולכן השירות פתוח ב-100% חינם לכל הדיירים, ועדי הבתים וחברות הניהול המשתתפים בתוכנית.">כעת פלטפורמת Lot'N'Go נמצאת בשלב בטא סגור ויוקרתי, ולכן השירות פתוח ב-100% חינם לכל הדיירים, ועדי הבתים וחברות הניהול המשתתפים בתוכנית.</div></div>
+<div class="faq-item"><div class="faq-q"><span data-en="Does it cost money to use Lot'N'Go?" data-he="האם השירות ב-Lot'N'Go עולה כסף?">האם השירות ב-Lot'N'Go עולה כסף?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="During the launch phase, Lot'N'Go is 100% free for all participating residents, building committees, and HOAs. Buildings that join now lock in early-adopter pricing when paid plans launch later." data-he="בשלב ההשקה, Lot'N'Go פתוחה ב-100% חינם לכל הדיירים, ועדי הבתים וחברות הניהול המשתתפים. בניינים שמצטרפים עכשיו נהנים מתנאי מצטרף מוקדם כשהמנויים יושקו בעתיד.">בשלב ההשקה, Lot'N'Go פתוחה ב-100% חינם לכל הדיירים, ועדי הבתים וחברות הניהול המשתתפים. בניינים שמצטרפים עכשיו נהנים מתנאי מצטרף מוקדם כשהמנויים יושקו בעתיד.</div></div>
 <div class="faq-item"><div class="faq-q"><span data-en="How does a guest or technician physically enter through the building's main gate?" data-he="איך האורח או הטכנאי נכנסים פיזית דרך השער החשמלי של החניון?">איך האורח או הטכנאי נכנסים פיזית דרך השער החשמלי של החניון?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="The app handles scheduling and spot coordination purely digitally. To open the electric gate, the guest or driver will contact the resident who invited them or reserved the spot for entrance (via intercom, phone call, or remote clicker)." data-he="האפליקציה מיועדת לתיאום דיגיטלי וסדר בלבד. פתיחת השער החשמלי בפועל מתבצעת כרגיל — האורח או הטכנאי יוצרים קשר ישיר עם הדייר שהזמין אותם או שריין עבורם את החניה (דרך האינטרקום, בטלפון או בשלט רחוק) כדי להיכנס.">האפליקציה מיועדת לתיאום דיגיטלי וסדר בלבד. פתיחת השער החשמלי בפועל מתבצעת כרגיל — האורח או הטכנאי יוצרים קשר ישיר עם הדייר שהזמין אותם.</div></div>
 <div class="faq-item"><div class="faq-q"><span data-en="What happens if someone doesn't vacate my spot on time?" data-he="מה קורה אם מישהו מאחר לפנות את החניה שלי?">מה קורה אם מישהו מאחר לפנות את החניה שלי?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="The system fires automatic countdown reminders 15 minutes before any scheduled window ends to ensure people leave on time." data-he="המערכת שולחת תזכורות ספירה לאחור אוטומטיות לנייד 15 דקות לפני סיום חלון הזמן כדי לוודא פינוי בזמן.">המערכת שולחת תזכורות ספירה לאחור אוטומטיות לנייד 15 דקות לפני סיום חלון הזמן כדי לוודא פינוי בזמן.</div></div>
 <div class="faq-item"><div class="faq-q"><span data-en="Can people from neighboring buildings or the general public park in our garage?" data-he="האם אנשים מבניינים סמוכים או הציבור הרחב יכולים לחנות אצלנו?">האם אנשים מבניינים סמוכים או הציבור הרחב יכולים לחנות אצלנו?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="Absolutely not. Lot'N'Go operates strictly as a closed, private network tailored for your specific building only." data-he="בשום אופן לא. Lot'N'Go פועלת במודל של רשת פרטית וסגורה לחלוטין עבור הבניין שלכם בלבד.">בשום אופן לא. Lot'N'Go פועלת במודל של רשת פרטית וסגורה לחלוטין עבור הבניין שלכם בלבד.</div></div>
@@ -942,8 +1063,8 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <!-- CTA -->
 <section id="join" style="padding: 2rem 0 6rem;">
 <div class="cta-banner">
-<h2 class="display-font" data-en="Be the first to bring Lot'N'Go to your building." data-he="היו הראשונים להביא את Lot'N'Go לבניין שלכם.">היו הראשונים להביא את Lot'N'Go לבניין שלכם.</h2>
-<p data-en="Leave your details and we'll reach out — no spam, just one message." data-he="  השאירו פרטים ונחזור אליכם  — ללא ספאם, רק הודעה אחת.">  השאירו פרטים ונחזור אליכם  — ללא ספאם, רק הודעה אחת.</p>
+<h2 class="display-font" data-en="Bring Lot'N'Go to your building." data-he="הביאו את Lot'N'Go לבניין שלכם.">הביאו את Lot'N'Go לבניין שלכם.</h2>
+<p data-en="Leave your details and we'll reach out — no spam, just one message." data-he="השאירו פרטים ונחזור אליכם — ללא ספאם, רק הודעה אחת.">השאירו פרטים ונחזור אליכם — ללא ספאם, רק הודעה אחת.</p>
 
 <div class="waitlist-card">
   <div id="waitlist-form">
@@ -1057,7 +1178,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
       </div>
     </div>
 
-    <button id="waitlist-submit-btn" onclick="submitWaitlist()" class="waitlist-submit" style="display:none;" data-en="Join the waitlist →" data-he="הצטרפו לרשימת ההמתנה ←">הצטרפו לרשימת ההמתנה ←</button>
+    <button id="waitlist-submit-btn" onclick="submitWaitlist()" class="waitlist-submit" style="display:none;" data-en="Get started →" data-he="בואו נתחיל ←">בואו נתחיל ←</button>
     <p id="waitlist-microcopy" class="form-microcopy" style="display:none;" data-en="No spam. We'll reach out within 2 business days." data-he="ללא ספאם. נחזור אליכם תוך 2 ימי עסקים.">ללא ספאם. נחזור אליכם תוך 2 ימי עסקים.</p>
   </div>
   <div id="waitlist-thanks" style="display:none; color:#f7f7ff; font-size:1.1rem; font-weight:700; padding: 2rem 0; text-align:center;" data-en="✓ You're on the list! We'll be in touch soon." data-he="✓ אתם ברשימה! נחזור אליכם בקרוב.">✓ אתם ברשימה! נחזור אליכם בקרוב.</div>
@@ -1088,6 +1209,15 @@ const carouselData = [
   { he: { title: "מעקב וסדר בזמן אמת", desc: "אין יותר אי-נעימויות בחניון. האפליקציה מציגה טיימר ספירה לאחור ומזכירה אוטומטית למזמין לפנות את החניה 15 דקות לפני סיום הזמן." }, en: { title: "Track Active Sessions Securely", desc: "Never worry about neighbor disputes. The countdown timer keeps everything transparent, firing automated reminders 15 minutes before the time ends." }, imgHe: "ActiveSession-HE.jpeg", imgEn: "ActiveSession-EN.jpeg" }
 ];
 
+let carouselAutoPlay = null;
+function startCarouselAutoPlay() {
+  stopCarouselAutoPlay();
+  carouselAutoPlay = setInterval(() => { navigateCarousel(1); }, 5000);
+}
+function stopCarouselAutoPlay() {
+  if (carouselAutoPlay) { clearInterval(carouselAutoPlay); carouselAutoPlay = null; }
+}
+
 function updateCarousel() {
   const lang = document.documentElement.lang || 'he';
   const step = carouselData[currentCarouselStep];
@@ -1096,7 +1226,7 @@ function updateCarousel() {
   document.getElementById('carousel-img').src = lang === 'he' ? step.imgHe : step.imgEn;
   document.querySelectorAll('.carousel-tab-btn').forEach((tab, i) => tab.classList.toggle('active', i === currentCarouselStep));
 }
-function goToStep(i) { currentCarouselStep = i; updateCarousel(); }
+function goToStep(i) { currentCarouselStep = i; updateCarousel(); startCarouselAutoPlay(); }
 function navigateCarousel(d) { currentCarouselStep = (currentCarouselStep + d + carouselData.length) % carouselData.length; updateCarousel(); }
 
 function setLang(lang) {
@@ -1148,6 +1278,8 @@ function onLeadTypeChange() {
   const microcopy = document.getElementById('waitlist-microcopy');
   const hint = document.getElementById('lead-type-hint');
 
+  const phoneGroup = document.getElementById('waitlist-phone') ? document.getElementById('waitlist-phone').closest('.form-group') : null;
+
   if (!leadType) {
     coreFields.style.display = 'none';
     hoaFields.style.display = 'none';
@@ -1165,8 +1297,10 @@ function onLeadTypeChange() {
 
   if (leadType === 'hoa_member') {
     hoaFields.style.display = 'block';
+    if (phoneGroup) phoneGroup.style.display = 'flex';
   } else {
     hoaFields.style.display = 'none';
+    if (phoneGroup) phoneGroup.style.display = 'none';
   }
 }
 
@@ -1253,13 +1387,49 @@ window.addEventListener('load', async () => {
   const savedLang = localStorage.getItem('lotngo-lang') || 'he';
   setLang(savedLang);
   updateCarousel();
+  startCarouselAutoPlay();
+  // Pause auto-play on hover
+  const carouselEl = document.querySelector('.carousel-container');
+  if (carouselEl) {
+    carouselEl.addEventListener('mouseenter', stopCarouselAutoPlay);
+    carouselEl.addEventListener('mouseleave', startCarouselAutoPlay);
+  }
   await loadData();
   populateDataList('waitlist-cities-data', citiesData);
   document.getElementById('waitlist-city').addEventListener('change', e => {
     const city = e.target.value.trim();
     populateDataList('waitlist-streets-data', city && streetsData[city] ? streetsData[city] : []);
   });
+
+  // Testimonial auto-carousel
+  startTestimonialAutoPlay();
+  const testimonialEl = document.getElementById('testimonial-carousel');
+  if (testimonialEl) {
+    testimonialEl.addEventListener('mouseenter', stopTestimonialAutoPlay);
+    testimonialEl.addEventListener('mouseleave', startTestimonialAutoPlay);
+  }
 });
+
+let currentTestimonial = 0;
+let testimonialTimer = null;
+function goToTestimonial(i) {
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dots = document.querySelectorAll('.t-dot');
+  slides.forEach((s, idx) => { s.style.display = idx === i ? 'block' : 'none'; });
+  dots.forEach((d, idx) => { d.style.opacity = idx === i ? '1' : '0.25'; });
+  currentTestimonial = i;
+}
+function nextTestimonial() {
+  const total = document.querySelectorAll('.testimonial-slide').length;
+  goToTestimonial((currentTestimonial + 1) % total);
+}
+function startTestimonialAutoPlay() {
+  stopTestimonialAutoPlay();
+  testimonialTimer = setInterval(nextTestimonial, 4000);
+}
+function stopTestimonialAutoPlay() {
+  if (testimonialTimer) { clearInterval(testimonialTimer); testimonialTimer = null; }
+}
 </script>
 </body>
 </html>
