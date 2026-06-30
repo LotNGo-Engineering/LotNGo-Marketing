@@ -198,7 +198,7 @@ html[lang="he"] .hero h1 { font-family: 'Heebo', sans-serif; letter-spacing: 0; 
 .spot-card:nth-child(2) { animation-delay: -2s; }
 @keyframes cardFloat {
   0%   { transform: translateY(0px); }
-  100% { transform: translateY(-3px); }
+  100% { transform: translateY(-6px); }
 }
 html[lang="he"] .spot-card { text-align: right; }
 .spot-chip { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 100px; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -649,15 +649,29 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <div class="hero-orb hero-orb-1"></div>
 <div class="hero-orb hero-orb-2"></div>
 <div>
-<div class="hero-eyebrow" data-en="🟢 Free forever for the first 10 buildings" data-he="🟢 חינם לצמיתות ל-10 הבניינים הראשונים">🟢 חינם לצמיתות ל-10 הבניינים הראשונים</div>
+<div class="badges-row">
+<div class="hero-eyebrow" data-en="Good Neighboring, Reimagined" data-he="שכנות טובה, מעוצבת מחדש">Good Neighboring, Reimagined</div>
+<div class="coming-soon-badge"
+     style="background: #d6eddf; color: #1a6b35;"
+     data-en="🟢 Now Live!"
+     data-he="🟢 השירות פעיל!">
+     🟢 השירות פעיל!
+</div>
+</div>
 <h1 class="display-font" data-en="No parking outside?<br>A community <span class='accent'>solution inside.</span>" data-he="מצוקת חניה בחוץ?<br><span class='accent'>פתרון קהילתי בפנים.</span> ">מצוקת חניה בחוץ?<br><span class="accent">פתרון קהילתי בפנים.</span></h1>
-<p class="hero-sub" data-en="Share empty parking spots with verified neighbors only — effortlessly, securely, and exactly when they sit empty." data-he="שתפו חניות ריקות עם שכנים מאומתים בלבד — בקלות, בביטחון מלא, ובדיוק כשהן עומדות ריקות.">שתפו חניות ריקות עם שכנים מאומתים בלבד — בקלות, בביטחון מלא, ובדיוק כשהן עומדות ריקות.</p>
+<p class="hero-sub" data-en="Your building's private and secure parking network. Lot'N'Go lets residents safely share their assigned spots with verified neighbors only — effortlessly, and exactly when they sit empty." data-he="רשת החניה הפרטית והסגורה של הבניין שלכם. Lot'N'Go מאפשרת לכם לשתף את החניה הרשומה שלכם עם שכנים מאומתים בלבד — בקלות, בביטחון מלא, וכשהיא ממילא עומדת ריקה.">רשת החניה הפרטית והסגורה של הבניין שלכם. Lot'N'Go מאפשרת לכם לשתף את החניה הרשומה שלכם עם שכנים מאומתים בלבד — בקלות, בביטחון מלא, וכשהיא ממילא עומדת ריקה.</p>
 
 <p class="hero-social-proof"
    style="font-size: 0.9rem; margin-bottom: 0.75rem; font-weight: 600; color: var(--primary); opacity: 0.85;"
    data-en="✔ Already live in Rosh Ha'ayin — 38 residents sharing daily"
    data-he="✔ כבר פעיל בראש העין — 38 דיירים משתפים חניות מדי יום">
    ✔ כבר פעיל בראש העין — 38 דיירים משתפים חניות מדי יום
+</p>
+<p class="hero-fomo"
+   style="font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 500; color: #e67e22;"
+   data-en="⏳ To ensure personal onboarding, our launch is limited. Only 3 spots left for new buildings."
+   data-he="⏳ כדי להבטיח ליווי והתקנה מושלמת, סבב ההשקה מוגבל. נותרו רק עוד 3 מקומות אחרונים לבניינים חדשים.">
+   ⏳ כדי להבטיח ליווי והתקנה מושלמת, סבב ההשקה מוגבל. נותרו רק עוד 3 מקומות אחרונים לבניינים חדשים.
 </p>
    
 <div class="hero-cta">
@@ -690,12 +704,12 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
       <span class="stat-label" data-en="Active residents" data-he="דיירים פעילים במערכת">דיירים פעילים במערכת</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num" data-en="15 min" data-he="15 דק׳">15 דק׳</span>
-      <span class="stat-label" data-en="Building setup time" data-he="זמן הקמת בניין">זמן הקמת בניין</span>
+      <span class="stat-num" data-en="100%" data-he="100%">100%</span>
+      <span class="stat-label" data-en="Resident-only access" data-he="גישה לדיירים בלבד">גישה לדיירים בלבד</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num" data-en="< 30s" data-he="< 30 שנ׳">< 30 שנ׳</span>
-      <span class="stat-label" data-en="To claim a spot" data-he="לשריין חניה">לשריין חניה</span>
+      <span class="stat-num" data-en="0" data-he="0">0</span>
+      <span class="stat-label" data-en="Hardware required" data-he="ציוד נדרש להתקנה">ציוד נדרש להתקנה</span>
     </div>
   </div>
 </div>
@@ -718,37 +732,6 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <div class="problem-card"><div class="problem-icon">👪</div><h3 data-en="Friday Night Dinner Crisis" data-he="אורחים באים לביקור">אורחים באים לביקור</h3><p data-en="Family coming for dinner and circling the block for 30 minutes? With Lot'N'Go, their spot is secured in the underground garage before they even leave home." data-he="המשפחה מגיעה לארוחת שישי ומסתובבת חצי שעה ברחובות השכונה? עם Lot'N'Go החניה שלהם שמורה ומחכה להם בחניון התת-קרקעי עוד לפני שהם יצאו מהבית.">המשפחה מגיעה לארוחת שישי ומסתובבת חצי שעה ברחובות השכונה? עם Lot'N'Go החניה שלהם שמורה ומחכה להם בחניון התת-קרקעי עוד לפני שהם יצאו מהבית.</p></div>
 <div class="problem-card"><div class="problem-icon">🏗️</div><h3 data-en="Moving Day Chaos" data-he="כאוס ביום המעבר">כאוס ביום המעבר</h3><p data-en="A new resident arrives with a massive moving truck. Quick coordination in the app with a neighbor whose spot is empty prevents blocked roads, anger, and unnecessary fines." data-he="דייר חדש מגיע עם משאית הובלה ואין חניית ספקים? תיאום קצר באפליקציה מול שכן שחנייתו ריקה מונע חסימות כביש, עצבים וקנסות מיותרים.">דייר חדש מגיע עם משאית הובלה ואין חניית ספקים? תיאום קצר באפליקציה מול שכן שחנייתו ריקה מונע חסימות כביש, עצבים וקנסות מיותרים.</p></div>
 <div class="problem-card"><div class="problem-icon">🅿️</div><h3 data-en="Empty Spots, Total Control" data-he="חניות ריקות, שליטה מלאה">חניות ריקות, שליטה מלאה</h3><p data-en="The private spot you bought sits empty 10 hours a day while you're at work. Safely open it up for trusted neighbors—retaining 100% control over your property." data-he="החניה הפרטית שקניתם עומדת ריקה 10 שעות ביום בזמן שאתם בעבודה? הגיע הזמן לעזור לשכנים (ורק לשכנים!) לנצל את הנדל&quot;ן היקר הזה בביטחון מלא.">החניה הפרטית שקניתם עומדת ריקה 10 שעות ביום בזמן שאתם בעבודה? הגיע הזמן לעזור לשכנים (ורק לשכנים!) לנצל את הנדל"ן היקר הזה בביטחון מלא.</p></div>
-</div>
-</div>
-</section>
-
-<!-- WHATSAPP vs LOT'N'GO (moved up for stronger conversion) -->
-<section id="whatsapp-compare" style="background: var(--surface-low);">
-<div class="section-inner">
-<div class="section-label" data-en="WhatsApp vs Lot'N'Go" data-he="וואטסאפ מול Lot'N'Go">וואטסאפ מול Lot'N'Go</div>
-<h2 class="section-title display-font" data-en="Your building group chat wasn't built for parking." data-he="קבוצת הוואטסאפ לא נבנתה לניהול חניות.">קבוצת הוואטסאפ לא נבנתה לניהול חניות.</h2>
-<p class="section-sub" data-en="One parking request spams 50 phones. Most mute the group. Offers get buried. Lot'N'Go replaces the chaos with a silent, real-time dashboard." data-he="הודעה אחת של 'יש למישהו חניה פנויה?' מציקה ל-50 טלפונים. הרוב משתיקים את הקבוצה. Lot'N'Go מחליפה את הבלגן בלוח שקט ובזמן אמת.">הודעה אחת של 'יש למישהו חניה פנויה?' מציקה ל-50 טלפונים. הרוב משתיקים את הקבוצה. Lot'N'Go מחליפה את הבלגן בלוח שקט ובזמן אמת.</p>
-<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 720px;">
-  <div style="background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; border-top: 3px solid #e74c3c;">
-    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: #e74c3c;" data-en="❌ WhatsApp Group" data-he="❌ קבוצת וואטסאפ">❌ קבוצת וואטסאפ</h3>
-    <ul style="list-style: none; font-size: 0.85rem; color: var(--on-surface-muted); line-height: 2;">
-      <li data-en="Spams everyone's phone" data-he="מציפה את הטלפון של כולם">מציפה את הטלפון של כולם</li>
-      <li data-en="Most residents mute the group" data-he="רוב הדיירים משתיקים">רוב הדיירים משתיקים</li>
-      <li data-en="Offers buried in minutes" data-he="הודעות נעלמות תוך דקות">הודעות נעלמות תוך דקות</li>
-      <li data-en="Awkward public asking for favors" data-he="מבקשים טובות בפרהסיה">מבקשים טובות בפרהסיה</li>
-      <li data-en="No order, no tracking" data-he="בלי סדר, בלי מעקב">בלי סדר, בלי מעקב</li>
-    </ul>
-  </div>
-  <div style="background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; border-top: 3px solid var(--primary);">
-    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary);" data-en="✔ Lot'N'Go" data-he="✔ Lot'N'Go">✔ Lot'N'Go</h3>
-    <ul style="list-style: none; font-size: 0.85rem; color: var(--on-surface-muted); line-height: 2;">
-      <li data-en="Silent — zero notifications to neighbors" data-he="שקט מוחלט — אפס הודעות לשכנים">שקט מוחלט — אפס הודעות לשכנים</li>
-      <li data-en="Real-time dashboard, always up to date" data-he="לוח בזמן אמת, תמיד מעודכן">לוח בזמן אמת, תמיד מעודכן</li>
-      <li data-en="Claim in 2 clicks, instantly" data-he="שריון ב-2 קליקים, מיידי">שריון ב-2 קליקים, מיידי</li>
-      <li data-en="Private — no one sees who asked" data-he="פרטי — אף אחד לא רואה מי ביקש">פרטי — אף אחד לא רואה מי ביקש</li>
-      <li data-en="Auto reminders & perfect order" data-he="תזכורות אוטומטיות וסדר מושלם">תזכורות אוטומטיות וסדר מושלם</li>
-    </ul>
-  </div>
 </div>
 </div>
 </section>
@@ -897,18 +880,17 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
-<!-- APP STORES COMING SOON — hidden until launch -->
-<section class="app-stores" style="display:none;">
+<!-- APP STORES -->
+<section class="app-stores">
 <div class="section-inner" style="text-align:center;">
 <div class="section-label" style="text-align:center;" data-en="Get the app" data-he="הורידו את האפליקציה">הורידו את האפליקציה</div>
-<h2 class="section-title display-font" style="max-width:100%; text-align:center; margin-left:auto; margin-right:auto;" data-en="Coming soon to your favorite app store." data-he="בקרוב בחנות האפליקציות שלכם.">בקרוב בחנות האפליקציות שלכם.</h2>
-<p class="section-sub" style="text-align:center; margin-left:auto; margin-right:auto;" data-en="Lot'N'Go is launching on iOS and Android as a native app. Faster, smoother, and with background features like Smart Auto-Release built right in." data-he="Lot'N'Go מושקת ב-iOS ו-Android כאפליקציה מקומית. מהירה יותר, חלקה יותר, ועם יכולות רקע כמו שחרור אוטומטי חכם מובנות בפנים.">Lot'N'Go מושקת ב-iOS ו-Android כאפליקציה מקומית. מהירה יותר, חלקה יותר, ועם יכולות רקע כמו שחרור אוטומטי חכם מובנות בפנים.</p>
+<h2 class="section-title display-font" style="max-width:100%; text-align:center; margin-left:auto; margin-right:auto;" data-en="Available now on iOS. Android coming soon." data-he="זמינה עכשיו ב-iOS. אנדרואיד בקרוב.">זמינה עכשיו ב-iOS. אנדרואיד בקרוב.</h2>
+<p class="section-sub" style="text-align:center; margin-left:auto; margin-right:auto;" data-en="Download Lot'N'Go as a native app — faster, smoother, and with background features like Smart Auto-Release built right in." data-he="הורידו את Lot'N'Go כאפליקציה מקומית — מהירה יותר, חלקה יותר, ועם יכולות רקע כמו שחרור אוטומטי חכם מובנות בפנים.">הורידו את Lot'N'Go כאפליקציה מקומית — מהירה יותר, חלקה יותר, ועם יכולות רקע כמו שחרור אוטומטי חכם מובנות בפנים.</p>
 <div class="store-badges">
-  <div class="store-badge">
+  <a href="https://apps.apple.com/us/app/lotngo/id6781989327" target="_blank" rel="noopener noreferrer" class="store-badge">
     <img src="Download-on-the-app-store.png" alt="Download on the App Store" style="height:54px;">
-    <div class="store-soon" data-en="Coming Soon" data-he="בקרוב">בקרוב</div>
-  </div>
-  <div class="store-badge">
+  </a>
+  <div class="store-badge" style="opacity:0.5; pointer-events:none;">
     <div style="height:54px; overflow:hidden; display:flex; align-items:center;">
       <img src="get-it-on-google-play-badge.png" alt="Get it on Google Play" style="height:54px;">
     </div>
@@ -947,6 +929,37 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 </div>
 </section>
 
+<!-- WHATSAPP vs LOT'N'GO -->
+<section id="whatsapp-compare" style="background: var(--surface-low);">
+<div class="section-inner">
+<div class="section-label" data-en="WhatsApp vs Lot'N'Go" data-he="וואטסאפ מול Lot'N'Go">וואטסאפ מול Lot'N'Go</div>
+<h2 class="section-title display-font" data-en="Your building group chat wasn't built for parking." data-he="קבוצת הוואטסאפ לא נבנתה לניהול חניות.">קבוצת הוואטסאפ לא נבנתה לניהול חניות.</h2>
+<p class="section-sub" data-en="One parking request spams 50 phones. Most mute the group. Offers get buried. Lot'N'Go replaces the chaos with a silent, real-time dashboard." data-he="הודעה אחת של 'יש למישהו חניה פנויה?' מציקה ל-50 טלפונים. הרוב משתיקים את הקבוצה. Lot'N'Go מחליפה את הבלגן בלוח שקט ובזמן אמת.">הודעה אחת של 'יש למישהו חניה פנויה?' מציקה ל-50 טלפונים. הרוב משתיקים את הקבוצה. Lot'N'Go מחליפה את הבלגן בלוח שקט ובזמן אמת.</p>
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 720px;">
+  <div style="background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; border-top: 3px solid #e74c3c;">
+    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: #e74c3c;" data-en="❌ WhatsApp Group" data-he="❌ קבוצת וואטסאפ">❌ קבוצת וואטסאפ</h3>
+    <ul style="list-style: none; font-size: 0.85rem; color: var(--on-surface-muted); line-height: 2;">
+      <li data-en="Spams everyone's phone" data-he="מציפה את הטלפון של כולם">מציפה את הטלפון של כולם</li>
+      <li data-en="Most residents mute the group" data-he="רוב הדיירים משתיקים">רוב הדיירים משתיקים</li>
+      <li data-en="Offers buried in minutes" data-he="הודעות נעלמות תוך דקות">הודעות נעלמות תוך דקות</li>
+      <li data-en="Awkward public asking for favors" data-he="מבקשים טובות בפרהסיה">מבקשים טובות בפרהסיה</li>
+      <li data-en="No order, no tracking" data-he="בלי סדר, בלי מעקב">בלי סדר, בלי מעקב</li>
+    </ul>
+  </div>
+  <div style="background: var(--surface-lowest); border-radius: 16px; padding: 1.75rem; border-top: 3px solid var(--primary);">
+    <h3 style="font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary);" data-en="✔ Lot'N'Go" data-he="✔ Lot'N'Go">✔ Lot'N'Go</h3>
+    <ul style="list-style: none; font-size: 0.85rem; color: var(--on-surface-muted); line-height: 2;">
+      <li data-en="Silent — zero notifications to neighbors" data-he="שקט מוחלט — אפס הודעות לשכנים">שקט מוחלט — אפס הודעות לשכנים</li>
+      <li data-en="Real-time dashboard, always up to date" data-he="לוח בזמן אמת, תמיד מעודכן">לוח בזמן אמת, תמיד מעודכן</li>
+      <li data-en="Claim in 2 clicks, instantly" data-he="שריון ב-2 קליקים, מיידי">שריון ב-2 קליקים, מיידי</li>
+      <li data-en="Private — no one sees who asked" data-he="פרטי — אף אחד לא רואה מי ביקש">פרטי — אף אחד לא רואה מי ביקש</li>
+      <li data-en="Auto reminders & perfect order" data-he="תזכורות אוטומטיות וסדר מושלם">תזכורות אוטומטיות וסדר מושלם</li>
+    </ul>
+  </div>
+</div>
+</div>
+</section>
+
 <!-- TESTIMONIALS CAROUSEL -->
 <section style="background: var(--surface-lowest); padding: 4rem 2rem;">
 <div class="section-inner" style="text-align: center; max-width: 720px; margin: 0 auto;">
@@ -960,6 +973,13 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
       <span data-en="Since Lot'N'Go launched in our building, the parking WhatsApp group went completely silent. My parents visited last Friday and had a spot waiting — no phone calls, no stress. It just works." data-he="מאז ש-Lot'N'Go נכנסה לבניין שלנו, קבוצת החניות בוואטסאפ השתתקה לגמרי. ההורים שלי באו בשישי האחרון והחניה כבר חיכתה להם — בלי טלפונים, בלי לחץ. זה פשוט עובד.">מאז ש-Lot'N'Go נכנסה לבניין שלנו, קבוצת החניות בוואטסאפ השתתקה לגמרי. ההורים שלי באו בשישי האחרון והחניה כבר חיכתה להם — בלי טלפונים, בלי לחץ. זה פשוט עובד.</span>
     </blockquote>
     <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);" data-en="— Noa, Rosh Ha'ayin" data-he="— נעה, ראש העין">— נעה, ראש העין</div>
+  </div>
+  <div class="testimonial-slide" style="display:none;">
+    <blockquote style="font-size: 1.15rem; font-style: italic; color: var(--on-surface); line-height: 1.8; margin: 0 0 1rem; position: relative; padding: 0 1.5rem;">
+      <span style="font-size: 3rem; color: var(--primary); opacity: 0.2; position: absolute; top: -0.5rem; inset-inline-start: -0.5rem; font-family: Georgia, serif;">"</span>
+      <span data-en="This is genius — can I be an investor?" data-he="זה גאוני — אפשר להיות משקיע?">זה גאוני — אפשר להיות משקיע?</span>
+    </blockquote>
+    <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);" data-en="— Moshe, Rosh Ha'ayin" data-he="— משה, ראש העין">— משה, ראש העין</div>
   </div>
   <div class="testimonial-slide" style="display:none;">
     <blockquote style="font-size: 1.15rem; font-style: italic; color: var(--on-surface); line-height: 1.8; margin: 0 0 1rem; position: relative; padding: 0 1.5rem;">
@@ -982,6 +1002,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
   <span class="t-dot" onclick="goToTestimonial(0)" style="width:10px;height:10px;border-radius:50%;background:var(--primary);cursor:pointer;transition:opacity 0.2s;opacity:1;"></span>
   <span class="t-dot" onclick="goToTestimonial(1)" style="width:10px;height:10px;border-radius:50%;background:var(--primary);cursor:pointer;transition:opacity 0.2s;opacity:0.25;"></span>
   <span class="t-dot" onclick="goToTestimonial(2)" style="width:10px;height:10px;border-radius:50%;background:var(--primary);cursor:pointer;transition:opacity 0.2s;opacity:0.25;"></span>
+  <span class="t-dot" onclick="goToTestimonial(3)" style="width:10px;height:10px;border-radius:50%;background:var(--primary);cursor:pointer;transition:opacity 0.2s;opacity:0.25;"></span>
 </div>
 
 </div>
@@ -1028,7 +1049,7 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
 <div class="faq-a" data-en="First, it requires zero daily effort. You can set up a recurring weekly schedule once (e.g., while you're at work), and the system opens the spot automatically.<br><br>Second, neighborly goodwill is a two-way street. Today you help a neighbor whose parents are visiting, and tomorrow when you have a technician coming, a spot will be waiting for you. By helping keep the building organized, you ensure peace of mind for yourself when you need it most." data-he="קודם כל, זה דורש אפס מאמץ יומיומי. מגדירים פעם אחת חלונות זמן שבועיים קבועים (למשל, שעות העבודה שלכם), והמערכת פותחת את החניה באופן אוטומטי לחלוטין.<br><br>מעבר לזה, שכנות טובה היא גלגל דו-סטרי: היום אתם עוזרים לשכן שההורים שלו באים לביקור, ומחר כשיגיע אליכם טכנאי או אורח, חניה פנויה תחכה לכם בקליק. כשאתם עוזרים לייצר סדר בבניין, אתם קונים לעצמכם שקט נפשי לפעמים שבהן אתם תהיו אלו שחייבים פתרון.">קודם כל, זה דורש אפס מאמץ יומיומי. מגדירים פעם אחת חלונות זמן שבועיים קבועים (למשל, שעות העבודה שלכם באופיס), והמערכת פותחת את החניה באופן אוטומטי לחלוטין.<br><br>מעבר לזה, שכנות טובה היא גלגל דו-סטרי: היום אתם עוזרים לשכן שההורים שלו באים לביקור, ומחר כשיגיע אליכם טכנאי או אורח, חניה פנויה תחכה לכם בקליק. כשאתם עוזרים לייצר סדר בבניין, אתם קונים לעצמכם שקט נפשי לפעמים שבהן אתם תהיו אלו שחייבים פתרון.</div>
 </div>
 
-<div class="faq-item"><div class="faq-q"><span data-en="Does it cost money to use Lot'N'Go?" data-he="האם השירות ב-Lot'N'Go עולה כסף?">האם השירות ב-Lot'N'Go עולה כסף?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="The first 10 buildings to join get Lot'N'Go completely free — forever. No credit card, no trial, no catch. In the future, paid plans may be introduced for new buildings, but individual residents will never pay." data-he="10 הבניינים הראשונים שמצטרפים מקבלים את Lot'N'Go בחינם לצמיתות. בלי כרטיס אשראי, בלי תקופת ניסיון, בלי קאצ׳. בעתיד, ייתכן שיושקו מסלולים בתשלום לבניינים חדשים, אבל דיירים בודדים לא ישלמו לעולם.">10 הבניינים הראשונים שמצטרפים מקבלים את Lot'N'Go בחינם לצמיתות. בלי כרטיס אשראי, בלי תקופת ניסיון, בלי קאצ׳. בעתיד, ייתכן שיושקו מסלולים בתשלום לבניינים חדשים, אבל דיירים בודדים לא ישלמו לעולם.</div></div>
+<div class="faq-item"><div class="faq-q"><span data-en="Does it cost money to use Lot'N'Go?" data-he="האם השירות ב-Lot'N'Go עולה כסף?">האם השירות ב-Lot'N'Go עולה כסף?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="During the launch phase, Lot'N'Go is 100% free for all participating residents, building committees, and HOAs. Buildings that join now lock in early-adopter pricing when paid plans launch later." data-he="בשלב ההשקה, Lot'N'Go פתוחה ב-100% חינם לכל הדיירים, ועדי הבתים וחברות הניהול המשתתפים. בניינים שמצטרפים עכשיו נהנים מתנאי מצטרף מוקדם כשהמנויים יושקו בעתיד.">בשלב ההשקה, Lot'N'Go פתוחה ב-100% חינם לכל הדיירים, ועדי הבתים וחברות הניהול המשתתפים. בניינים שמצטרפים עכשיו נהנים מתנאי מצטרף מוקדם כשהמנויים יושקו בעתיד.</div></div>
 <div class="faq-item"><div class="faq-q"><span data-en="How does a guest or technician physically enter through the building's main gate?" data-he="איך האורח או הטכנאי נכנסים פיזית דרך השער החשמלי של החניון?">איך האורח או הטכנאי נכנסים פיזית דרך השער החשמלי של החניון?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="The app handles scheduling and spot coordination purely digitally. To open the electric gate, the guest or driver will contact the resident who invited them or reserved the spot for entrance (via intercom, phone call, or remote clicker)." data-he="האפליקציה מיועדת לתיאום דיגיטלי וסדר בלבד. פתיחת השער החשמלי בפועל מתבצעת כרגיל — האורח או הטכנאי יוצרים קשר ישיר עם הדייר שהזמין אותם או שריין עבורם את החניה (דרך האינטרקום, בטלפון או בשלט רחוק) כדי להיכנס.">האפליקציה מיועדת לתיאום דיגיטלי וסדר בלבד. פתיחת השער החשמלי בפועל מתבצעת כרגיל — האורח או הטכנאי יוצרים קשר ישיר עם הדייר שהזמין אותם.</div></div>
 <div class="faq-item"><div class="faq-q"><span data-en="What happens if someone doesn't vacate my spot on time?" data-he="מה קורה אם מישהו מאחר לפנות את החניה שלי?">מה קורה אם מישהו מאחר לפנות את החניה שלי?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="The system fires automatic countdown reminders 15 minutes before any scheduled window ends to ensure people leave on time." data-he="המערכת שולחת תזכורות ספירה לאחור אוטומטיות לנייד 15 דקות לפני סיום חלון הזמן כדי לוודא פינוי בזמן.">המערכת שולחת תזכורות ספירה לאחור אוטומטיות לנייד 15 דקות לפני סיום חלון הזמן כדי לוודא פינוי בזמן.</div></div>
 <div class="faq-item"><div class="faq-q"><span data-en="Can people from neighboring buildings or the general public park in our garage?" data-he="האם אנשים מבניינים סמוכים או הציבור הרחב יכולים לחנות אצלנו?">האם אנשים מבניינים סמוכים או הציבור הרחב יכולים לחנות אצלנו?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-en="Absolutely not. Lot'N'Go operates strictly as a closed, private network tailored for your specific building only." data-he="בשום אופן לא. Lot'N'Go פועלת במודל של רשת פרטית וסגורה לחלוטין עבור הבניין שלכם בלבד.">בשום אופן לא. Lot'N'Go פועלת במודל של רשת פרטית וסגורה לחלוטין עבור הבניין שלכם בלבד.</div></div>
@@ -1067,12 +1088,13 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
           <input type="text" id="waitlist-firstName" class="form-input" placeholder="יוחנן" data-placeholder-en="John" data-placeholder-he="יוחנן"/>
         </div>
         <div class="form-group">
-          <label class="form-label" data-en="Last Name *" data-he="שם משפחה *">שם משפחה *</label>
-          <input type="text" id="waitlist-lastName" class="form-input" placeholder="כהן" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
-        </div>
-        <div class="form-group">
           <label class="form-label" data-en="Email *" data-he="דוא״ל *">דוא״ל *</label>
           <input type="email" id="waitlist-email" class="form-input" placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="City *" data-he="עיר *">עיר *</label>
+          <input type="text" list="waitlist-cities-data" id="waitlist-city" class="form-input" placeholder="תל אביב" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
+          <datalist id="waitlist-cities-data"><option value="" data-en="Loading..." data-he="טוען...">טוען...</option></datalist>
         </div>
         <div class="form-group">
           <label class="form-label">
@@ -1089,9 +1111,8 @@ footer { background: var(--surface-lowest); padding: 3rem 2rem; text-align: cent
       <div class="form-divider"><span data-en="Building Info" data-he="פרטי הבניין">פרטי הבניין</span></div>
       <div class="form-grid-inner">
         <div class="form-group">
-          <label class="form-label" data-en="City *" data-he="עיר *">עיר *</label>
-          <input type="text" list="waitlist-cities-data" id="waitlist-city" class="form-input" placeholder="תל אביב" data-placeholder-en="Tel Aviv" data-placeholder-he="תל אביב"/>
-          <datalist id="waitlist-cities-data"><option value="" data-en="Loading..." data-he="טוען...">טוען...</option></datalist>
+          <label class="form-label" data-en="Last Name *" data-he="שם משפחה *">שם משפחה *</label>
+          <input type="text" id="waitlist-lastName" class="form-input" placeholder="כהן" data-placeholder-en="Doe" data-placeholder-he="כהן"/>
         </div>
         <div class="form-group">
           <label class="form-label" data-en="Street Name *" data-he="שם הרחוב *">שם הרחוב *</label>
